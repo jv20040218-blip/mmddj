@@ -1,0 +1,32 @@
+{
+  "version": "1.3.0",
+  "tag": "v1.3.0",
+  "published_date": "2026-11-15",
+  "repository": "https://github.com/jv20040218-blip/mmddj",
+  "branch": "main",
+  "build_id": "d9c853dee8d6",
+  "data_version": "73f8a4fd2180",
+  "data": {
+    "path": "data/story_runtime.json",
+    "bytes": 59027574,
+    "sha256": "fb9cf271240a1e8b41b66e4823f3f346484b13b68828b4cf65c501c9c5823e55"
+  },
+  "card": {
+    "path": "cards/ark-story-v1.3.0.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.3.0/cards/ark-story-v1.3.0.png",
+    "bytes": 16045699,
+    "sha256": "415b1629650ca0b56abe4d4709fd62d2f2c9a773b300a372341f75b3bcafb262",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_结算角色档案版_v2",
+    "worldbook_entries": 2049
+  },
+  "verification": {
+    "tests_passed": 194,
+    "tests_total": 194,
+    "gate_passed": 151,
+    "gate_total": 151,
+    "segments_checked": 21944,
+    "segments_matched": 21944,
+    "paid_model_calls": 0,
+    "ui_test": "local_browser_with_memory_host"
+  }
+}
