@@ -15,7 +15,7 @@ https://github.com/jv20040218-blip/mmddj
 装好后重启酒馆，控制台应出现：
 
 ```
-[ARK_STORY] 插件就绪：数据 56.2 MB，数据版本 318ad68d8d40，构建 4025ed25b4bc
+[ARK_STORY] 插件就绪：数据 56.1 MB，数据版本 318ad68d8d40，构建 4025ed25b4bc
 ```
 
 **2. 手动复制**
