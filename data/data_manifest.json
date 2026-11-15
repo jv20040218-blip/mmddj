@@ -1,0 +1,11 @@
+{
+  "file": "story_runtime.json",
+  "bytes": 58892120,
+  "sha256": "59f6b46ca3832099ad512306d4874c38e3dd85cd25a8f3d27475226b68b7dea9",
+  "data_version": "847c4b02f601",
+  "build_id": "4025ed25b4bc",
+  "corpus_nodes": 4370,
+  "corpus_texts": 1433,
+  "guide_lines": 849,
+  "generated_from": "work/runtime_v2.json"
+}
