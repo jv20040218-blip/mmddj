@@ -1,4 +1,4 @@
-# ark-story · 明日方舟剧情数据插件
+# 明日方舟剧情数据插件（ark-story）
 
 SillyTavern 扩展。只负责让角色卡里的剧情脚本取到 56 MB 原文库，不提供界面。
 
@@ -9,7 +9,7 @@ SillyTavern 扩展。只负责让角色卡里的剧情脚本取到 56 MB 原文�
 扩展 → 安装扩展 → 粘贴本仓库地址：
 
 ```
-https://github.com/<你的用户名>/ark-story
+https://github.com/jv20040218-blip/mmddj
 ```
 
 装好后重启酒馆，控制台应出现：
@@ -33,7 +33,7 @@ SillyTavern/data/default-user/extensions/ark-story
 在酒馆控制台执行（需酒馆助手）：
 
 ```js
-TavernHelper.installExtension('https://github.com/<你的用户名>/ark-story')
+TavernHelper.installExtension('https://github.com/jv20040218-blip/mmddj')
 ```
 
 ## 数据校验
