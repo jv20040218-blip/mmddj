@@ -15,7 +15,7 @@ https://github.com/jv20040218-blip/mmddj
 装好后重启酒馆，控制台应出现：
 
 ```
-[ARK_STORY] 插件就绪：数据 56.2 MB，数据版本 847c4b02f601，构建 4025ed25b4bc
+[ARK_STORY] 插件就绪：数据 56.2 MB，数据版本 318ad68d8d40，构建 4025ed25b4bc
 ```
 
 **2. 手动复制**
@@ -40,10 +40,10 @@ TavernHelper.installExtension('https://github.com/jv20040218-blip/mmddj')
 
 | 项 | 值 |
 |---|---|
-| 数据版本 | `847c4b02f601` |
+| 数据版本 | `318ad68d8d40` |
 | 构建标识 | `4025ed25b4bc` |
-| 字节数 | 58,892,120 |
-| SHA-256 | `59f6b46ca3832099ad512306d4874c38e3dd85cd25a8f3d27475226b68b7dea9` |
+| 字节数 | 58,862,512 |
+| SHA-256 | `31dae4a49fc010a2aeb3472cccf382e1416ed68838c975905841019ee941b3ea` |
 | 原文库节点 / 角色线 | 4,370 / 849 |
 
 ## 版本
