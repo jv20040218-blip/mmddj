@@ -1,41 +1,48 @@
 {
-  "version": "1.6.1",
-  "tag": "v1.6.1",
+  "version": "1.6.2",
+  "tag": "v1.6.2",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "f36284222a7f",
+  "build_id": "4adc05de5d79",
   "data_version": "5e94ee293f48",
-  "card_script_sha256": "11d1dbeafddb0df175d161a938ee085750631e7a43108a93a1a788ae2147787c",
+  "card_script_sha256": "8f8985b7091e019f086805bc498f6bb3b3275dd240ce39e8fa81c33af2a0826f",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59253056,
     "sha256": "4c301a5dd443bcf6ce4369639cc6229d1f53174b7a0a3d701430d07745b70449"
   },
+  "worldbook": {
+    "path": "data/base_worldbook.json",
+    "schema": "sillytavern_native",
+    "bytes": 11953844,
+    "sha256": "871df8c836ed286b93b2b2b21a77e262eeb1a22d404c00650d4c3c9d6838a30a"
+  },
   "card": {
-    "path": "cards/ark-story-v1.6.1.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.1/cards/ark-story-v1.6.1.png",
-    "bytes": 16050531,
-    "sha256": "2d48252ffaebdf8a2f039118cb6cc689d3ee79cd5872b193de9b217018d323be",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_3",
+    "path": "cards/ark-story-v1.6.2.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.2/cards/ark-story-v1.6.2.png",
+    "bytes": 16051911,
+    "sha256": "02bbb1f5c795d55c6b5723d6ecfa4edeeccb861ad0e2e7db6da5e4ac95065328",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_4",
     "worldbook_entries": 2049
   },
   "changes": [
-    "修复配置更新事件缺少detail导致主世界书不刷新",
-    "开局应用、状态读取及世界书操作重新解析当前绑定，避免空缓存及无操作假成功",
-    "本卡绑定接口迟到时验证配套世界书存在后恢复识别，其他角色不借用该书",
-    "完整剧情线、预览及自由切幕的下拉框和选项统一白底深色字"
+    "修复部署脚本把CharacterBook条目直接写为原生世界书，导致2049条均缺少key/keysecondary并报undefined.map",
+    "原生导出版按实际SillyTavern 1.19契约转换关键词/位置/顺序/概率/递归/禁用字段",
+    "同步卡内标准enabled和原生disable，避免自动导入时误启用剧情指导与角色档案",
+    "新增实际TavernHelper读取器及全部61个开局服务回归；保留白底选择框与乌萨斯两篇"
   ],
   "verification": {
-    "tests_passed": 214,
-    "tests_total": 214,
-    "gate_passed": 156,
-    "gate_total": 156,
-    "legacy_regressions_failed": 4,
-    "regressions_fixed": 4,
+    "tests_passed": 219,
+    "tests_total": 219,
+    "gate_passed": 159,
+    "gate_total": 159,
+    "opening_scenarios_executed": 61,
+    "actual_helper_entries_read": 2049,
+    "legacy_exact_error_reproduced": "Cannot read properties of undefined (reading 'map')",
     "text_unchanged_from": "1.6.0",
     "previous_segments_verified": 21944,
     "paid_model_calls": 0,
-    "browser_ui": "not_verified_browser_tool_stopped_url_confidence"
+    "browser_ui": "not_verified"
   }
 }
