@@ -1,22 +1,23 @@
 {
-  "version": "1.4.0",
-  "tag": "v1.4.0",
+  "version": "1.5.0",
+  "tag": "v1.5.0",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "db83a4a528b6",
-  "data_version": "2e75a784ad1a",
+  "build_id": "cc6cde4d9e85",
+  "data_version": "10bb802d73d3",
+  "card_script_sha256": "e4438c5c9baf23983dcc89a1892e440042d072d9b32ec8e83aafd9f6c667f19b",
   "data": {
     "path": "data/story_runtime.json",
-    "bytes": 59235644,
-    "sha256": "1cef61b04732b24ea01b98115fe77ba75479b988c78fe7dd14c1cf8025ed9bae"
+    "bytes": 59235665,
+    "sha256": "4e604f1dcc339f0eb3e3bdd6ef4df74f13dcb6e46b096e0d125de8cd225b5d84"
   },
   "card": {
-    "path": "cards/ark-story-v1.4.0.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.4.0/cards/ark-story-v1.4.0.png",
-    "bytes": 16047587,
-    "sha256": "d7f14158de7fa7e8f12dbe1a37adcf8306ee18773fbd7d8e2939fef566df18d2",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_目录分块修复_v3",
+    "path": "cards/ark-story-v1.5.0.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.5.0/cards/ark-story-v1.5.0.png",
+    "bytes": 16046315,
+    "sha256": "0707415d9d86b4b5b295b98e8e0fca68c39ae6e04ddaccd80c73df0af2492b96",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4",
     "worldbook_entries": 2049
   },
   "verification": {
@@ -28,8 +29,6 @@
     "segments_matched": 21944,
     "source_main_files": 14,
     "source_side_files": 39,
-    "missing_source_files": 0,
-    "paid_model_calls": 0,
-    "ui_test": "local_browser_with_memory_host"
+    "paid_model_calls": 0
   }
 }
