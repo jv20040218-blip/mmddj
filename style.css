@@ -5,3 +5,10 @@
   line-height: 1.7;
   opacity: 0.75;
 }
+
+/* The host is in the parent document; override older cards' bottom-fixed inline style too. */
+.ark-story-reply-status-host {
+  top: var(--topBarBlockSize, 40px) !important;
+  bottom: auto !important;
+  z-index: 20 !important;
+}

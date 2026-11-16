@@ -11,7 +11,8 @@ user = root / 'data/default-user'
 plugin = user / 'extensions/mmddj'
 auth = json.loads(sys.stdin.readline())
 meta = json.loads((plugin / 'release.json').read_text())
-assert meta['version'] == '1.7.0', 'Re-evaluate the target for a different release'
+expected_version = sys.argv[2] if len(sys.argv) > 2 else '1.7.0'
+assert meta['version'] == expected_version, 'The selected-card repair must name the expected release'
 
 
 def readcard(data):

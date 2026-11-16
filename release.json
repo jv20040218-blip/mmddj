@@ -1,12 +1,12 @@
 {
-  "version": "1.7.0",
-  "tag": "v1.7.0",
+  "version": "1.7.1",
+  "tag": "v1.7.1",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "d891760122c0",
+  "build_id": "2e65135609ea",
   "data_version": "a057130a0b48",
-  "card_script_sha256": "0b66e9b1cd3a1cbf522e3ce8cfeab462b9518f211c0914013a726b841f851ac2",
+  "card_script_sha256": "823170ddafc54f9104acd8f62a4babcf70ec463f3010efb2cc49872fc247d18e",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59539310,
@@ -19,36 +19,46 @@
     "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
   },
   "card": {
-    "path": "cards/ark-story-v1.7.0.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.0/cards/ark-story-v1.7.0.png",
-    "bytes": 16068935,
-    "sha256": "bb7de489d268b3badd8253a62d35a5fdc50285916f9f00a27b53ba1648981e9f",
+    "path": "cards/ark-story-v1.7.1.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.1/cards/ark-story-v1.7.1.png",
+    "bytes": 16068979,
+    "sha256": "d384d6f3c69fdd57b0e0f6c8011548155b9bf92b57e916dd575e01c6897ffc7d",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "全部已接入篇章的角色条目切换改为实际关闭/开启并回读，完成后才允许生成开场",
-    "关联本名/代号，按场景、篇章、原素材后缀及时间事件选择状态；保留玩家身份选择",
-    "加入切线串行写入、防过期写入、退出恢复、跨聊天释放及刷新续接",
-    "原重置按钮恢复全部2049条开关与触发类型，退出活动剧情但保留进度",
-    "新增逐篇覆盖清单与服务器临时世界书真实接口验证工具"
+    "剧情状态栏由底部移到顶部工具栏下方，避开发言栏",
+    "插件CSS同时覆盖旧卡的底部内联定位",
+    "沿用完全相同的v5_0世界书及剧情库，部署保留开局条目与聊天状态"
   ],
   "verification": {
-    "tests_passed": 229,
-    "tests_total": 229,
+    "ui_tests_passed": 20,
+    "ui_tests_total": 20,
     "gate_passed": 165,
     "gate_total": 165,
-    "stories": 119,
-    "routes": 849,
-    "scene_visits": 9885,
-    "physical_switch_assertions": 10287480,
-    "actors_with_entries": 637,
-    "multistate_actors": 84,
-    "source_main_files": 14,
-    "source_side_files": 39,
-    "opening_scenarios_executed": 61,
+    "script_diff_only_position_and_build": true,
+    "worldbook_bytes_identical": true,
+    "data_bytes_identical": true,
+    "inherited_runtime_verification": {
+      "tests_passed": 229,
+      "tests_total": 229,
+      "gate_passed": 165,
+      "gate_total": 165,
+      "stories": 119,
+      "routes": 849,
+      "scene_visits": 9885,
+      "physical_switch_assertions": 10287480,
+      "actors_with_entries": 637,
+      "multistate_actors": 84,
+      "source_main_files": 14,
+      "source_side_files": 39,
+      "opening_scenarios_executed": 61,
+      "paid_model_calls": 0,
+      "browser_ui": "not_verified",
+      "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
+    },
     "paid_model_calls": 0,
-    "browser_ui": "not_verified",
-    "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
-  }
+    "browser_ui": "not_verified"
+  },
+  "worldbook_content_version": "1.7.0"
 }
