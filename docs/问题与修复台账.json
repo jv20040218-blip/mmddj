@@ -1,0 +1,1245 @@
+{
+  "schema_version": 1,
+  "guidance_version": "2.0",
+  "as_of_date": "2026-11-16",
+  "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；非本轮在线探测，不声称未知缺陷为零。",
+  "snapshot": {
+    "runtime_version": "1.7.1",
+    "runtime_commit": "ee1e0877aa5f67b09f1cc03ac40ad3004575d329",
+    "build_id": "2e65135609ea",
+    "data_version": "a057130a0b48",
+    "repository": "https://github.com/jv20040218-blip/mmddj",
+    "branch": "main",
+    "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+    "worldbook_entries": 2049,
+    "card": {
+      "path": "cards/ark-story-v1.7.1.png",
+      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.1/cards/ark-story-v1.7.1.png",
+      "bytes": 16068979,
+      "sha256": "d384d6f3c69fdd57b0e0f6c8011548155b9bf92b57e916dd575e01c6897ffc7d",
+      "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "worldbook_entries": 2049
+    },
+    "data": {
+      "path": "data/story_runtime.json",
+      "bytes": 59539310,
+      "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
+    },
+    "script_sha256": "823170ddafc54f9104acd8f62a4babcf70ec463f3010efb2cc49872fc247d18e",
+    "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
+    "selected_card_version_after_repair": "1.7.1",
+    "last_confirmed_guidance_commit": "f7ba076abc19e23be1ecd112a0d899be33c76a34",
+    "verification": {
+      "ui_tests_passed": 20,
+      "ui_tests_total": 20,
+      "gate_passed": 165,
+      "gate_total": 165,
+      "script_diff_only_position_and_build": true,
+      "worldbook_bytes_identical": true,
+      "data_bytes_identical": true,
+      "inherited_runtime_verification": {
+        "tests_passed": 229,
+        "tests_total": 229,
+        "gate_passed": 165,
+        "gate_total": 165,
+        "stories": 119,
+        "routes": 849,
+        "scene_visits": 9885,
+        "physical_switch_assertions": 10287480,
+        "actors_with_entries": 637,
+        "multistate_actors": 84,
+        "source_main_files": 14,
+        "source_side_files": 39,
+        "opening_scenarios_executed": 61,
+        "paid_model_calls": 0,
+        "browser_ui": "not_verified",
+        "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
+      },
+      "paid_model_calls": 0,
+      "browser_ui": "not_verified"
+    },
+    "target_selection_tests": 6,
+    "actors_with_entries": 637,
+    "multistate_actors": 84,
+    "stories_without_chapter_start": 67,
+    "actor_transition_candidates": 31,
+    "actor_transition_candidates_unverified": 31,
+    "names_without_independent_entry": 2376,
+    "worldbook_content_version": "1.7.0"
+  },
+  "version_history": [
+    {
+      "version": "1.3.0",
+      "tag": "v1.3.0",
+      "build_id": "d9c853dee8d6",
+      "data_version": "73f8a4fd2180",
+      "worldbook": "明日方舟剧情模块·附加世界书_结算角色档案版_v2",
+      "tests": 194,
+      "gate": 151,
+      "commit": null,
+      "card_sha256": "415b1629650ca0b56abe4d4709fd62d2f2c9a773b300a372341f75b3bcafb262",
+      "card_bytes": 16045699,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.3.0/cards/ark-story-v1.3.0.png"
+    },
+    {
+      "version": "1.4.0",
+      "tag": "v1.4.0",
+      "build_id": "db83a4a528b6",
+      "data_version": "2e75a784ad1a",
+      "worldbook": "明日方舟剧情模块·附加世界书_目录分块修复_v3",
+      "tests": 200,
+      "gate": 155,
+      "commit": null,
+      "card_sha256": "d7f14158de7fa7e8f12dbe1a37adcf8306ee18773fbd7d8e2939fef566df18d2",
+      "card_bytes": 16047587,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.4.0/cards/ark-story-v1.4.0.png"
+    },
+    {
+      "version": "1.5.1",
+      "tag": "v1.5.1",
+      "build_id": "b7a62dc91ea9",
+      "data_version": "b8e9184449ae",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v4_1",
+      "tests": 201,
+      "gate": 156,
+      "commit": "9ef9ac5d561088aeffe8188e0aeb93428d6dc166",
+      "card_sha256": "16b26431759a1ce84345d0252a8a610f5ddc8e0fc319f52e55ada8448e6c90c8",
+      "card_bytes": 16049779,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.5.1/cards/ark-story-v1.5.1.png"
+    },
+    {
+      "version": "1.6.0",
+      "tag": "v1.6.0",
+      "build_id": "f606ea2d1fbb",
+      "data_version": "5e94ee293f48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v4_2",
+      "tests": 207,
+      "gate": 156,
+      "commit": "768f4012a494db64eaf6e5f1e7fc7368fd23269a",
+      "card_sha256": "ba0bdbed8dbc7f1b9513d2aa0a6f27fdcde17695c8b2a3b4ecdccd8e2c98075d",
+      "card_bytes": 16048891,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.0/cards/ark-story-v1.6.0.png"
+    },
+    {
+      "version": "1.6.1",
+      "tag": "v1.6.1",
+      "build_id": "f36284222a7f",
+      "data_version": "5e94ee293f48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v4_3",
+      "tests": 214,
+      "gate": 156,
+      "commit": "f46048085a04eea5baac8e7381d9d7c6c21ccd14",
+      "card_sha256": "2d48252ffaebdf8a2f039118cb6cc689d3ee79cd5872b193de9b217018d323be",
+      "card_bytes": 16050531,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.1/cards/ark-story-v1.6.1.png"
+    },
+    {
+      "version": "1.6.2",
+      "tag": "v1.6.2",
+      "build_id": "4adc05de5d79",
+      "data_version": "5e94ee293f48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v4_4",
+      "tests": 219,
+      "gate": 159,
+      "commit": "aa17c1242f4c220b40ac136011f25e291af0ec67",
+      "card_sha256": "02bbb1f5c795d55c6b5723d6ecfa4edeeccb861ad0e2e7db6da5e4ac95065328",
+      "card_bytes": 16051911,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.2/cards/ark-story-v1.6.2.png"
+    },
+    {
+      "version": "1.7.0",
+      "tag": "v1.7.0",
+      "build_id": "d891760122c0",
+      "data_version": "a057130a0b48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "tests": 229,
+      "gate": 165,
+      "commit": "047037eef855873bede5e415c65ef73b1c3d0e45",
+      "card_sha256": "bb7de489d268b3badd8253a62d35a5fdc50285916f9f00a27b53ba1648981e9f",
+      "card_bytes": 16068935,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.0/cards/ark-story-v1.7.0.png"
+    },
+    {
+      "version": "1.7.1",
+      "tag": "v1.7.1",
+      "build_id": "2e65135609ea",
+      "data_version": "a057130a0b48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "tests": 20,
+      "gate": 165,
+      "verification_label": "20项相关UI回归/165项成品检查；继承1.7.0全量基线，未重跑229项",
+      "commit": "ee1e0877aa5f67b09f1cc03ac40ad3004575d329",
+      "card_sha256": "d384d6f3c69fdd57b0e0f6c8011548155b9bf92b57e916dd575e01c6897ffc7d",
+      "card_bytes": 16068979,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.1/cards/ark-story-v1.7.1.png"
+    }
+  ],
+  "evidence_sources": {
+    "S01": "本对话用户原话、需求变更与所粘贴外部说明；只作为明确标注的用户报告/外部报告。",
+    "S02": "本地 outputs/角色卡_离线修复_2026-11-14/使用与修复说明.md。",
+    "S03": "本地 outputs/剧情模块_剧情导航修复版_2026-11-14/00_本次修复与使用教程.md 及 outputs/剧情模块_全量验收版/00_最终验收与使用.md。",
+    "S04": "本地 work/role_guidance_audit_evidence.json、work/明日方舟角色线剧情指导_交付修正版_2026-11-15/00_修复版使用与后续施工指引.md。",
+    "S05": "本地各work/publish_*/release.json、1.7.0最终PNG和构建数据；公开标签对应release.json。",
+    "S06": "本地 work/plugin_hierarchy/工程/tests/ 及对应src/scripts；不是每一项预防性测试都代表曾发生生产故障。",
+    "S07": "更新指导_1.7.0开局map错误复发.md、当前选中卡补正回执、更新指导发布回执；未公开凭据和聊天正文。",
+    "S08": "公开 docs/目录分块与来源归属.md 及历史1.3/1.4/1.5.1发布说明。",
+    "S09": "支线核对与补全交接_2026-11-16.md、公开docs/来源迁移记录.md、side_migration回归。",
+    "S10": "全剧情人物条目实际开关_1.7.0.md、人物条目适配覆盖_1.7.0.json、发布记录_1.7.0.md。",
+    "S11": "开局主世界书与选择框修复_1.6.1.md 及发布记录_1.6.1.md。",
+    "S12": "原生世界书格式修复_1.6.2.md、发布记录_1.6.2.md、native_worldbook回归与安装助手代码契约。",
+    "S13": "任务日志_2026-11-16_1.6.0.md、发布记录与已授权部署回执；旧路径/命令按历史看待。",
+    "S14": "发布记录_1.6.1.md、发布记录_1.6.2.md、发布记录_1.7.0.md中明确区分的测试范围。",
+    "S15": "本轮核对work/prepare_deploy_1_7_0.cjs仍引用旧安装模板；work/deploy_1_7_0/install_server.py已动态选目标；work/test_deployment_target.py验证真实选择代码。",
+    "S16": "发布记录_1.7.1.md、work/publish_1_7_1/release.json和服务器部署核验.json；20项相关回归、165项成品检查及新旧书/数据逐字节比较；没有真实页面点击证据。"
+  },
+  "issues": [
+    {
+      "id": "B001",
+      "area": "运行与发送",
+      "kind": "程序缺陷",
+      "status": "已修复并回归",
+      "title": "卡内发送拦截和预检干扰正式发送",
+      "problem": "旧卡捕获发送按钮/回车并模拟重发，预检也可能共用生成流程；不能据此解释所有供应商取消。",
+      "fix": "原生发送基线移除捕获与重发，手动检测不发送，Token预检改文本估算。",
+      "verification": "离线修复说明及当前构建器禁止重新引入拦截的断言。",
+      "caveat": "改开局功能时保留原生发送补丁；手动检测失败不能自动补发。",
+      "refs": [
+        "S01",
+        "S02"
+      ]
+    },
+    {
+      "id": "B002",
+      "area": "运行与发送",
+      "kind": "外部服务问题",
+      "status": "用户确认原因",
+      "title": "供应商或预设导致回复取消",
+      "problem": "用户明确确认曾有供应商问题并切换自己的预设；历史记录也出现上游502或长时间无响应。",
+      "fix": "按当时授权使用所选供应商测试，区分卡内控制流与上游错误。",
+      "verification": "用户说明及历史宿主报告；不是本轮对该供应商的在线复测。",
+      "caveat": "不得将所有取消归于角色卡，也不得反向用供应商原因掩盖可复现的卡错误。",
+      "refs": [
+        "S01",
+        "S03"
+      ]
+    },
+    {
+      "id": "B003",
+      "area": "运行与发送",
+      "kind": "容量问题",
+      "status": "已缓解",
+      "title": "内嵌原文造成大卡与宿主内存耗尽",
+      "problem": "早期卡约78MB，旧指南记录默认约4GB堆耗尽；把原文和运行时全部塞进PNG使导入复制负担很大。",
+      "fix": "原文移至插件数据，当前完整卡约16MB；旧例临时加8GB只作为历史处置。",
+      "verification": "旧角色线指导修正版说明及1.7.0构建清单。",
+      "caveat": "当前约59.5MB剧情库仍整库加载；没有证明任意配置机器都无内存问题。",
+      "refs": [
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "B004",
+      "area": "运行与发送",
+      "kind": "已知依赖",
+      "status": "未关闭",
+      "title": "Pinia静态CDN依赖仍是加载前置",
+      "problem": "当前卡脚本首行仍静态导入testingcf.jsdelivr.net上的pinia；不可达时脚本可能尚未执行就失败。",
+      "fix": "尚未将该静态依赖打包或实现可验证的替代加载。",
+      "verification": "当前1.7.0最终卡源码首行已直接核对。",
+      "caveat": "这是待解决依赖，不等于已证明本次map错误由CDN导致。",
+      "refs": [
+        "S05"
+      ]
+    },
+    {
+      "id": "B005",
+      "area": "运行与发送",
+      "kind": "实例管理",
+      "status": "已有防护",
+      "title": "脚本重复启用或脚本ID冲突",
+      "problem": "同时启用卡内和独立备份脚本、重复实例会造成挂载或事件竞争。",
+      "fix": "插件版采用稳定脚本ID、单例及卸载处理；独立JS作为备份，不重复启用。",
+      "verification": "构建器脚本ID生成与适配器init/destroy回归。",
+      "caveat": "多个头像拥有同一脚本ID不代表内容相同；仍须核对实际头像和脚本哈希。",
+      "refs": [
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "B006",
+      "area": "运行与发送",
+      "kind": "宿主边界",
+      "status": "已有防护",
+      "title": "iframe中找不到宿主接口或错误使用过期聊天",
+      "problem": "脚本接口可能在window、parent或TavernHelper；无聊天时使用旧全局ID会串写。",
+      "fix": "统一接口解析，当前聊天有效性及异步上下文守卫。",
+      "verification": "adapter A23及聊天切换回归。",
+      "caveat": "不得为了让测试过而回退到不受当前聊天约束的全局变量。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B007",
+      "area": "运行与发送",
+      "kind": "资源定位",
+      "status": "已修复并回归",
+      "title": "固定ark-story目录导致mmddj安装后数据404",
+      "problem": "Git仓库安装目录由实际仓库决定，卡又运行在iframe里；写死默认目录无法覆盖真实安装路径。",
+      "fix": "插件用import.meta.url报地址，卡检查父窗口上报地址并保留受控回退。",
+      "verification": "loader和plugin集成测试。",
+      "caveat": "显式本地覆盖URL也会影响取数；检查实际命中的URL，不只看候选清单。",
+      "refs": [
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "B008",
+      "area": "运行与发送",
+      "kind": "版本一致性",
+      "status": "已有防护",
+      "title": "新旧数据或构建混用",
+      "problem": "卡、插件、世界书、数据清单分开发行，缓存或错包可能形成跨版本组合。",
+      "fix": "记录构建、数据版本、字节和SHA，发布后核对真实远程产物。",
+      "verification": "各版release.json及插件数据加载回归。",
+      "caveat": "不能未经证据把用户复发归因于缓存；先核对实际调用目标。",
+      "refs": [
+        "S05",
+        "S07"
+      ]
+    },
+    {
+      "id": "B009",
+      "area": "运行与发送",
+      "kind": "兼容说明",
+      "status": "历史外部报告",
+      "title": "PNG删除重复元数据块后的体积与兼容性",
+      "problem": "外部WorkBuddy说明曾称删除重复chara块令约48MB卡变约24MB；该说明不是本轮新验算。",
+      "fix": "保留元数据与图像检查，区分V2/V3导入能力和原文外置带来的减重。",
+      "verification": "本对话外部报告；当前PNG结构由构建器另行核对。",
+      "caveat": "不能把体积下降直接认定内容丢失，也不能保证只认chara的旧前端可导入V3卡。",
+      "refs": [
+        "S01",
+        "S05"
+      ]
+    },
+    {
+      "id": "B010",
+      "area": "目录与原文",
+      "kind": "功能缺口",
+      "status": "已修复并回归",
+      "title": "主页堆叠全部剧情、没有逐级折叠",
+      "problem": "旧布局将大量入口堆在主页，难以定位国家、篇章及人物线。",
+      "fix": "主线/支线/其他三级结构，同级展开一项，打开后才挂载下级。",
+      "verification": "hierarchy与UI DOM回归、1.4及1.5历史本地页面记录。",
+      "caveat": "主线块与支线国家是第二层，角色线是篇章内入口，不要再平铺到顶层。",
+      "refs": [
+        "S06",
+        "S08"
+      ]
+    },
+    {
+      "id": "B011",
+      "area": "目录与原文",
+      "kind": "需求回归",
+      "status": "已修复并回归",
+      "title": "三块主线中使用选择框替代每章标题",
+      "problem": "1.4曾用块内篇目选择框；用户随后明确要求每章也是可展开标题。",
+      "fix": "1.5.1形成主线→1–8/9–14/15–17→每章的标题树。",
+      "verification": "1.4/1.5.1发布说明及catalog_layout回归。",
+      "caveat": "旧1.4教程不是当前布局规格；不能照其截图重做选择框。",
+      "refs": [
+        "S08"
+      ]
+    },
+    {
+      "id": "B012",
+      "area": "目录与原文",
+      "kind": "需求变更",
+      "status": "当前规格明确",
+      "title": "从全局严格年代排序改为章节/国家分组",
+      "problem": "最初要求全部剧情按时间；后续明确以原始主线、支线和国家文件夹为主。",
+      "fix": "当前章节/国家优先，已知日期仍标注，年代导航作为辅助。",
+      "verification": "用户后续指令及1.5.1、1.7.0说明。",
+      "caveat": "不能机械沿用最初需求，把目前已确认的分块改回全局时间列表。",
+      "refs": [
+        "S01",
+        "S08"
+      ]
+    },
+    {
+      "id": "B013",
+      "area": "目录与原文",
+      "kind": "回忆处理",
+      "status": "已修复并回归",
+      "title": "塔露拉记忆线插在第八章中影响连续体验",
+      "problem": "记忆和现实混排，未知世界时间时也可能被当作普通回放。",
+      "fix": "雪原线置于1–8其他主线前；使用独立回忆作用域，退出恢复外层。",
+      "verification": "memory N08/N04/N10等回归。",
+      "caveat": "同一回忆已体验后不强制再次插播；回忆完成不等于改变现实全部事实。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B014",
+      "area": "目录与原文",
+      "kind": "重复目录",
+      "status": "已修复并回归",
+      "title": "主线已有分章在其他中重复显示",
+      "problem": "原1–5合编与官方六个分章存在双目录入口。",
+      "fix": "保留稳定路线和旧存档，隐藏重复显示；旧合编完成可接第六章。",
+      "verification": "catalog_layout与navigation回归。",
+      "caveat": "只隐藏展示，不能删除真实原文或把不同人物视角当重复内容丢弃。",
+      "refs": [
+        "S06",
+        "S08"
+      ]
+    },
+    {
+      "id": "B015",
+      "area": "目录与原文",
+      "kind": "归属错误",
+      "status": "已修复并回归",
+      "title": "人们我们未归入乌萨斯",
+      "problem": "目录成员沿用旧配置或只改标题，没有按实际源文件夹重建。",
+      "fix": "以源路径重建国家成员，加入构建期逐文件审计。",
+      "verification": "1.4/1.5.1目录记录和真实源文件核对。",
+      "caveat": "按现有文件数核对，不要求各国篇目数量相同。",
+      "refs": [
+        "S08"
+      ]
+    },
+    {
+      "id": "B016",
+      "area": "目录与原文",
+      "kind": "归属错误",
+      "status": "已修复并回归",
+      "title": "乌萨斯仅显示一篇而素材有两篇",
+      "problem": "时间啊，向前！正文已接入，但旧source_relative_path仍在支线根目录。",
+      "fix": "1.6.0迁移到乌萨斯，保留src_680314ba0dbd、story_c579b90d26及37条路线。",
+      "verification": "39份素材SHA核对、迁移26项检查、207项历史回归。",
+      "caveat": "这是归属迁移，不得重复添加一份正文制造40份支线。",
+      "refs": [
+        "S09"
+      ]
+    },
+    {
+      "id": "B017",
+      "area": "目录与原文",
+      "kind": "解析与显示",
+      "status": "已修复并回归",
+      "title": "ST/MS/spk或句子被显示成角色线姓名",
+      "problem": "内部代码、说话人ID与发生逻辑句子被当成用户可见角色名。",
+      "fix": "采用明确人物名；缺焦点标剧情片段，隐藏有依据的伪入口。",
+      "verification": "目录修复记录及catalog_layout回归。",
+      "caveat": "spk_不等于没有真实姓名；不要无条件删除所有spk角色线。",
+      "refs": [
+        "S06",
+        "S08"
+      ]
+    },
+    {
+      "id": "B018",
+      "area": "目录与原文",
+      "kind": "去重边界",
+      "status": "已有防护",
+      "title": "共享交汇场景被过度去重",
+      "problem": "同一场景可以是A/B各自人物线中的必要视角，共享节点不代表重复垃圾入口。",
+      "fix": "共享事实只结算一次，人物视角保留；仅按明确覆盖关系隐藏伪入口。",
+      "verification": "语料结构、共享事件和路线相关回归。",
+      "caveat": "不要以场景ID相同就删掉另一条有效人物线。",
+      "refs": [
+        "S06",
+        "S08"
+      ]
+    },
+    {
+      "id": "B019",
+      "area": "目录与原文",
+      "kind": "内容缺口",
+      "status": "已修复并回归",
+      "title": "只有梗概/链接，找不到对话原文",
+      "problem": "导航或摘要条目不能替代演出所需的原始对白、动作与旁白。",
+      "fix": "补采并保存文本池、来源UID和字符区间，当前段按游标注入。",
+      "verification": "21944段历史逐段比对；1.7.0文本池与1.6.2字节内容一致。",
+      "caveat": "卡变小源于原文外置；不得偷偷以摘要替换完整正文。",
+      "refs": [
+        "S03",
+        "S04",
+        "S05"
+      ]
+    },
+    {
+      "id": "B020",
+      "area": "目录与原文",
+      "kind": "时间边界",
+      "status": "已修复并回归",
+      "title": "粗略日期被当成精确月初或年初提前切状态",
+      "problem": "排序锚点与自然触发边界混用，未知日期历史项也曾渲染异常。",
+      "fix": "粗粒度时间按来源区间结束判断；暂无继续暂无，未定年条目单独列下方。",
+      "verification": "历史星熊日期回归及viewmodel U08。",
+      "caveat": "该机制不证明原日期已官方核实；节点达成可按规则提前触发，不能伪造精确日期。",
+      "refs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "id": "B021",
+      "area": "目录与原文",
+      "kind": "剧情结构",
+      "status": "已修复并回归",
+      "title": "A/B视角交错且需要玩家手工换线",
+      "problem": "按原章节段落直接播放，不足以形成连续人物体验。",
+      "fix": "按发生逻辑构建人物线、节点顺序及必要交汇输入；焦点不因模型提到别人自动改变。",
+      "verification": "route_guides、corpus排序与镜头锁定回归。",
+      "caveat": "人物线顺序不等于编号排序；预览完整线也不等于向模型发送全线。",
+      "refs": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "B022",
+      "area": "交互与状态栏",
+      "kind": "功能缺口",
+      "status": "已修复并回归",
+      "title": "无法查看全线情节就被强制进入",
+      "problem": "旧入口缺少可取消的全线预览与确认步骤。",
+      "fix": "先预览逐幕情节和完整原文，确认进入；取消不改状态。",
+      "verification": "U09与H01等UI测试；历史导航版页面记录。",
+      "caveat": "玩家预览权限和模型当前可知剧情必须分开。",
+      "refs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "id": "B023",
+      "area": "交互与状态栏",
+      "kind": "功能缺口",
+      "status": "已修复并回归",
+      "title": "缺少自由切幕、切段或保存退出",
+      "problem": "进入剧情后难以退出，AI条件限制导致无法到任意幕体验。",
+      "fix": "提供自由选幕/段、保存退出与恢复续点；非法目标不改存档。",
+      "verification": "H01/H02及E01/E02。",
+      "caveat": "手动跳到后幕不补记跳过内容完成；与正常继续下一篇的门槛分开。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B024",
+      "area": "交互与状态栏",
+      "kind": "异步缺陷",
+      "status": "已修复并回归",
+      "title": "等待生成卡死、迟到回复写进新场景",
+      "problem": "busy锁、超时及聊天/场景变化未充分协调。",
+      "fix": "超时释放、手动取消、epoch守卫；迟到结果不提交，不自动无限重试。",
+      "verification": "A14、H03/H04及物理同步串行回归。",
+      "caveat": "异步测试要等待生成真实开始信号，不用固定睡眠或删除断言。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B025",
+      "area": "交互与状态栏",
+      "kind": "功能缺口",
+      "status": "已修复并回归",
+      "title": "单章没有可观察的结束设置",
+      "problem": "仅推进游标，没有完整收束、回执、结尾原文和退出记录。",
+      "fix": "状态栏确认末段、结算本线、结束回执、结尾原文、回目录/下一篇。",
+      "verification": "1.3发布与ending_profiles回归。",
+      "caveat": "单线结束、整篇完成和跳读分别记录；结束后聊天是尾声，不重复演最后一段。",
+      "refs": [
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "B026",
+      "area": "交互与状态栏",
+      "kind": "已复现缺陷",
+      "status": "已修复并回归",
+      "title": "跳至末幕未完成就出现正常下一篇",
+      "problem": "历史独立核验发现UI at_end与核心finish门槛不一致。",
+      "fix": "UI和核心都要求最后段确实确认；有效末段提交后记录最后幕完成。",
+      "verification": "role_guidance_audit_evidence及R02。",
+      "caveat": "不能通过把跳读标成完成绕开该门槛；自由选幕仍允许。",
+      "refs": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "B027",
+      "area": "交互与状态栏",
+      "kind": "已复现缺陷",
+      "status": "已修复并回归",
+      "title": "世界书指导提前向模型泄露末幕对白",
+      "problem": "仅裁剪动态注入，完整指导条目仍被世界书扫描为常驻内容。",
+      "fix": "世界书只存概况，当前动态指导限已知范围；完整未来原文仅供玩家预览。",
+      "verification": "历史墟XX1扫描出现XX39台词的复现及R01。",
+      "caveat": "必须合并检查世界书扫描和动态提示两条通道，不能只检查其中一条。",
+      "refs": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "B028",
+      "area": "交互与状态栏",
+      "kind": "已复现缺陷",
+      "status": "已修复并回归",
+      "title": "玩家明确停留时模型误填确认导致推进",
+      "problem": "模型控制块不是用户意图的最终裁决。",
+      "fix": "程序识别明确不推进指令，清除误确认和事件结算，本段时间保持零变化。",
+      "verification": "R04回归。",
+      "caveat": "观察、提问、空回、取消不自动算完成。",
+      "refs": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "id": "B029",
+      "area": "交互与状态栏",
+      "kind": "功能缺口",
+      "status": "已修复并回归",
+      "title": "附加状态栏或回复底端说明缺失",
+      "problem": "玩家看不到当前情况、时间、事件与下一步；早期浮层还干扰控制台。",
+      "fix": "独立状态栏挂载，回复底端说明当前情况/时间/同时事件/下一步；无新事件沿用上一条。",
+      "verification": "A25、D10及历史导航/宿主记录。",
+      "caveat": "同一作用域沿用事件；进入回忆或其他作用域需重新选择，不能携带未来新闻。",
+      "refs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "id": "B030",
+      "area": "交互与状态栏",
+      "kind": "状态一致性",
+      "status": "已修复并回归",
+      "title": "旧楼层/历史状态栏操作了当前进度",
+      "problem": "旧快照、过期entryPlan与当前路线不一致，历史按钮可能重复推进。",
+      "fix": "revision校验、历史只读、消息与swipe版本索引，明确回到当前。",
+      "verification": "A18/A21、E01及历史视图回归。",
+      "caveat": "相同消息/渲染回调幂等；新文本从原before状态重新计算。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B031",
+      "area": "交互与状态栏",
+      "kind": "可读性缺陷",
+      "status": "已修复并回归",
+      "title": "完整剧情线与自由切幕灰底黑字难辨",
+      "problem": "选择框继承主题与深色回退变量冲突。",
+      "fix": "1.6.1对select、option、optgroup明确白底深色字和light原生方案。",
+      "verification": "console_binding WB07及最终卡样式检查。",
+      "caveat": "样式存在与真实页面可读性是不同证据；本轮未重新做浏览器点击。",
+      "refs": [
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "B032",
+      "area": "交互与状态栏",
+      "kind": "生成与重试",
+      "status": "已修复并回归",
+      "title": "开场空写、失败后不能重试或反复生成",
+      "problem": "未等实际模型文本就插入assistant，或待重试标记未保存。",
+      "fix": "等待文本并真实插入，失败持久化pending，成功后清除并拒绝重复开场。",
+      "verification": "A12/A26/A27。",
+      "caveat": "不以空占位消息宣称已回复；重试要显式且只调用一次。",
+      "refs": [
+        "S02",
+        "S06"
+      ]
+    },
+    {
+      "id": "B033",
+      "area": "交互与状态栏",
+      "kind": "重生成缺陷",
+      "status": "已修复并回归",
+      "title": "重生成取消后旧正文与回滚状态不一致",
+      "problem": "生成前回到原before，但失败/停止后未恢复已有合法回复状态。",
+      "fix": "regen/swipe事务记录，失败无新合法提交时恢复旧状态，快照历史保留。",
+      "verification": "A24/A20及历史宿主说明。",
+      "caveat": "dry-run不回滚；测试不得替换为直接强行完成一轮。",
+      "refs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "id": "B034",
+      "area": "人物与时间",
+      "kind": "数据整合",
+      "status": "已修复并回归",
+      "title": "原剧本角色资料未进入基础书且同名冲突",
+      "problem": "只保存对白，没有接入来源角色档案或区分篇章后缀。",
+      "fix": "1.3导入191份资料，同人同文复用，生成186条；按身份、篇章及明确形态选用。",
+      "verification": "profile_import与E03/E04；175身份为当时统计，不替代后续别名合并统计。",
+      "caveat": "不得给同一身份重复分配UID或以同名强行合并不同人物。",
+      "refs": [
+        "S05",
+        "S06"
+      ]
+    },
+    {
+      "id": "B035",
+      "area": "人物与时间",
+      "kind": "时期选择",
+      "status": "已修复并回归",
+      "title": "最新异格/未来状态倒灌早期剧情",
+      "problem": "原卡默认启用状态不一定是早期身份；粗略时间或无日期默认可能选错。",
+      "fix": "场景/回忆锚点、篇章、明确后缀与时间事件共同选态，保守基础身份回退。",
+      "verification": "memory与full_binding回归。",
+      "caveat": "回归证明规则执行，不证明所有身份边界已完成官方考据。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B036",
+      "area": "人物与时间",
+      "kind": "语义错误",
+      "status": "已修复并回归",
+      "title": "解除黑蛇控制被当成加入新整合运动",
+      "problem": "控制解除与组织身份变化不是同一事件。",
+      "fix": "分离控制事实；AM5后采用非控制成年过渡档案，不自动切855。",
+      "verification": "N09、控制状态回归和本地AM3/AM5原文绑定。",
+      "caveat": "斗士过渡档案是当前素材中的折中，不能写成官方精确时期档案已完备。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B037",
+      "area": "人物与时间",
+      "kind": "作用域污染",
+      "status": "已修复并回归",
+      "title": "未来死亡/能力/纪事带回回忆或前期",
+      "problem": "已达成事实按最新世界状态直接复用，忽略发生时间和叙事作用域。",
+      "fix": "回忆作用域冻结现实时间，退出恢复；事实带时间/篇章来源并按场景过滤。",
+      "verification": "N08/N10/N11与FB05。",
+      "caveat": "没有新事件不等于使用另一时期的上条新闻；手动回跳也要重判。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B038",
+      "area": "人物与时间",
+      "kind": "立绘匹配",
+      "status": "已有防护",
+      "title": "缺图或使用未来形象、表情改身份",
+      "problem": "缺资源时乱取同角色其他年代图片，或把表情差分当人物状态。",
+      "fix": "按身份时期排除冲突，匹配NPC剧情图；没有合适图时姓名占位。",
+      "verification": "N13/N14及portrait相关回归；早期缺图119项是当时数量。",
+      "caveat": "未在本轮重新验证所有外部图片URL；不能承诺每人都有立绘。",
+      "refs": [
+        "S03",
+        "S06"
+      ]
+    },
+    {
+      "id": "B039",
+      "area": "人物与时间",
+      "kind": "需求实现差距",
+      "status": "已修复并回归",
+      "title": "只做生成投影而未实际开关世界书",
+      "problem": "旧版可令模型本轮看正确形态，但书里的复选状态不一定改变。",
+      "fix": "1.7新增物理写入、读取核对与生成前屏障，保留投影作为辅助。",
+      "verification": "SW系列、FB系列与服务器临时书4次真实写入。",
+      "caveat": "用户已明确要求关闭旧条目并打开正确条目，单纯提示词不能替代。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B040",
+      "area": "人物与时间",
+      "kind": "覆盖缺口",
+      "status": "已修复并回归",
+      "title": "只验证龙门四小只到雪原这一例",
+      "problem": "单个人物示例不能证明所有现有主线与支线都调用切换。",
+      "fix": "全119篇849线9885次访问接入统一规则；匹配637个有条目身份、84个多状态。",
+      "verification": "FB01执行10287480项开关断言。",
+      "caveat": "这些是已接入数据和规则覆盖数字，不等于新增剧情自动无需建模或全部真人玩通。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B041",
+      "area": "人物与时间",
+      "kind": "身份关联",
+      "status": "已修复并回归",
+      "title": "本名与代号不一致导致没有打开对应条目",
+      "problem": "例如剧情说恩希欧迪斯/恩雅，书中主要显示银灰/初雪。",
+      "fix": "从明确资料字段建立别名，修正说话节点关联与同名索引优先级。",
+      "verification": "FB04及适配覆盖清单。",
+      "caveat": "泛称或多个候选身份不应模糊强合并；没有条目的称谓不能伪造已打开。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B042",
+      "area": "人物与时间",
+      "kind": "玩家选择",
+      "status": "已修复并回归",
+      "title": "剧情默认值覆盖博士性别等选择",
+      "problem": "身份选择和年代生命周期不是同一种状态维度。",
+      "fix": "identity_choice保留开局选择，不由剧情日期擅改。",
+      "verification": "FB04。",
+      "caveat": "别把保留玩家选择误写为该人物未适配；来源明确的另一身份需单独规则。",
+      "refs": [
+        "S06"
+      ]
+    },
+    {
+      "id": "B043",
+      "area": "人物与时间",
+      "kind": "异步一致性",
+      "status": "已修复并回归",
+      "title": "迟到写入覆盖新场景或写失败仍发开场",
+      "problem": "物理写入增加了异步边界，状态计算完成不代表文件已更新。",
+      "fix": "串行写入、过期任务忽略、read-back；正式宿主写失败不生成开场。",
+      "verification": "SW02/SW03/SW04与FB06。",
+      "caveat": "跨聊天单适配器有回归，多浏览器并发不是已经验证的范围。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B044",
+      "area": "人物与时间",
+      "kind": "重置缺口",
+      "status": "已修复并回归",
+      "title": "旧重置只覆盖1007个基线名字",
+      "problem": "总2049条中有1042条未被旧名字字典覆盖，包括新增剧情指导与档案。",
+      "fix": "1.7原重置按钮接全2049条开关及触发类型基线。",
+      "verification": "FB03与服务器临时书完整重置。",
+      "caveat": "该重置不等于还原被改正文或重建被删UID；进度保留，不清空聊天。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B045",
+      "area": "人物与时间",
+      "kind": "重置衔接",
+      "status": "已修复并回归",
+      "title": "重置世界书后活动剧情注入仍在",
+      "problem": "只改条目开关，活动路线和固定提示仍可再次驱动旧状态。",
+      "fix": "先退出活动/回忆上下文，撤除当前注入，再重置并回读，保存体验进度。",
+      "verification": "FB03检查active_route为空、buildInjection为空和进度保留。",
+      "caveat": "不应仅弹重置成功提示；之后从目录续玩。",
+      "refs": [
+        "S06",
+        "S10"
+      ]
+    },
+    {
+      "id": "B046",
+      "area": "世界书与部署",
+      "kind": "事件缺陷",
+      "status": "已修复并回归",
+      "title": "启用系统后当前无主世界书",
+      "problem": "配置更新事件没有detail，监听器却要求detail.isSystemEnabled才刷新。",
+      "fix": "1.6.1同时修发送方和兼容接收方，书条目加载时重读。",
+      "verification": "旧编译脚本WB01/WB02失败，修正后通过。",
+      "caveat": "这条缺陷真实存在，但不是所有map错误的根因。",
+      "refs": [
+        "S06",
+        "S11"
+      ]
+    },
+    {
+      "id": "B047",
+      "area": "世界书与部署",
+      "kind": "缓存与假成功",
+      "status": "已修复并回归",
+      "title": "开局沿用初始化空主书且无操作也切开局",
+      "problem": "启动早于角色绑定，服务只读缓存；无书时静默跳过。",
+      "fix": "操作时重取绑定，验证本卡后回退，缺书明确失败，不切换开局。",
+      "verification": "WB03/WB04及迟到绑定恢复测试。",
+      "caveat": "恢复主书识别并不证明原生书字段有效，还须继续检验。",
+      "refs": [
+        "S06",
+        "S11"
+      ]
+    },
+    {
+      "id": "B048",
+      "area": "世界书与部署",
+      "kind": "格式缺陷",
+      "status": "已修复并回归",
+      "title": "原生书缺key/keysecondary触发undefined.map",
+      "problem": "旧部署直接复制CharacterBook的keys/secondary_keys；RH读取器对缺数组调用map。",
+      "fix": "1.6.2按真实宿主契约转换，发布原生base_worldbook.json，部署禁止仅包装UID字典。",
+      "verification": "原产物精确复现错误；2049条读取、61开局及325项开关断言通过。",
+      "caveat": "读入与写回序列化是两条路径；相同错误文案不能直接判同根因。",
+      "refs": [
+        "S05",
+        "S12"
+      ]
+    },
+    {
+      "id": "B049",
+      "area": "世界书与部署",
+      "kind": "格式语义",
+      "status": "已修复并回归",
+      "title": "生成条目的enabled与disable互相矛盾",
+      "problem": "继承模板enabled=true后又加disable=true，卡导入可能忽略后者而误开新条目。",
+      "fix": "卡内标准enabled与原生disable统一，保留常驻/关键词/向量语义。",
+      "verification": "NWB03/NWB04及原生格式验收。",
+      "caveat": "不能只补两个空数组而遗漏位置、顺序、概率、递归和开关语义。",
+      "refs": [
+        "S06",
+        "S12"
+      ]
+    },
+    {
+      "id": "B050",
+      "area": "世界书与部署",
+      "kind": "命名与绑定",
+      "status": "已修复并回归",
+      "title": "附加世界书同名无法导入或绑定旧书",
+      "problem": "酒馆对完全同名书的处理会冲突、加后缀或沿用旧绑定。",
+      "fix": "内容变更使用区分名称，卡内书名、extensions.world、脚本配置、独立书一致。",
+      "verification": "各版元数据与构建检查。",
+      "caveat": "修改书名要同步构建器、验证器含文件名、规则常量及相关清单，不能只改卡显示名。",
+      "refs": [
+        "S03",
+        "S05"
+      ]
+    },
+    {
+      "id": "B051",
+      "area": "世界书与部署",
+      "kind": "已复现部署缺陷",
+      "status": "已修复并回归",
+      "title": "插件1.7.0但实际选中尾号1卡仍1.5.1",
+      "problem": "安装器固定覆盖默认头像，验证也读默认文件；保存选中的却是另一个头像。",
+      "fix": "补正实际插件版1.png到1.7.0/v5_0，保留该目标聊天与收藏，正确主书字节未变。",
+      "verification": "补正回执；实际选择代码6项回归旧4失败新6通过。",
+      "caveat": "服务器保存选择不等于页面JS栈；刷新后真实点击仍需另记，不能责怪用户版本说错。",
+      "refs": [
+        "S07"
+      ]
+    },
+    {
+      "id": "B052",
+      "area": "世界书与部署",
+      "kind": "元数据丢失",
+      "status": "已修复并回归",
+      "title": "导入新卡重置最近聊天指针",
+      "problem": "仅在PNG某块写chat未确保角色API实际恢复；两个文本块也可能有不同旧值。",
+      "fix": "导入前从实际头像API取指针，导入后edit-attribute恢复并回读。",
+      "verification": "1.5后续修正及1.6/1.7部署回执。",
+      "caveat": "必须保留同一实际头像目录下的关联，不能拿另一张卡的聊天存在代替。",
+      "refs": [
+        "S07",
+        "S13"
+      ]
+    },
+    {
+      "id": "B053",
+      "area": "世界书与部署",
+      "kind": "重复安装",
+      "status": "已修复并回归",
+      "title": "全局目录与用户目录有同源插件两份",
+      "problem": "只更新其中一份可能加载旧数据、重复初始化或让版本判断混乱。",
+      "fix": "确认原origin与真实实例，验证新版本后仅清理已确认同源旧副本。",
+      "verification": "服务器部署回执plugin_copies=1。",
+      "caveat": "一份插件不等于服务器只有一张卡；不动其他扩展。",
+      "refs": [
+        "S07",
+        "S13"
+      ]
+    },
+    {
+      "id": "B054",
+      "area": "世界书与部署",
+      "kind": "历史数据边界",
+      "status": "未关闭",
+      "title": "同显示名头像和旧坏书仍有历史副本",
+      "problem": "当前与历史卡可同名；旧v4_1/v4_2/v4_3坏书仍在，不能当健康回退书。",
+      "fix": "当前实际选中卡已补正；保留历史以免破坏其他聊天，未自动合并所有头像。",
+      "verification": "复发审计和选中卡补正回执。",
+      "caveat": "旧书格式/引用须单独核对；没有明确授权，不删除历史卡、世界书或聊天。",
+      "refs": [
+        "S07"
+      ]
+    },
+    {
+      "id": "B055",
+      "area": "世界书与部署",
+      "kind": "验收缺口",
+      "status": "已修正规范",
+      "title": "把产物/隔离测试通过概括成用户端已恢复",
+      "problem": "测试数量再大也可能验证另一张卡、另一本书或模拟宿主，而没有验证失败入口。",
+      "fix": "总指导分证据层级，要求实际目标链和原失败动作；缺页面证据明确保留待核验。",
+      "verification": "1.7.0复发与本轮文档合并。",
+      "caveat": "文档规范修正不等于已经补做了所有页面点击。",
+      "refs": [
+        "S07",
+        "S14"
+      ]
+    },
+    {
+      "id": "B056",
+      "area": "工程与交付",
+      "kind": "工程卡点",
+      "status": "已绕行",
+      "title": "原发布仓库存在损坏的历史Git对象",
+      "problem": "原桌面仓库生成bundle报inflate/corrupt object，反复原命令无进展。",
+      "fix": "从健康镜像/工作副本生成差异包，保留正常历史，不强改已发布标签。",
+      "verification": "1.5部署记录及后续成功bundle。",
+      "caveat": "不要在损坏库反复尝试全量打包或误删对象；先定位健康来源。",
+      "refs": [
+        "S13"
+      ]
+    },
+    {
+      "id": "B057",
+      "area": "工程与交付",
+      "kind": "Git引用",
+      "status": "已修复并回归",
+      "title": "bundle只导出main却请求不存在的标签",
+      "problem": "差异包依赖基准提交，导出引用和fetch请求不一致会失败。",
+      "fix": "验证bundle基准及list-heads，按实际导出的main引用fetch，再快进。",
+      "verification": "1.5至1.7部署脚本与bundle verify。",
+      "caveat": "确认服务器拥有前置提交；不要盲目fetch包里未导出的tag。",
+      "refs": [
+        "S13"
+      ]
+    },
+    {
+      "id": "B058",
+      "area": "工程与交付",
+      "kind": "版本语义",
+      "status": "已明确规则",
+      "title": "把内容提交、标签提交和文档提交当同一个SHA",
+      "problem": "release.json可记录内容提交，后续元数据或文档提交使HEAD不同。",
+      "fix": "按已记录发布方式验证精确HEAD或包含关系，并证明运行产物哈希一致。",
+      "verification": "1.6.0内容768f401与发布f3ab3e0；1.7文档f7ba076例。",
+      "caveat": "不能任意放宽版本检查；文档更新不重写不可变标签，也不伪造新运行时版本。",
+      "refs": [
+        "S05",
+        "S13"
+      ]
+    },
+    {
+      "id": "B059",
+      "area": "工程与交付",
+      "kind": "运行环境",
+      "status": "已修复并回归",
+      "title": "Python3.13加载cp312的cffi失败",
+      "problem": "SSH依赖目录带Python3.12二进制ABI，解释器错配报_cffi_backend缺失。",
+      "fix": "用匹配的Python3.12运行现有SSH脚本，或重新建立匹配依赖。",
+      "verification": "1.6任务日志。",
+      "caveat": "不要反复给错解释器补同一份不匹配的包。",
+      "refs": [
+        "S13"
+      ]
+    },
+    {
+      "id": "B060",
+      "area": "工程与交付",
+      "kind": "路径配置",
+      "status": "已修复并回归",
+      "title": "桌面整理后找不到基线卡或素材根",
+      "problem": "默认向上查找不覆盖新目录；素材根还可能缺参考文件。",
+      "fix": "显式设置ARK_SOURCE_ROOT、ARK_PLUGIN_OUT、ARK_BASE_PNG并验证目录探针。",
+      "verification": "delivery_paths及1.6任务日志。",
+      "caveat": "素材根须含主线/支线和清单需要的参考文件，不只指向支线目录。",
+      "refs": [
+        "S09",
+        "S13"
+      ]
+    },
+    {
+      "id": "B061",
+      "area": "工程与交付",
+      "kind": "身份稳定性",
+      "status": "已修复并回归",
+      "title": "移动素材后按路径SHA换source_id破坏旧档",
+      "problem": "路径被兼作身份来源；全库重编可能使旧路线、节点或聊天找不到来源。",
+      "fix": "先登记source_migrations，再应用迁移、验证原文哈希和旧ID。",
+      "verification": "时间啊向前迁移、side_migration回归。",
+      "caveat": "文件移动、标题调整、重采正文是三种变更；不可混为重新生成所有ID。",
+      "refs": [
+        "S09",
+        "S06"
+      ]
+    },
+    {
+      "id": "B062",
+      "area": "工程与交付",
+      "kind": "交付完整性",
+      "status": "已修复并回归",
+      "title": "新输出目录缺指导/补采材料导致闸门失败",
+      "problem": "仅卡与数据生成成功不代表报告、手册和补采清单齐全。",
+      "fix": "补齐与实际素材对应的指导和覆盖材料，再跑最终成品验收。",
+      "verification": "历史154/156缺项及后续完整验收。",
+      "caveat": "只有原文集合未变时可复用旧材料；不能复制旧覆盖报告掩盖新素材未接入。",
+      "refs": [
+        "S13"
+      ]
+    },
+    {
+      "id": "B063",
+      "area": "工程与交付",
+      "kind": "传输校验",
+      "status": "已修复并回归",
+      "title": "按文件大小复用上传文件可能复用错版本",
+      "problem": "不同内容可能字节数相同，仅SIZE-OK不能证明数据正确。",
+      "fix": "上传后逐文件SHA-256复核，再核对安装和HTTP实际提供的产物。",
+      "verification": "1.6.1以后上传日志和部署回执。",
+      "caveat": "上传成功、磁盘正确与前端命中正确是三个不同条件。",
+      "refs": [
+        "S07",
+        "S13"
+      ]
+    },
+    {
+      "id": "B064",
+      "area": "工程与交付",
+      "kind": "Windows与Git",
+      "status": "已明确处置",
+      "title": "dubious ownership及中文路径引号引起误判",
+      "problem": "沙箱与用户拥有者不同；Git默认引用中文文件名会让docs/tools前缀检查失败。",
+      "fix": "按受控仓库使用safe.directory或正确用户；路径列表用core.quotepath=false。",
+      "verification": "指导同步曾因中文路径显示断言失败，修正显示后通过。",
+      "caveat": "不要为通过断言删除路径边界检查；文件操作保持一个shell并核对绝对目标。",
+      "refs": [
+        "S07",
+        "S13"
+      ]
+    },
+    {
+      "id": "B065",
+      "area": "工程与交付",
+      "kind": "交付方式",
+      "status": "已修复并回归",
+      "title": "只给ZIP/本地覆盖、文件堆满桌面",
+      "problem": "用户明确要原插件可更新链接、新卡和协议，不要反复卸载重装或覆盖目录。",
+      "fix": "原仓库main发布；桌面原使用包保持角色卡.png、插件链接.txt、更新交付协议.md。",
+      "verification": "用户长期偏好及已发布使用包。",
+      "caveat": "源码与历史证据留工程/仓库；不再增加一堆修复版文件夹当最终交付。",
+      "refs": [
+        "S01",
+        "S05"
+      ]
+    },
+    {
+      "id": "B066",
+      "area": "工程与交付",
+      "kind": "文档一致性",
+      "status": "当前指导已校准",
+      "title": "README书名、资料链接与实际发布内容发生漂移",
+      "problem": "例如旧1.5.1说明写v4而正式release为v4_1；1.7.1只改样式，却把继承的1.7.0资料链接替换成不存在的1.7.1文件。",
+      "fix": "当前快照从正式元数据生成；README区分当前相关回归与继承基线，资料仍链接真实存在的1.7.0文件；历史记录不作当前安装参数。",
+      "verification": "已读1.5.1 README与release差异；本轮校验README全部相对链接及总指导链接存在。",
+      "caveat": "禁止对README等做无差别版本号替换；运行时版本和报告文件内容版本可不同，完整书名以产物为准。",
+      "refs": [
+        "S05",
+        "S08"
+      ]
+    },
+    {
+      "id": "B067",
+      "area": "工程与交付",
+      "kind": "补丁回流缺口",
+      "status": "未关闭",
+      "title": "旧部署生成器仍可生成回退到硬编码目标的安装器",
+      "problem": "prepare_deploy_1_7_0.cjs仍读取deploy_1_6_2旧模板，最新安装器的选中头像补丁未全面回流。",
+      "fix": "已修安装器和公开工具可用；生成模板尚需后续修正，本轮仅记录并加施工阻断要求。",
+      "verification": "本轮只读代码确认模板来源，旧目标选择代码回归确实4失败。",
+      "caveat": "不要盲目重跑旧生成器；生成后必须再跑真实目标选择回归，不能认定安装器修好就全链闭环。",
+      "refs": [
+        "S15"
+      ]
+    },
+    {
+      "id": "B068",
+      "area": "尚未关闭的内容与验收",
+      "kind": "资料核验",
+      "status": "未关闭",
+      "title": "完整官方时间与身份变化边界尚未全部考据",
+      "problem": "当前有67篇缺篇章级起始日期，31条人物候选转折显式verified=false；局部节点可能仍有日期。",
+      "fix": "已保留暂无、来源和部分明确节点/篇章规则，未将全部候选日期升级为已证实。",
+      "verification": "本轮读取1.7.0数据的静态统计。",
+      "caveat": "规则遍历通过不等于PRTS/游戏每个日期和转折都核实；补证据后再改触发规则。",
+      "refs": [
+        "S05",
+        "S10"
+      ]
+    },
+    {
+      "id": "B069",
+      "area": "尚未关闭的内容与验收",
+      "kind": "人物资料边界",
+      "status": "待核验",
+      "title": "部分名称/称谓没有独立世界书条目",
+      "problem": "覆盖JSON中有2376个去重名称/称谓未匹配独立条目，其中包含泛称，不能当2376个确定真实人物。",
+      "fix": "保留原对白并列明，不伪称已打开不存在条目；需按来源判定哪些值得建档。",
+      "verification": "人物条目适配覆盖_1.7.0.json静态统计。",
+      "caveat": "不可批量制造泛称角色或模糊合并身份；637是可匹配身份范围，不是完整世界全部人物数。",
+      "refs": [
+        "S10"
+      ]
+    },
+    {
+      "id": "B070",
+      "area": "尚未关闭的内容与验收",
+      "kind": "用户端验收",
+      "status": "待核验",
+      "title": "实际选中卡补正后尚未取得页面点击证据",
+      "problem": "浏览器工具曾因网址置信度不足停止；后续证据是服务器/API和隔离运行时。",
+      "fix": "已补正选中卡、检查脚本和书；真实页面原失败动作仍留待核验。",
+      "verification": "补正回执及各发布记录的验证范围。",
+      "caveat": "不得写所有开局真人实测正常；以后同文案复发先记录实际栈和目标，不盲目重复换包。",
+      "refs": [
+        "S07",
+        "S14"
+      ]
+    },
+    {
+      "id": "B071",
+      "area": "交互与状态栏",
+      "kind": "界面缺陷",
+      "status": "已修复并回归",
+      "title": "剧情状态栏固定在底部遮挡发言栏",
+      "problem": "用户截图显示旧状态栏fixed/bottom:0、z-index:9998，覆盖底部输入区域；只降低层级或禁止点击并未解决占位位置。",
+      "fix": "1.7.1改为top:var(--topBarBlockSize,40px)、bottom:auto、z-index:20，位于顶部工具栏下方；插件CSS同时覆盖旧卡内联bottom定位。",
+      "verification": "20项相关UI/结束测试和165项成品检查通过；脚本差异限定位置与构建ID；书和剧情库哈希完全不变；服务器实际尾号1头像已更新1.7.1，聊天和书字节保留。",
+      "caveat": "尚未取得真实页面几何验收；刷新后检查顶部菜单、输入框、窄屏与折叠。不要为样式修改重导世界书或改写人物开关。",
+      "refs": [
+        "S01",
+        "S06",
+        "S16"
+      ]
+    }
+  ]
+}
