@@ -1,48 +1,54 @@
 {
-  "version": "1.6.2",
-  "tag": "v1.6.2",
+  "version": "1.7.0",
+  "tag": "v1.7.0",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "4adc05de5d79",
-  "data_version": "5e94ee293f48",
-  "card_script_sha256": "8f8985b7091e019f086805bc498f6bb3b3275dd240ce39e8fa81c33af2a0826f",
+  "build_id": "d891760122c0",
+  "data_version": "a057130a0b48",
+  "card_script_sha256": "0b66e9b1cd3a1cbf522e3ce8cfeab462b9518f211c0914013a726b841f851ac2",
   "data": {
     "path": "data/story_runtime.json",
-    "bytes": 59253056,
-    "sha256": "4c301a5dd443bcf6ce4369639cc6229d1f53174b7a0a3d701430d07745b70449"
+    "bytes": 59539310,
+    "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
   },
   "worldbook": {
     "path": "data/base_worldbook.json",
     "schema": "sillytavern_native",
     "bytes": 11953844,
-    "sha256": "871df8c836ed286b93b2b2b21a77e262eeb1a22d404c00650d4c3c9d6838a30a"
+    "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
   },
   "card": {
-    "path": "cards/ark-story-v1.6.2.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.2/cards/ark-story-v1.6.2.png",
-    "bytes": 16051911,
-    "sha256": "02bbb1f5c795d55c6b5723d6ecfa4edeeccb861ad0e2e7db6da5e4ac95065328",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_4",
+    "path": "cards/ark-story-v1.7.0.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.7.0/cards/ark-story-v1.7.0.png",
+    "bytes": 16068935,
+    "sha256": "bb7de489d268b3badd8253a62d35a5fdc50285916f9f00a27b53ba1648981e9f",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "修复部署脚本把CharacterBook条目直接写为原生世界书，导致2049条均缺少key/keysecondary并报undefined.map",
-    "原生导出版按实际SillyTavern 1.19契约转换关键词/位置/顺序/概率/递归/禁用字段",
-    "同步卡内标准enabled和原生disable，避免自动导入时误启用剧情指导与角色档案",
-    "新增实际TavernHelper读取器及全部61个开局服务回归；保留白底选择框与乌萨斯两篇"
+    "全部已接入篇章的角色条目切换改为实际关闭/开启并回读，完成后才允许生成开场",
+    "关联本名/代号，按场景、篇章、原素材后缀及时间事件选择状态；保留玩家身份选择",
+    "加入切线串行写入、防过期写入、退出恢复、跨聊天释放及刷新续接",
+    "原重置按钮恢复全部2049条开关与触发类型，退出活动剧情但保留进度",
+    "新增逐篇覆盖清单与服务器临时世界书真实接口验证工具"
   ],
   "verification": {
-    "tests_passed": 219,
-    "tests_total": 219,
-    "gate_passed": 159,
-    "gate_total": 159,
+    "tests_passed": 229,
+    "tests_total": 229,
+    "gate_passed": 165,
+    "gate_total": 165,
+    "stories": 119,
+    "routes": 849,
+    "scene_visits": 9885,
+    "physical_switch_assertions": 10287480,
+    "actors_with_entries": 637,
+    "multistate_actors": 84,
+    "source_main_files": 14,
+    "source_side_files": 39,
     "opening_scenarios_executed": 61,
-    "actual_helper_entries_read": 2049,
-    "legacy_exact_error_reproduced": "Cannot read properties of undefined (reading 'map')",
-    "text_unchanged_from": "1.6.0",
-    "previous_segments_verified": 21944,
     "paid_model_calls": 0,
-    "browser_ui": "not_verified"
+    "browser_ui": "not_verified",
+    "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
   }
 }
