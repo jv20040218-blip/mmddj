@@ -5173,5 +5173,37 @@
     "side_files": 39,
     "missing": [],
     "stale": []
-  }
+  },
+  "promoted_main_chapters": [
+    {
+      "entry_id": "nav_supp_official_a44e3f8c7a",
+      "chapter": 0,
+      "title": "黑暗时代·上"
+    },
+    {
+      "entry_id": "nav_supp_official_c8971388af",
+      "chapter": 1,
+      "title": "黑暗时代·下"
+    },
+    {
+      "entry_id": "nav_supp_official_886db79c7b",
+      "chapter": 2,
+      "title": "异卵同生"
+    },
+    {
+      "entry_id": "nav_supp_official_5ea84b9710",
+      "chapter": 3,
+      "title": "二次呼吸"
+    },
+    {
+      "entry_id": "nav_supp_official_05a9040225",
+      "chapter": 4,
+      "title": "急性衰竭"
+    },
+    {
+      "entry_id": "nav_supp_official_8c031a4f75",
+      "chapter": 5,
+      "title": "靶向药物"
+    }
+  ]
 }
