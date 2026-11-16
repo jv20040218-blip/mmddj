@@ -1,41 +1,41 @@
 {
-  "version": "1.6.0",
-  "tag": "v1.6.0",
+  "version": "1.6.1",
+  "tag": "v1.6.1",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "f606ea2d1fbb",
+  "build_id": "f36284222a7f",
   "data_version": "5e94ee293f48",
-  "card_script_sha256": "04001b5078b7c2795200792fd5165a44ce8beac5691c3f5a1a141b9b185a6942",
+  "card_script_sha256": "11d1dbeafddb0df175d161a938ee085750631e7a43108a93a1a788ae2147787c",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59253056,
     "sha256": "4c301a5dd443bcf6ce4369639cc6229d1f53174b7a0a3d701430d07745b70449"
   },
   "card": {
-    "path": "cards/ark-story-v1.6.0.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.0/cards/ark-story-v1.6.0.png",
-    "bytes": 16048891,
-    "sha256": "ba0bdbed8dbc7f1b9513d2aa0a6f27fdcde17695c8b2a3b4ecdccd8e2c98075d",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_2",
+    "path": "cards/ark-story-v1.6.1.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.1/cards/ark-story-v1.6.1.png",
+    "bytes": 16050531,
+    "sha256": "2d48252ffaebdf8a2f039118cb6cc689d3ee79cd5872b193de9b217018d323be",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_3",
     "worldbook_entries": 2049
   },
   "changes": [
-    "支线/时间啊 向前！.json 迁入 支线/乌萨斯/，乌萨斯补齐两篇",
-    "保留 source_id src_680314ba0dbd、story_id story_c579b90d26、入口 nav_story_c579b90d26 与 37 条路线",
-    "其他不再保留该篇根目录入口；无成员的分组不显示",
-    "新增路径迁移/稳定身份登记表与归属迁移回归测试"
+    "修复配置更新事件缺少detail导致主世界书不刷新",
+    "开局应用、状态读取及世界书操作重新解析当前绑定，避免空缓存及无操作假成功",
+    "本卡绑定接口迟到时验证配套世界书存在后恢复识别，其他角色不借用该书",
+    "完整剧情线、预览及自由切幕的下拉框和选项统一白底深色字"
   ],
   "verification": {
-    "tests_passed": 207,
-    "tests_total": 207,
+    "tests_passed": 214,
+    "tests_total": 214,
     "gate_passed": 156,
     "gate_total": 156,
-    "segments_checked": 21944,
-    "segments_matched": 21944,
-    "source_main_files": 14,
-    "source_side_files": 39,
-    "paid_model_calls": 0
-  },
-  "commit": "768f4012a494db64eaf6e5f1e7fc7368fd23269a"
+    "legacy_regressions_failed": 4,
+    "regressions_fixed": 4,
+    "text_unchanged_from": "1.6.0",
+    "previous_segments_verified": 21944,
+    "paid_model_calls": 0,
+    "browser_ui": "not_verified_browser_tool_stopped_url_confidence"
+  }
 }
