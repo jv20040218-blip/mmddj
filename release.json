@@ -1,28 +1,34 @@
 {
-  "version": "1.5.1",
-  "tag": "v1.5.1",
+  "version": "1.6.0",
+  "tag": "v1.6.0",
   "published_date": "2026-11-16",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "b7a62dc91ea9",
-  "data_version": "b8e9184449ae",
-  "card_script_sha256": "5be2db8af04556d2d483871c1dcc1bc8cbd40d7de7d88959978f054cc56b694c",
+  "build_id": "f606ea2d1fbb",
+  "data_version": "5e94ee293f48",
+  "card_script_sha256": "04001b5078b7c2795200792fd5165a44ce8beac5691c3f5a1a141b9b185a6942",
   "data": {
     "path": "data/story_runtime.json",
-    "bytes": 59245865,
-    "sha256": "1eff4627cbb3c1447c684ae8e8bece777ba2026c7657094603732ab259e0e899"
+    "bytes": 59253056,
+    "sha256": "4c301a5dd443bcf6ce4369639cc6229d1f53174b7a0a3d701430d07745b70449"
   },
   "card": {
-    "path": "cards/ark-story-v1.5.1.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.5.1/cards/ark-story-v1.5.1.png",
-    "bytes": 16049779,
-    "sha256": "16b26431759a1ce84345d0252a8a610f5ddc8e0fc319f52e55ada8448e6c90c8",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_1",
+    "path": "cards/ark-story-v1.6.0.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.6.0/cards/ark-story-v1.6.0.png",
+    "bytes": 16048891,
+    "sha256": "ba0bdbed8dbc7f1b9513d2aa0a6f27fdcde17695c8b2a3b4ecdccd8e2c98075d",
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v4_2",
     "worldbook_entries": 2049
   },
+  "changes": [
+    "支线/时间啊 向前！.json 迁入 支线/乌萨斯/，乌萨斯补齐两篇",
+    "保留 source_id src_680314ba0dbd、story_id story_c579b90d26、入口 nav_story_c579b90d26 与 37 条路线",
+    "其他不再保留该篇根目录入口；无成员的分组不显示",
+    "新增路径迁移/稳定身份登记表与归属迁移回归测试"
+  ],
   "verification": {
-    "tests_passed": 201,
-    "tests_total": 201,
+    "tests_passed": 207,
+    "tests_total": 207,
     "gate_passed": 156,
     "gate_total": 156,
     "segments_checked": 21944,
@@ -30,5 +36,6 @@
     "source_main_files": 14,
     "source_side_files": 39,
     "paid_model_calls": 0
-  }
+  },
+  "commit": ""
 }
