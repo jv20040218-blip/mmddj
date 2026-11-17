@@ -1,12 +1,12 @@
 {
-  "version": "1.8.0",
-  "tag": "v1.8.0",
+  "version": "1.8.1",
+  "tag": "v1.8.1",
   "published_date": "2026-11-17",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "8679e175bf8d",
+  "build_id": "358ff7b42e7b",
   "data_version": "a057130a0b48",
-  "card_script_sha256": "64bbe13f14b3876e9cd419206d10b8c879afd16c74ce8ccc5a089afd00dfda47",
+  "card_script_sha256": "4210c358baa54d9e47ef7ba21583640481d8adfa7d08652fda5349b438d45ddc",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59539310,
@@ -19,10 +19,10 @@
     "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
   },
   "card": {
-    "path": "cards/ark-story-v1.8.0.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.0/cards/ark-story-v1.8.0.png",
-    "bytes": 16076915,
-    "sha256": "20a1397429cb546481be5f2e9b319f6dac7bd97e4815ca665dc07983f3c8e96c",
+    "path": "cards/ark-story-v1.8.1.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.1/cards/ark-story-v1.8.1.png",
+    "bytes": 16085403,
+    "sha256": "8df2b41554dc00c9f1b60f4a23cc910fc6138dcaa8843a47e144ba72522abdf7",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
@@ -30,11 +30,14 @@
     "删除旧MINI/STANDBY悬浮小窗，原入口直接开全屏控制台",
     "动态视口自适应；关闭按钮/Escape关闭界面，不禁用应用或退出剧情",
     "完整逐幕摘要与真实幕序一致，雪原19幕不再截成12幕",
-    "当前剧情摘要与出场立绘分为可独立展开的两栏，窄屏上下排列"
+    "当前剧情摘要与出场立绘分为可独立展开的两栏，窄屏上下排列",
+    "剧情原文改为系统参考资料，结合真实玩家发言与聊天事实改写演出",
+    "移除照搬标点/段落及200字上限要求，保留完成条件与当前段边界",
+    "每段台词独立闭合，自动补齐已提供样例的中文闭引号，保留控制包及代码"
   ],
   "verification": {
-    "tests_passed": 234,
-    "tests_total": 234,
+    "tests_passed": 242,
+    "tests_total": 242,
     "gate_passed": 165,
     "gate_total": 165,
     "ui_related_tests_passed": 34,
@@ -64,7 +67,13 @@
       "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
     },
     "paid_model_calls": 0,
-    "browser_ui": "not_verified"
+    "browser_ui": "not_verified",
+    "narration_regressions": 8,
+    "quote_sample_added_closing_marks": 3,
+    "quote_rewrite_current_swipe_only": true,
+    "quote_rerender_idempotent": true,
+    "quote_write_failure_nonblocking": true,
+    "model_narration_quality": "not_verified"
   },
   "worldbook_content_version": "1.7.0"
 }
