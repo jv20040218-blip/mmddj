@@ -1,48 +1,67 @@
 {
-  "version": "1.8.3",
-  "tag": "v1.8.3",
-  "published_date": "2026-11-17",
+  "version": "1.8.4",
+  "tag": "v1.8.4",
+  "published_date": "2026-11-18",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "8c34757c5ac1",
-  "data_version": "a057130a0b48",
-  "card_script_sha256": "0766615635bc4ac5cb15ca70ea24a6029a23206d54035461eb11e570dd8db30e",
+  "build_id": "bcdb2802e5b3",
+  "data_version": "c1e31c2c8585",
+  "card_script_sha256": "7b6427517f68e5f66c797274856d42762974dd53e6c344dff2662854d6979e46",
   "data": {
     "path": "data/story_runtime.json",
-    "bytes": 59539310,
-    "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
+    "bytes": 67341540,
+    "sha256": "7c61411e686998c231f2a85bcf54273c653e10510723c2d3820fc8b4da970fa0"
   },
   "worldbook": {
     "path": "data/base_worldbook.json",
     "schema": "sillytavern_native",
     "bytes": 11953844,
-    "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
+    "sha256": "d378684be7af33af397b39a589d6bc05ddf7c27c253ec8d011561dd20e59f44a"
   },
   "card": {
-    "path": "cards/ark-story-v1.8.3.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png",
-    "bytes": 16084955,
-    "sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
+    "path": "cards/ark-story-v1.8.4.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.4/cards/ark-story-v1.8.4.png",
+    "bytes": 16087279,
+    "sha256": "f1efc9cefc44f5798981179627bd2e3f12b747c06bdae3fc4b35bc356dd77056",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "全插件字体以历史回复快照标题为下限，默认14px/600",
-    "覆盖所有控制台页面、导航、按钮、说明、开局和附加状态栏，较大字号保留",
-    "切页和展开后自动统一，不改变酒馆其他聊天文字",
-    "雪原线19幕新摘要只交稿未录入，剧情库与世界书字节不变"
+    "119篇、849条路线、9885幕用户摘要原样录入，雪原19幕重复稿只计一次",
+    "完整摘要、进入前预览、当前幕及下一幕显示同一份新稿，按路线、场景、节点联合定位",
+    "保留待核备注和战斗标记，所有稿件文字安全显示为纯文本",
+    "新摘要仅供玩家查阅，不改变模型注入、原文、存档或人物开关；世界书仅说明条目的构建和数据版本变化"
   ],
   "verification": {
-    "ui_tests_passed": 29,
-    "ui_tests_total": 29,
+    "tests_passed": 259,
+    "tests_total": 259,
+    "tests_failed": 0,
+    "tests_skipped": 0,
     "gate_passed": 165,
     "gate_total": 165,
     "compiled_script_syntax": "passed",
-    "data_bytes_identical": true,
-    "worldbook_bytes_identical": true,
+    "stories": 119,
+    "routes": 849,
+    "scene_visits": 9885,
     "summary_all_routes_order_matches": true,
-    "inherited_full_tests_version": "1.8.1",
-    "inherited_full_tests_passed": 242,
+    "summary_original_drafts_preserved": true,
+    "all_routes_prompt_injection_unchanged": true,
+    "corpus_identical": true,
+    "routes_identical": true,
+    "worldbook_binding_identical": true,
+    "data_bytes_identical": false,
+    "worldbook_bytes_identical": false,
+    "worldbook_changed_uids": [1013],
+    "worldbook_change": "instruction entry build_id and data_version only",
+    "browser_ui": "isolated local Chrome; real UI and built data with test host; not user SillyTavern",
+    "browser_cases": [
+      "snowfield 19 acts, first and last text, manual act selection and final-act exit",
+      "summary and portraits separate; viewing does not alter saved progress",
+      "220-act route complete and scrollable to its final act",
+      "notes and combat markers visible",
+      "390px viewport without horizontal overflow; font at least 14px/600; outside text unchanged",
+      "keyboard return and visible focus; zero page errors"
+    ],
     "inherited_runtime_verification": {
       "tests_passed": 229,
       "tests_total": 229,
@@ -62,12 +81,7 @@
       "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
     },
     "paid_model_calls": 0,
-    "browser_ui": "not_verified",
-    "typography_regressions": 3,
-    "typography_default_size": 14,
-    "typography_default_weight": 600,
-    "larger_text_preserved": true,
-    "outside_chat_text_unchanged": true
+    "server_deployment": "not_performed; last verified server card remains 1.8.3"
   },
   "worldbook_content_version": "1.7.0"
 }
