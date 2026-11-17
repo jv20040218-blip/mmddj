@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "guidance_version": "2.3",
+  "guidance_version": "2.4",
   "as_of_date": "2026-11-17",
   "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；非本轮在线探测，不声称未知缺陷为零。",
   "snapshot": {
-    "runtime_version": "1.8.2",
-    "runtime_commit": "d0903223e25034913a2fbf0049cdff64d06952c9",
-    "build_id": "6db4e079e489",
+    "runtime_version": "1.8.3",
+    "runtime_commit": "87808e8fdffacd0319bce049daf99d9de8cb6074",
+    "build_id": "8c34757c5ac1",
     "data_version": "a057130a0b48",
     "repository": "https://github.com/jv20040218-blip/mmddj",
     "branch": "main",
     "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049,
     "card": {
-      "path": "cards/ark-story-v1.8.2.png",
-      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.2/cards/ark-story-v1.8.2.png",
-      "bytes": 16078355,
-      "sha256": "64f10c64c49210f36f40bc011d0d385bbff183553e256fbfeb61790cd49d9455",
+      "path": "cards/ark-story-v1.8.3.png",
+      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png",
+      "bytes": 16084955,
+      "sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
       "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
       "worldbook_entries": 2049
     },
@@ -25,13 +25,13 @@
       "bytes": 59539310,
       "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
     },
-    "script_sha256": "ce8349e02e12bdfd33ae831f782b89d0257a3f8c6f2046fbb8e486a334109467",
+    "script_sha256": "0766615635bc4ac5cb15ca70ea24a6029a23206d54035461eb11e570dd8db30e",
     "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
     "selected_card_version_after_repair": "1.8.2",
     "last_confirmed_guidance_commit": "4174a45b896b52263f3e43a70b6cae5f704560e8",
     "verification": {
-      "ui_tests_passed": 26,
-      "ui_tests_total": 26,
+      "ui_tests_passed": 29,
+      "ui_tests_total": 29,
       "gate_passed": 165,
       "gate_total": 165,
       "compiled_script_syntax": "passed",
@@ -59,7 +59,12 @@
         "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
       },
       "paid_model_calls": 0,
-      "browser_ui": "not_verified;computer_use_stopped_url_confidence"
+      "browser_ui": "not_verified",
+      "typography_regressions": 3,
+      "typography_default_size": 14,
+      "typography_default_weight": 600,
+      "larger_text_preserved": true,
+      "outside_chat_text_unchanged": true
     },
     "target_selection_tests": 6,
     "actors_with_entries": 637,
@@ -69,7 +74,7 @@
     "actor_transition_candidates_unverified": 31,
     "names_without_independent_entry": 2376,
     "worldbook_content_version": "1.7.0",
-    "server_deployment": "2026-11-17用户明确授权部署1.8.2并核验后已完成。实际选中卡/脚本SHA/HTTP安装文件均核对，聊天及2089条现有书字节保留，无模型调用；真实页面几何仍未验收。",
+    "server_deployment": "1.8.3字体版本已远程发布、配套卡和指导已交付，服务器部署尚未执行；最近已核验服务器卡为1.8.2。雪原新摘要只交稿，未录入。",
     "actual_worldbook_entries": 2089,
     "preserved_extra_worldbook_entries": 40
   },
@@ -206,6 +211,20 @@
       "card_sha256": "8df2b41554dc00c9f1b60f4a23cc910fc6138dcaa8843a47e144ba72522abdf7",
       "card_bytes": 16085403,
       "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.1/cards/ark-story-v1.8.1.png"
+    },
+    {
+      "version": "1.8.3",
+      "tag": "v1.8.3",
+      "build_id": "8c34757c5ac1",
+      "data_version": "a057130a0b48",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "tests": 29,
+      "gate": 165,
+      "verification_label": "29项相关回归/165项成品检查/语法检查；继承1.8.1全量基线242项，未重跑",
+      "commit": "87808e8fdffacd0319bce049daf99d9de8cb6074",
+      "card_sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
+      "card_bytes": 16084955,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png"
     }
   ],
   "evidence_sources": {
@@ -228,7 +247,8 @@
     "S17": "界面改版_1.8.0.md及发布记录_1.8.0.md、work/publish_1_8_0/release.json；原5项新回归全失败、修复后通过；234项全量测试、165项成品检查及真实数据全线路摘要顺序核对。",
     "S18": "叙事适配与台词引号_1.8.1.md、用户提供的阿丽娜台词样例；narration_policy.test.js、narration_1_8_1.tap、tests_1_8_1.tap、gate_1_8_1.txt及正式release.json。setChatMessages接口按官方类型定义核对，未在服务器写回测试。",
     "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。",
-    "S20": "用户两张真实界面截图（未公开）、全屏内容区与独立页面修复_1.8.2.md、layout_red.tap（3项失败）、layout_1_8_2.tap（26项通过）、gate_1_8_2.txt（165/165）、完整脚本语法检查；Windows页面工具因URL置信度不足停止。 用户随后明确授权部署1.8.2并核验，服务器部署核验.json确认卡版本、脚本哈希、HTTP文件及2089条书字节保留；无模型调用。"
+    "S20": "用户两张真实界面截图（未公开）、全屏内容区与独立页面修复_1.8.2.md、layout_red.tap（3项失败）、layout_1_8_2.tap（26项通过）、gate_1_8_2.txt（165/165）、完整脚本语法检查；Windows页面工具因URL置信度不足停止。 用户随后明确授权部署1.8.2并核验，服务器部署核验.json确认卡版本、脚本哈希、HTTP文件及2089条书字节保留；无模型调用。",
+    "S21": "全插件字体统一_1.8.3.md、src/ui/typography.js、typography.test.js、typography_1_8_3.tap（29项）、gate_1_8_3.txt（165项）和脚本语法检查；参考标题源码14px/600，真实页面效果未验收。"
   },
   "issues": [
     {
@@ -1435,6 +1455,22 @@
         "S01",
         "S06",
         "S20"
+      ]
+    },
+    {
+      "id": "B082",
+      "area": "交互与状态栏",
+      "kind": "字体体验",
+      "status": "已修复并回归",
+      "title": "全插件字号偏小且字重不统一",
+      "problem": "用户以历史回复快照为基准，要求整个插件的小字提升且全部加粗；原说明、标签和状态栏存在10—13px等更小文字。",
+      "fix": "增加统一字体下限处理，默认14px/600，覆盖控制台各页、导航、按钮、说明、开局和状态栏；保留较大/更粗文字及字体家族，切页自动处理，不影响其他聊天。",
+      "verification": "29项相关回归及165项成品检查通过；对小字、更大标题、所有根容器、外部聊天、动态内容及停止监听有针对性回归，三个构建器模块表已同步。",
+      "caveat": "真实浏览器字体效果尚未验收；1.8.3部署需按当前授权执行，不能把远程发布或桌面文件更新称为服务器已安装。",
+      "refs": [
+        "S01",
+        "S06",
+        "S21"
       ]
     }
   ]
