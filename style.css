@@ -12,3 +12,13 @@
   bottom: auto !important;
   z-index: 20 !important;
 }
+
+
+#ark-ui-root.ark-console-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;transform:none!important;z-index:9999!important;overflow:hidden!important;box-sizing:border-box}
+#ark-ui-root.ark-console-fullscreen>.ark-transition-shell{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;border-radius:0!important;opacity:1!important;background:var(--color-surface,#17232b)!important;backdrop-filter:none!important}
+#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>.grid{flex:1;min-height:0;grid-template-rows:minmax(0,1fr)!important}
+#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>.grid>div{height:100%;min-height:0;opacity:1!important}
+#ark-ui-root.ark-console-fullscreen .ark-console-content{height:100%!important;max-height:none!important;min-height:0}
+#ark-ui-root.ark-console-fullscreen [title="拖拽缩放UI尺寸"]{display:none!important}
+#ark-ui-root.ark-console-fullscreen .ark-console-close{position:absolute;right:max(12px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));z-index:200;padding:8px 14px!important;min-height:36px;border:1px solid var(--color-outline-variant,#697d87)!important;background:var(--color-surface,#17232b)!important;color:var(--color-on-surface,#fff)!important;cursor:pointer}
+#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>div:first-child{padding-right:110px}
