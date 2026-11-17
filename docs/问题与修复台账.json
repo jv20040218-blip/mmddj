@@ -1,45 +1,54 @@
 {
   "schema_version": 1,
-  "guidance_version": "2.4",
-  "as_of_date": "2026-11-17",
+  "guidance_version": "2.5",
+  "as_of_date": "2026-11-18",
   "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；非本轮在线探测，不声称未知缺陷为零。",
   "snapshot": {
-    "runtime_version": "1.8.3",
-    "runtime_commit": "87808e8fdffacd0319bce049daf99d9de8cb6074",
-    "build_id": "8c34757c5ac1",
-    "data_version": "a057130a0b48",
+    "runtime_version": "1.8.4",
+    "runtime_commit": "ab346a20f91196f037eb9071f1814df477ea89da",
+    "build_id": "bcdb2802e5b3",
+    "data_version": "c1e31c2c8585",
     "repository": "https://github.com/jv20040218-blip/mmddj",
     "branch": "main",
     "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049,
     "card": {
-      "path": "cards/ark-story-v1.8.3.png",
-      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png",
-      "bytes": 16084955,
-      "sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
+      "path": "cards/ark-story-v1.8.4.png",
+      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.4/cards/ark-story-v1.8.4.png",
+      "bytes": 16087279,
+      "sha256": "f1efc9cefc44f5798981179627bd2e3f12b747c06bdae3fc4b35bc356dd77056",
       "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
       "worldbook_entries": 2049
     },
     "data": {
       "path": "data/story_runtime.json",
-      "bytes": 59539310,
-      "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
+      "bytes": 67341540,
+      "sha256": "7c61411e686998c231f2a85bcf54273c653e10510723c2d3820fc8b4da970fa0"
     },
-    "script_sha256": "0766615635bc4ac5cb15ca70ea24a6029a23206d54035461eb11e570dd8db30e",
+    "script_sha256": "7b6427517f68e5f66c797274856d42762974dd53e6c344dff2662854d6979e46",
     "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
     "selected_card_version_after_repair": "1.8.3",
     "last_confirmed_guidance_commit": "4174a45b896b52263f3e43a70b6cae5f704560e8",
     "verification": {
-      "ui_tests_passed": 29,
-      "ui_tests_total": 29,
+      "tests_passed": 259,
+      "tests_total": 259,
+      "tests_failed": 0,
+      "tests_skipped": 0,
       "gate_passed": 165,
       "gate_total": 165,
       "compiled_script_syntax": "passed",
-      "data_bytes_identical": true,
-      "worldbook_bytes_identical": true,
+      "data_bytes_identical": false,
+      "worldbook_bytes_identical": false,
+      "corpus_identical": true,
+      "routes_identical": true,
+      "worldbook_binding_identical": true,
+      "worldbook_changed_uids": [1013],
       "summary_all_routes_order_matches": true,
-      "inherited_full_tests_version": "1.8.1",
-      "inherited_full_tests_passed": 242,
+      "summary_original_drafts_preserved": true,
+      "all_routes_prompt_injection_unchanged": true,
+      "stories": 119,
+      "routes": 849,
+      "scene_visits": 9885,
       "inherited_runtime_verification": {
         "tests_passed": 229,
         "tests_total": 229,
@@ -59,11 +68,10 @@
         "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
       },
       "paid_model_calls": 0,
-      "browser_ui": "not_verified",
-      "typography_regressions": 3,
+      "browser_ui": "isolated local Chrome; real UI and built data with test host; not user SillyTavern",
+      "browser_cases": "雪原19幕首尾、切幕和末幕退出；摘要/立绘分离；220幕长线滚动；备注与战斗标记；390px无横向溢出；14px/600下限；键盘返回及可见焦点；零页面错误",
       "typography_default_size": 14,
       "typography_default_weight": 600,
-      "larger_text_preserved": true,
       "outside_chat_text_unchanged": true
     },
     "target_selection_tests": 6,
@@ -74,7 +82,7 @@
     "actor_transition_candidates_unverified": 31,
     "names_without_independent_entry": 2376,
     "worldbook_content_version": "1.7.0",
-    "server_deployment": "2026-11-17用户明确授权部署1.8.3并核验后已完成。实际选中卡、脚本SHA和HTTP安装文件已核对；聊天及2089条现有世界书字节保留，无模型调用。雪原新摘要只交稿未录入，真实字体效果仍未页面实测。",
+    "server_deployment": "1.8.4本轮未部署服务器，未访问用户聊天或调用模型；全部新摘要已进入发布成品。最后已核验服务器卡仍为2026-11-17授权部署的1.8.3，当时实际选中卡、脚本SHA和HTTP文件已核对，聊天及2089条现有世界书字节保留。本轮隔离本地Chrome验收不能替代远程酒馆实测。",
     "actual_worldbook_entries": 2089,
     "preserved_extra_worldbook_entries": 40
   },
@@ -225,6 +233,20 @@
       "card_sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
       "card_bytes": 16084955,
       "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png"
+    },
+    {
+      "version": "1.8.4",
+      "tag": "v1.8.4",
+      "build_id": "bcdb2802e5b3",
+      "data_version": "c1e31c2c8585",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "tests": 259,
+      "gate": 165,
+      "verification_label": "259项测试全部通过且零跳过/165项成品检查/脚本语法检查；隔离本地Chrome真实UI验收，无远程部署或模型调用",
+      "commit": "ab346a20f91196f037eb9071f1814df477ea89da",
+      "card_sha256": "f1efc9cefc44f5798981179627bd2e3f12b747c06bdae3fc4b35bc356dd77056",
+      "card_bytes": 16087279,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.4/cards/ark-story-v1.8.4.png"
     }
   ],
   "evidence_sources": {
@@ -248,7 +270,8 @@
     "S18": "叙事适配与台词引号_1.8.1.md、用户提供的阿丽娜台词样例；narration_policy.test.js、narration_1_8_1.tap、tests_1_8_1.tap、gate_1_8_1.txt及正式release.json。setChatMessages接口按官方类型定义核对，未在服务器写回测试。",
     "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。",
     "S20": "用户两张真实界面截图（未公开）、全屏内容区与独立页面修复_1.8.2.md、layout_red.tap（3项失败）、layout_1_8_2.tap（26项通过）、gate_1_8_2.txt（165/165）、完整脚本语法检查；Windows页面工具因URL置信度不足停止。 用户随后明确授权部署1.8.2并核验，服务器部署核验.json确认卡版本、脚本哈希、HTTP文件及2089条书字节保留；无模型调用。",
-    "S21": "全插件字体统一_1.8.3.md、src/ui/typography.js、typography.test.js、typography_1_8_3.tap（29项）、gate_1_8_3.txt（165项）和脚本语法检查；参考标题源码14px/600，真实页面效果未验收。 用户随后明确授权1.8.3部署并核验，服务器部署核验.json确认实际选中卡、脚本SHA、HTTP文件、原聊天和2089条书字节保留；没有字体几何或模型实测。"
+    "S21": "全插件字体统一_1.8.3.md、src/ui/typography.js、typography.test.js、typography_1_8_3.tap（29项）、gate_1_8_3.txt（165项）和脚本语法检查；参考标题源码14px/600，真实页面效果未验收。 用户随后明确授权1.8.3部署并核验，服务器部署核验.json确认实际选中卡、脚本SHA、HTTP文件、原聊天和2089条书字节保留；没有字体几何或模型实测。",
+    "S22": "1.8.4 release.json、work/plugin_hierarchy/工程/work/summary_1_8_4.tap（259/259，零跳过）、tests/player_summaries.test.js、tests/story_reference_panels.test.js及tests/summary_browser.cjs；work/delivery_1_8_4/验收报告.json（165/165）。桌面与窄屏截图位于工程work/summary_desktop.png及summary_mobile.png；本地Chrome测试宿主、成品数据，不是用户远程酒馆。"
   },
   "issues": [
     {
@@ -1466,11 +1489,12 @@
       "problem": "用户以历史回复快照为基准，要求整个插件的小字提升且全部加粗；原说明、标签和状态栏存在10—13px等更小文字。",
       "fix": "增加统一字体下限处理，默认14px/600，覆盖控制台各页、导航、按钮、说明、开局和状态栏；保留较大/更粗文字及字体家族，切页自动处理，不影响其他聊天。",
       "verification": "29项相关回归及165项成品检查通过；对小字、更大标题、所有根容器、外部聊天、动态内容及停止监听有针对性回归，三个构建器模块表已同步。",
-      "caveat": "真实字体效果仍未页面实测；用户明确授权后已安装服务器1.8.3，实际选中卡/脚本SHA/HTTP文件核对通过，原聊天与世界书保留。雪原新摘要未录入。",
+      "caveat": "用户远程酒馆字体效果仍未页面实测；1.8.4在隔离本地Chrome的摘要页面实测390px无横向溢出及14px/600下限，不代表所有控制台页面均完成视觉验收。全部新摘要已录入1.8.4成品；最后已核验服务器仍为1.8.3，本轮未部署。",
       "refs": [
         "S01",
         "S06",
-        "S21"
+        "S21",
+        "S22"
       ]
     }
   ]
