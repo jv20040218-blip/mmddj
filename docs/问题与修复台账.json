@@ -27,7 +27,7 @@
     },
     "script_sha256": "4210c358baa54d9e47ef7ba21583640481d8adfa7d08652fda5349b438d45ddc",
     "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
-    "selected_card_version_after_repair": "1.7.1",
+    "selected_card_version_after_repair": "1.8.1",
     "last_confirmed_guidance_commit": "4174a45b896b52263f3e43a70b6cae5f704560e8",
     "verification": {
       "tests_passed": 242,
@@ -77,7 +77,9 @@
     "actor_transition_candidates_unverified": 31,
     "names_without_independent_entry": 2376,
     "worldbook_content_version": "1.7.0",
-    "server_deployment": "用户要求先等等、还有其他要求；1.8.0与1.8.1均未代部署。最近已核验服务器卡为1.7.1。"
+    "server_deployment": "2026-11-17用户明确允许更新后已部署1.8.1；实际选中卡/脚本哈希/HTTP安装文件均已核对，原聊天和世界书字节保留，无模型调用。",
+    "actual_worldbook_entries": 2089,
+    "preserved_extra_worldbook_entries": 40
   },
   "version_history": [
     {
@@ -232,7 +234,8 @@
     "S15": "本轮核对work/prepare_deploy_1_7_0.cjs仍引用旧安装模板；work/deploy_1_7_0/install_server.py已动态选目标；work/test_deployment_target.py验证真实选择代码。",
     "S16": "发布记录_1.7.1.md、work/publish_1_7_1/release.json和服务器部署核验.json；20项相关回归、165项成品检查及新旧书/数据逐字节比较；没有真实页面点击证据。",
     "S17": "界面改版_1.8.0.md及发布记录_1.8.0.md、work/publish_1_8_0/release.json；原5项新回归全失败、修复后通过；234项全量测试、165项成品检查及真实数据全线路摘要顺序核对。",
-    "S18": "叙事适配与台词引号_1.8.1.md、用户提供的阿丽娜台词样例；narration_policy.test.js、narration_1_8_1.tap、tests_1_8_1.tap、gate_1_8_1.txt及正式release.json。setChatMessages接口按官方类型定义核对，未在服务器写回测试。"
+    "S18": "叙事适配与台词引号_1.8.1.md、用户提供的阿丽娜台词样例；narration_policy.test.js、narration_1_8_1.tap、tests_1_8_1.tap、gate_1_8_1.txt及正式release.json。setChatMessages接口按官方类型定义核对，未在服务器写回测试。",
+    "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。"
   },
   "issues": [
     {
@@ -1377,6 +1380,20 @@
         "S01",
         "S06",
         "S18"
+      ]
+    },
+    {
+      "id": "B078",
+      "area": "工程与交付",
+      "kind": "安装兼容缺陷",
+      "status": "已修复并回归",
+      "title": "安装工具将合法附加世界书条目误判为不可更新",
+      "problem": "更新1.8.1时，实际用户书2089条，发布基线2049条；基线UID及正文完整、字段有效，旧严格计数仍拒绝更新。",
+      "fix": "按基线UID集合完整性、无重复UID及所有关键词数组校验，允许额外条目；不删除附加内容，不重置开关、不重导书。",
+      "verification": "同本书从旧校验失败到修复后实际部署通过，原书字节一致；5项回归覆盖基线、附加40条与开关保留、缺UID、坏字段、重复UID。",
+      "caveat": "发布基线条目数和用户现有书数量不是同一指标。额外条目未自动纳入本模块重置基线；本修复不替用户决定额外条目内容或开关。",
+      "refs": [
+        "S19"
       ]
     }
   ]
