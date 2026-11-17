@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "guidance_version": "2.2",
+  "guidance_version": "2.3",
   "as_of_date": "2026-11-17",
   "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；非本轮在线探测，不声称未知缺陷为零。",
   "snapshot": {
-    "runtime_version": "1.8.1",
-    "runtime_commit": "354f422978b5dccfad25f4d776ecedd18a804d0a",
-    "build_id": "358ff7b42e7b",
+    "runtime_version": "1.8.2",
+    "runtime_commit": "d0903223e25034913a2fbf0049cdff64d06952c9",
+    "build_id": "6db4e079e489",
     "data_version": "a057130a0b48",
     "repository": "https://github.com/jv20040218-blip/mmddj",
     "branch": "main",
     "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049,
     "card": {
-      "path": "cards/ark-story-v1.8.1.png",
-      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.1/cards/ark-story-v1.8.1.png",
-      "bytes": 16085403,
-      "sha256": "8df2b41554dc00c9f1b60f4a23cc910fc6138dcaa8843a47e144ba72522abdf7",
+      "path": "cards/ark-story-v1.8.2.png",
+      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.2/cards/ark-story-v1.8.2.png",
+      "bytes": 16078355,
+      "sha256": "64f10c64c49210f36f40bc011d0d385bbff183553e256fbfeb61790cd49d9455",
       "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
       "worldbook_entries": 2049
     },
@@ -25,23 +25,21 @@
       "bytes": 59539310,
       "sha256": "9d4d26abb3edd549ae75c7ae5e0e5b780b71f3bbe0d540c42b507ca2afdf0b95"
     },
-    "script_sha256": "4210c358baa54d9e47ef7ba21583640481d8adfa7d08652fda5349b438d45ddc",
+    "script_sha256": "ce8349e02e12bdfd33ae831f782b89d0257a3f8c6f2046fbb8e486a334109467",
     "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
     "selected_card_version_after_repair": "1.8.1",
     "last_confirmed_guidance_commit": "4174a45b896b52263f3e43a70b6cae5f704560e8",
     "verification": {
-      "tests_passed": 242,
-      "tests_total": 242,
+      "ui_tests_passed": 26,
+      "ui_tests_total": 26,
       "gate_passed": 165,
       "gate_total": 165,
-      "ui_related_tests_passed": 34,
-      "stories": 119,
-      "routes": 849,
-      "summary_scene_count": 9885,
-      "summary_all_routes_order_matches": true,
-      "snowfield_summary_acts": 19,
-      "worldbook_bytes_identical": true,
+      "compiled_script_syntax": "passed",
       "data_bytes_identical": true,
+      "worldbook_bytes_identical": true,
+      "summary_all_routes_order_matches": true,
+      "inherited_full_tests_version": "1.8.1",
+      "inherited_full_tests_passed": 242,
       "inherited_runtime_verification": {
         "tests_passed": 229,
         "tests_total": 229,
@@ -61,13 +59,7 @@
         "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
       },
       "paid_model_calls": 0,
-      "browser_ui": "not_verified",
-      "narration_regressions": 8,
-      "quote_sample_added_closing_marks": 3,
-      "quote_rewrite_current_swipe_only": true,
-      "quote_rerender_idempotent": true,
-      "quote_write_failure_nonblocking": true,
-      "model_narration_quality": "not_verified"
+      "browser_ui": "not_verified;computer_use_stopped_url_confidence"
     },
     "target_selection_tests": 6,
     "actors_with_entries": 637,
@@ -77,7 +69,7 @@
     "actor_transition_candidates_unverified": 31,
     "names_without_independent_entry": 2376,
     "worldbook_content_version": "1.7.0",
-    "server_deployment": "2026-11-17用户明确允许更新后已部署1.8.1；实际选中卡/脚本哈希/HTTP安装文件均已核对，原聊天和世界书字节保留，无模型调用。",
+    "server_deployment": "1.8.2远程已发布，自动审批因此前授权版本范围及安装器生成方式拒绝直接部署，等待明确授权；服务器最近核验为1.8.1，未作本版服务器写入。",
     "actual_worldbook_entries": 2089,
     "preserved_extra_worldbook_entries": 40
   },
@@ -235,7 +227,8 @@
     "S16": "发布记录_1.7.1.md、work/publish_1_7_1/release.json和服务器部署核验.json；20项相关回归、165项成品检查及新旧书/数据逐字节比较；没有真实页面点击证据。",
     "S17": "界面改版_1.8.0.md及发布记录_1.8.0.md、work/publish_1_8_0/release.json；原5项新回归全失败、修复后通过；234项全量测试、165项成品检查及真实数据全线路摘要顺序核对。",
     "S18": "叙事适配与台词引号_1.8.1.md、用户提供的阿丽娜台词样例；narration_policy.test.js、narration_1_8_1.tap、tests_1_8_1.tap、gate_1_8_1.txt及正式release.json。setChatMessages接口按官方类型定义核对，未在服务器写回测试。",
-    "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。"
+    "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。",
+    "S20": "用户两张真实界面截图（未公开）、全屏内容区与独立页面修复_1.8.2.md、layout_red.tap（3项失败）、layout_1_8_2.tap（26项通过）、gate_1_8_2.txt（165/165）、完整脚本语法检查；Windows页面工具因URL置信度不足停止。"
   },
   "issues": [
     {
@@ -1394,6 +1387,54 @@
       "caveat": "发布基线条目数和用户现有书数量不是同一指标。额外条目未自动纳入本模块重置基线；本修复不替用户决定额外条目内容或开关。",
       "refs": [
         "S19"
+      ]
+    },
+    {
+      "id": "B079",
+      "area": "交互与状态栏",
+      "kind": "界面修正",
+      "status": "已修复并回归",
+      "title": "全屏仅半截且旧MINI的STANDBY重新出现",
+      "problem": "1.8.1对旧FULL和MINI的两个grid统一强制展开，旧窗口嵌套高度未被真正替换。",
+      "fix": "替换GlobalStatusBar整个渲染函数，只创建顶栏/伸缩主内容/底栏三行，100dvh视口，无旧MINI和400px内容树。",
+      "verification": "实际渲染函数的VNode树断言、CSS结构检查和编译语法检查通过；用户实际几何仍未验收。",
+      "caveat": "26项相关回归及165项成品检查通过；真实页面布局未验收。自动审批拒绝直接部署，服务器仍最近核验1.8.1。",
+      "refs": [
+        "S01",
+        "S06",
+        "S20"
+      ]
+    },
+    {
+      "id": "B080",
+      "area": "交互与状态栏",
+      "kind": "界面修正",
+      "status": "已修复并回归",
+      "title": "已选线仍无摘要和立绘独立页面入口",
+      "problem": "1.8.0仅增加当前页后方折叠栏；用户明确需要单独页面，旧入口方式不能满足。",
+      "fix": "顶部增加剧情摘要、角色立绘两个独立页面，当前页提供直达和返回；切页不改状态，保留全幕摘要。",
+      "verification": "真实入口点击、页面互斥、全幕数量及状态不变回归通过，人物缺图/回忆标签/刷新回归按新入口保留。",
+      "caveat": "26项相关回归及165项成品检查通过；真实页面布局未验收。自动审批拒绝直接部署，服务器仍最近核验1.8.1。",
+      "refs": [
+        "S01",
+        "S06",
+        "S20"
+      ]
+    },
+    {
+      "id": "B081",
+      "area": "交互与状态栏",
+      "kind": "界面修正",
+      "status": "已修复并回归",
+      "title": "正式剧情页残留正在加载提示和父容器透明度",
+      "problem": "占位函数直接写父容器样式，正式页只追加子树，导致加载文字未消失且正式内容继承低透明度。",
+      "fix": "加载提示改为单独子元素，正式挂载清空占位，不向父容器写加载专属样式。",
+      "verification": "原占位残留用例失败、修复后通过；不把加载文字存在误判为原文库尚未加载。",
+      "caveat": "26项相关回归及165项成品检查通过；真实页面布局未验收。自动审批拒绝直接部署，服务器仍最近核验1.8.1。",
+      "refs": [
+        "S01",
+        "S06",
+        "S20"
       ]
     }
   ]
