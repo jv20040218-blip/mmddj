@@ -6,6 +6,19 @@ The current valid worldbook is read and checked, never overwritten by this repai
 import pathlib, sys, json, re, struct, base64, zlib, hashlib, datetime, shutil
 import urllib.request, http.cookiejar
 
+
+def validate_existing_worldbook(world, baseline, expected_count):
+    """Require every baseline UID and valid fields; preserve valid user additions."""
+    entries, base_entries = world['entries'], baseline['entries']
+    assert isinstance(entries, dict) and isinstance(base_entries, dict)
+    assert len(base_entries) == expected_count, 'Release baseline count mismatch'
+    expected = {str(entry.get('uid', key)) for key, entry in base_entries.items()}
+    actual = {str(entry.get('uid', key)) for key, entry in entries.items()}
+    assert len(actual) == len(entries), 'Existing book contains duplicate UIDs'
+    assert expected.issubset(actual), 'Existing book is missing release baseline UIDs'
+    assert all(isinstance(entry.get('key'), list) and isinstance(entry.get('keysecondary'), list) for entry in entries.values()), 'Existing book has invalid keyword arrays'
+    return {'baseline_entries': len(expected), 'actual_entries': len(entries), 'preserved_extra_entries': len(actual - expected)}
+
 root = pathlib.Path(sys.argv[1]).resolve()
 user = root / 'data/default-user'
 plugin = user / 'extensions/mmddj'
@@ -59,8 +72,8 @@ book_name = meta['card']['worldbook_name']
 world_path = user / 'worlds' / (book_name + '.json')
 world_bytes = world_path.read_bytes()
 world = json.loads(world_bytes)
-assert len(world['entries']) == meta['card']['worldbook_entries']
-assert all(isinstance(e.get('key'), list) and isinstance(e.get('keysecondary'), list) for e in world['entries'].values())
+baseline = json.loads((plugin / meta['worldbook']['path']).read_text())
+book_compatibility = validate_existing_worldbook(world, baseline, meta['card']['worldbook_entries'])
 source = plugin / meta['card']['path']
 source_bytes = source.read_bytes()
 assert hashlib.sha256(source_bytes).hexdigest() == meta['card']['sha256']
@@ -120,6 +133,7 @@ receipt = {'repair': 'selected_avatar_deployment_target', 'selected_avatar': ava
            'old_worldbook': old_data.get('extensions', {}).get('world'), 'new_worldbook': book_name,
            'script_sha256_matches': True, 'chat_pointer_preserved': True, 'original_chat_file_present': chat_exists,
            'selected_avatar_preserved': True, 'valid_worldbook_unchanged': True,
+           'worldbook_compatibility': book_compatibility,
            'card_backup': str(backup / avatar), 'paid_model_calls': 0}
 (backup / 'deployment.json').write_text(json.dumps(receipt, ensure_ascii=False, indent=2))
 print(json.dumps(receipt, ensure_ascii=False))
