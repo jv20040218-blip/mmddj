@@ -39,12 +39,13 @@ const snapshotRows = [
   ['世界书内容版本', snapshot.worldbook_content_version || snapshot.runtime_version],
   ['剧情数据SHA-256', code(snapshot.data.sha256)],
   ['最后服务器保存选中头像', code(snapshot.selected_avatar)],
-  ['该头像补正后卡版本', snapshot.selected_card_version_after_repair],
+  ['服务器最后已核验卡版本（可早于发布版）', snapshot.selected_card_version_after_repair],
+  ['本版服务器部署状态', snapshot.server_deployment || '见对应部署回执；不能用仓库版本代替实际服务器版本'],
   ['当前发布相关回归', currentTests],
   ['继承的1.7.0全量基线', `${baseline.tests_passed}项测试；${baseline.stories}篇/${baseline.routes}线/${baseline.scene_visits}次场景访问；${baseline.physical_switch_assertions}项物理开关断言`],
   ['部署目标选择回归', `${snapshot.target_selection_tests}项；独立于上述运行时测试`],
   ['独立条目覆盖', `${snapshot.actors_with_entries}个可匹配身份，其中${snapshot.multistate_actors}个多状态人物`],
-  ['本次部署保留项', '实际尾号头像、聊天指针、收藏、原聊天文件及现有世界书字节；无付费模型调用'],
+  ['最近已核验部署保留项', '实际尾号头像、聊天指针、收藏、原聊天文件及现有世界书字节；无付费模型调用'],
   ['浏览器原失败动作与布局验收', '尚未取得；服务器落盘和DOM回归不能替代真实页面点击/几何证据'],
 ];
 const open = ledger.issues.filter(issue => ['未关闭', '待核验', '已缓解'].includes(issue.status));
