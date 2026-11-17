@@ -1,12 +1,12 @@
 {
-  "version": "1.8.1",
-  "tag": "v1.8.1",
+  "version": "1.8.2",
+  "tag": "v1.8.2",
   "published_date": "2026-11-17",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "358ff7b42e7b",
+  "build_id": "6db4e079e489",
   "data_version": "a057130a0b48",
-  "card_script_sha256": "4210c358baa54d9e47ef7ba21583640481d8adfa7d08652fda5349b438d45ddc",
+  "card_script_sha256": "ce8349e02e12bdfd33ae831f782b89d0257a3f8c6f2046fbb8e486a334109467",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59539310,
@@ -19,35 +19,30 @@
     "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
   },
   "card": {
-    "path": "cards/ark-story-v1.8.1.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.1/cards/ark-story-v1.8.1.png",
-    "bytes": 16085403,
-    "sha256": "8df2b41554dc00c9f1b60f4a23cc910fc6138dcaa8843a47e144ba72522abdf7",
+    "path": "cards/ark-story-v1.8.2.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.2/cards/ark-story-v1.8.2.png",
+    "bytes": 16078355,
+    "sha256": "64f10c64c49210f36f40bc011d0d385bbff183553e256fbfeb61790cd49d9455",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "删除旧MINI/STANDBY悬浮小窗，原入口直接开全屏控制台",
-    "动态视口自适应；关闭按钮/Escape关闭界面，不禁用应用或退出剧情",
-    "完整逐幕摘要与真实幕序一致，雪原19幕不再截成12幕",
-    "当前剧情摘要与出场立绘分为可独立展开的两栏，窄屏上下排列",
-    "剧情原文改为系统参考资料，结合真实玩家发言与聊天事实改写演出",
-    "移除照搬标点/段落及200字上限要求，保留完成条件与当前段边界",
-    "每段台词独立闭合，自动补齐已提供样例的中文闭引号，保留控制包及代码"
+    "替换旧FULL/MINI嵌套渲染为顶栏/伸缩内容/底栏三行，移除STANDBY和旧400px布局",
+    "顶部增加剧情摘要、角色立绘两个独立页面入口",
+    "正式挂载清除加载占位，不向父容器残留透明度或padding",
+    "沿用1.8.1叙事与引号修复，剧情库和世界书字节不变"
   ],
   "verification": {
-    "tests_passed": 242,
-    "tests_total": 242,
+    "ui_tests_passed": 26,
+    "ui_tests_total": 26,
     "gate_passed": 165,
     "gate_total": 165,
-    "ui_related_tests_passed": 34,
-    "stories": 119,
-    "routes": 849,
-    "summary_scene_count": 9885,
-    "summary_all_routes_order_matches": true,
-    "snowfield_summary_acts": 19,
-    "worldbook_bytes_identical": true,
+    "compiled_script_syntax": "passed",
     "data_bytes_identical": true,
+    "worldbook_bytes_identical": true,
+    "summary_all_routes_order_matches": true,
+    "inherited_full_tests_version": "1.8.1",
+    "inherited_full_tests_passed": 242,
     "inherited_runtime_verification": {
       "tests_passed": 229,
       "tests_total": 229,
@@ -67,13 +62,7 @@
       "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
     },
     "paid_model_calls": 0,
-    "browser_ui": "not_verified",
-    "narration_regressions": 8,
-    "quote_sample_added_closing_marks": 3,
-    "quote_rewrite_current_swipe_only": true,
-    "quote_rerender_idempotent": true,
-    "quote_write_failure_nonblocking": true,
-    "model_narration_quality": "not_verified"
+    "browser_ui": "not_verified;computer_use_stopped_url_confidence"
   },
   "worldbook_content_version": "1.7.0"
 }

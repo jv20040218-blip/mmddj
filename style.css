@@ -14,11 +14,13 @@
 }
 
 
-#ark-ui-root.ark-console-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;transform:none!important;z-index:9999!important;overflow:hidden!important;box-sizing:border-box}
-#ark-ui-root.ark-console-fullscreen>.ark-transition-shell{width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;border-radius:0!important;opacity:1!important;background:var(--color-surface,#17232b)!important;backdrop-filter:none!important}
-#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>.grid{flex:1;min-height:0;grid-template-rows:minmax(0,1fr)!important}
-#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>.grid>div{height:100%;min-height:0;opacity:1!important}
-#ark-ui-root.ark-console-fullscreen .ark-console-content{height:100%!important;max-height:none!important;min-height:0}
-#ark-ui-root.ark-console-fullscreen [title="拖拽缩放UI尺寸"]{display:none!important}
-#ark-ui-root.ark-console-fullscreen .ark-console-close{position:absolute;right:max(12px,env(safe-area-inset-right));top:max(8px,env(safe-area-inset-top));z-index:200;padding:8px 14px!important;min-height:36px;border:1px solid var(--color-outline-variant,#697d87)!important;background:var(--color-surface,#17232b)!important;color:var(--color-on-surface,#fff)!important;cursor:pointer}
-#ark-ui-root.ark-console-fullscreen>.ark-transition-shell>div:first-child{padding-right:110px}
+#ark-ui-root.ark-console-fullscreen{position:fixed!important;inset:0!important;width:100vw!important;height:100vh!important;height:100dvh!important;max-width:none!important;max-height:none!important;min-height:0;transform:none!important;z-index:9999!important;overflow:hidden!important;box-sizing:border-box;grid-template-rows:auto minmax(0,1fr) auto;gap:0;background:var(--color-surface,#17232b);color:var(--color-on-surface,#e8f0f4)}
+#ark-ui-root.ark-console-fullscreen>.ark-console-toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px max(12px,env(safe-area-inset-right)) 8px max(12px,env(safe-area-inset-left));min-height:48px;border-bottom:1px solid var(--color-outline-variant,#526873);box-sizing:border-box}
+#ark-ui-root.ark-console-fullscreen .ark-console-heading{margin:0;font:600 16px/1.4 var(--font-body,system-ui);min-width:0;overflow-wrap:anywhere}
+#ark-ui-root.ark-console-fullscreen>.ark-console-main{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain}
+#ark-ui-root.ark-console-fullscreen>.ark-console-main>div{flex:1 1 0%;min-height:0;min-width:0;width:100%;max-height:none}
+#ark-ui-root.ark-console-fullscreen>.ark-console-footer{min-height:0;border-top:1px solid var(--color-outline-variant,#526873);padding-bottom:env(safe-area-inset-bottom);background:var(--color-surface,#17232b)}
+#ark-ui-root.ark-console-fullscreen .ark-console-subnav{position:static;display:flex;justify-content:center;padding:4px 8px}
+#ark-ui-root.ark-console-fullscreen .ark-console-footer>nav{position:static!important;width:100%;max-width:none}
+#ark-ui-root.ark-console-fullscreen .ark-console-close{position:static!important;flex:0 0 auto;padding:7px 14px!important;min-height:40px;border:1px solid var(--color-outline-variant,#697d87)!important;background:var(--color-surface-container,#20343f)!important;color:inherit!important;cursor:pointer}
+#ark-ui-root.ark-console-fullscreen button:focus-visible{outline:2px solid #62cdd2;outline-offset:-2px}
