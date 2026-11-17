@@ -1,12 +1,12 @@
 {
-  "version": "1.8.2",
-  "tag": "v1.8.2",
+  "version": "1.8.3",
+  "tag": "v1.8.3",
   "published_date": "2026-11-17",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "6db4e079e489",
+  "build_id": "8c34757c5ac1",
   "data_version": "a057130a0b48",
-  "card_script_sha256": "ce8349e02e12bdfd33ae831f782b89d0257a3f8c6f2046fbb8e486a334109467",
+  "card_script_sha256": "0766615635bc4ac5cb15ca70ea24a6029a23206d54035461eb11e570dd8db30e",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 59539310,
@@ -19,22 +19,22 @@
     "sha256": "e9aa65317b4ea6d8822e9480e846aad1efbab490b881c919472da20105682da5"
   },
   "card": {
-    "path": "cards/ark-story-v1.8.2.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.2/cards/ark-story-v1.8.2.png",
-    "bytes": 16078355,
-    "sha256": "64f10c64c49210f36f40bc011d0d385bbff183553e256fbfeb61790cd49d9455",
+    "path": "cards/ark-story-v1.8.3.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.3/cards/ark-story-v1.8.3.png",
+    "bytes": 16084955,
+    "sha256": "72c18614e1f6328502b7299211c46ad5f911232cfc89f2f31edf4fd909d1e13f",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "替换旧FULL/MINI嵌套渲染为顶栏/伸缩内容/底栏三行，移除STANDBY和旧400px布局",
-    "顶部增加剧情摘要、角色立绘两个独立页面入口",
-    "正式挂载清除加载占位，不向父容器残留透明度或padding",
-    "沿用1.8.1叙事与引号修复，剧情库和世界书字节不变"
+    "全插件字体以历史回复快照标题为下限，默认14px/600",
+    "覆盖所有控制台页面、导航、按钮、说明、开局和附加状态栏，较大字号保留",
+    "切页和展开后自动统一，不改变酒馆其他聊天文字",
+    "雪原线19幕新摘要只交稿未录入，剧情库与世界书字节不变"
   ],
   "verification": {
-    "ui_tests_passed": 26,
-    "ui_tests_total": 26,
+    "ui_tests_passed": 29,
+    "ui_tests_total": 29,
     "gate_passed": 165,
     "gate_total": 165,
     "compiled_script_syntax": "passed",
@@ -62,7 +62,12 @@
       "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
     },
     "paid_model_calls": 0,
-    "browser_ui": "not_verified;computer_use_stopped_url_confidence"
+    "browser_ui": "not_verified",
+    "typography_regressions": 3,
+    "typography_default_size": 14,
+    "typography_default_weight": 600,
+    "larger_text_preserved": true,
+    "outside_chat_text_unchanged": true
   },
   "worldbook_content_version": "1.7.0"
 }
