@@ -1,9 +1,9 @@
 {
   "file": "story_runtime.json",
-  "bytes": 68054602,
-  "sha256": "8e27dea2a3f17c33f5b12b35ca921a855b8b7b0d4376666471d0e29fc83a0690",
-  "data_version": "9bddfbc10585",
-  "build_id": "3e15eb3da875",
+  "bytes": 67846077,
+  "sha256": "09caf7b52651d38a1c39f5593529f96b78c21132cd23a9003c26505e79f70b4a",
+  "data_version": "a271be482e3e",
+  "build_id": "d4746c8ed18b",
   "corpus_nodes": 4370,
   "corpus_texts": 1433,
   "guide_lines": 849,
