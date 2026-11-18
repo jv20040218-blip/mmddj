@@ -80,7 +80,7 @@ function patchConsole(source, expectedName) {
 
   // The legacy MINI/drag shell must never become the entry or closing state.
   replaceOnce('k=(0,n.ref)(!0),w=(0,n.ref)(c.MINI)', 'k=(0,n.ref)(!1),w=(0,n.ref)(c.FULL)');
-  replaceOnce("N=(0,n.ref)('worldbook'),S=(0,n.ref)('interceptor')", "N=(0,n.ref)('misc'),S=(0,n.ref)('interceptor')");
+  replaceOnce("N=(0,n.ref)('worldbook'),S=(0,n.ref)('interceptor')", "N=(0,n.ref)('misc'),S=(0,n.ref)('lore')");
   replaceOnce('C.value=!1,t.value=c.MINI,V()', 'C.value=!1,t.value=c.FULL,V()');
   replaceOnce('se=()=>{w.value===c.FULL?w.value=c.MINI:w.value===c.MINI&&(w.value=c.FULL),setTimeout(()=>H(),350)}',
     'se=()=>{k.value=!1,w.value=c.FULL}');
@@ -125,6 +125,25 @@ function patchConsole(source, expectedName) {
     "async resetToBaseline(e){console.info('[ARK_EntryService] Resetting Worldbook to Baseline...');try{if(typeof globalThis.__ARK_STORY_RESET_WORLD__==='function'){await globalThis.__ARK_STORY_RESET_WORLD__(e);document.dispatchEvent(new CustomEvent('ark:worldbook-data-changed',{detail:{worldbookName:e}}));toastr.success('全部世界书条目已重置，剧情进度已保留');return;}");
   replaceOnce("catch(e){console.error('[ARK_EntryService] Reset failed:',e),toastr.error('世界书重置失败: '+e.message)}",
     "catch(e){throw console.error('[ARK_EntryService] Reset failed:',e),toastr.error('世界书重置失败: '+e.message),e}");
+
+  function replaceSection(start, end, replacement) {
+    const from = result.indexOf(start), to = result.indexOf(end, from + start.length);
+    if (from < 0 || to < from || result.split(start).length !== 2 || result.split(end).length !== 2) throw Error('Console section anchors changed: ' + start);
+    replaceOnce(result.slice(from, to), replacement);
+  }
+  replaceSection("(0,n.createCommentVNode)(' 界面布局 (UI_LAYOUT) ')", "(0,n.createCommentVNode)(' 视觉表现 (APPEARANCE) ')",
+    "(0,n.createElementVNode)('p',{class:'ark-console-layout-note'},'自适应全屏；正文黑体 16px，常规字重；标题按层级放大。'),");
+  replaceSection('const d=(0,n.ref)(l.value?.uiWidth??400)', 'y=(0,n.computed)({get:()=>l.value?.theme', 'const ');
+  replaceSection("(0,n.createCommentVNode)(' 拦截器开关 ')", "(0,n.createCommentVNode)(' 常驻条目显示 ')",
+    "(0,n.createElementVNode)('p',null,'发送与回车使用酒馆原生行为；需要检查条目时请使用世界书中的手动检测。'),");
+  replaceSection('v=(0,n.computed)({get:()=>l.value?.isInterceptorEnabled', 'B=(0,n.computed)({get:()=>l.value?.showConstantEntries', '');
+  replaceSection("(0,n.createCommentVNode)(' PRE-CHECK ENABLED Toggle ')", "(0,n.createCommentVNode)(' MANUAL SCAN Button ')",
+    "(0,n.createElementVNode)('span',null,'原生发送 · 不拦截'),");
+  replaceOnce(' 拦截预警控制中心 ', ' 世界书手动检测 ');
+  replaceOnce(' 监测所有世界书数据注入请求，以防止危险的内容污染与冗余的数据注入，优化上下文与LLM表现。 ', ' 手动查看当前可能触发的世界书条目，不拦截发送，不调用模型。 ');
+  replaceOnce(' 开启后，无论是在被动发送拦截还是主动检测中，都将展示被激活的常驻条目（仅供检查调试）。 ', ' 手动检测时展示被激活的常驻条目，仅供检查调试。 ');
+  replaceOnce(' 预检拦截时，同时估算即将发送的 Token。 ', ' 手动检测时估算上下文 Token。 ');
+  replaceOnce('如果遇到拦截严重卡顿，请关闭此项。', '估算不调用模型；检测卡顿时可关闭此项。');
   return result;
 }
 

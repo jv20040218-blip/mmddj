@@ -47,7 +47,8 @@ const snapshotRows = [
   ['部署目标选择回归', `${snapshot.target_selection_tests}项；独立于上述运行时测试`],
   ['独立条目覆盖', `${snapshot.actors_with_entries}个可匹配身份，其中${snapshot.multistate_actors}个多状态人物`],
   ['最近已核验部署保留项', '实际尾号头像、聊天指针、收藏、原聊天文件及现有世界书字节；无付费模型调用'],
-  ['浏览器原失败动作与布局验收', '尚未取得；服务器落盘和DOM回归不能替代真实页面点击/几何证据'],
+  ['本地浏览器验收', verification.browser_cases],
+  ['浏览器验证边界', verification.browser_limitations],
 ];
 const open = ledger.issues.filter(issue => ['未关闭', '待核验', '已缓解'].includes(issue.status));
 const areas = [...new Set(ledger.issues.map(issue => issue.area))];

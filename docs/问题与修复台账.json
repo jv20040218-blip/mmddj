@@ -1,22 +1,22 @@
 {
   "schema_version": 1,
-  "guidance_version": "2.5",
+  "guidance_version": "2.6",
   "as_of_date": "2026-11-18",
-  "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；非本轮在线探测，不声称未知缺陷为零。",
+  "scope": "本对话需求、问题报告与本地可查发布/源码/验收资料；包含隔离本地浏览器测试，不是用户酒馆在线探测，不声称未知缺陷为零。",
   "snapshot": {
-    "runtime_version": "1.8.4",
-    "runtime_commit": "ab346a20f91196f037eb9071f1814df477ea89da",
-    "build_id": "bcdb2802e5b3",
+    "runtime_version": "1.8.5",
+    "runtime_commit": "8314afb08571ecfa91d9300aaa791ab4cee29cf8",
+    "build_id": "78ef63cb6a9c",
     "data_version": "c1e31c2c8585",
     "repository": "https://github.com/jv20040218-blip/mmddj",
     "branch": "main",
     "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049,
     "card": {
-      "path": "cards/ark-story-v1.8.4.png",
-      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.4/cards/ark-story-v1.8.4.png",
-      "bytes": 16087279,
-      "sha256": "f1efc9cefc44f5798981179627bd2e3f12b747c06bdae3fc4b35bc356dd77056",
+      "path": "cards/ark-story-v1.8.5.png",
+      "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.5/cards/ark-story-v1.8.5.png",
+      "bytes": 16077131,
+      "sha256": "4841cac3390372bf1694a947c84673f3f76f3e308376026705c56d3283dda052",
       "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
       "worldbook_entries": 2049
     },
@@ -25,24 +25,25 @@
       "bytes": 67341540,
       "sha256": "7c61411e686998c231f2a85bcf54273c653e10510723c2d3820fc8b4da970fa0"
     },
-    "script_sha256": "7b6427517f68e5f66c797274856d42762974dd53e6c344dff2662854d6979e46",
+    "script_sha256": "dae5fa492bbce42d3c02beb217c6fedb51813be34afc4f25cffe5496181a5614",
     "selected_avatar": "明日方舟·剧情完整版_插件版1.png",
     "selected_card_version_after_repair": "1.8.3",
-    "last_confirmed_guidance_commit": "4174a45b896b52263f3e43a70b6cae5f704560e8",
+    "last_confirmed_guidance_commit": "8fd77473b202d79d288ede1df9f7e2b90a9503bf",
     "verification": {
-      "tests_passed": 259,
-      "tests_total": 259,
+      "tests_passed": 265,
+      "tests_total": 265,
       "tests_failed": 0,
       "tests_skipped": 0,
       "gate_passed": 165,
       "gate_total": 165,
       "compiled_script_syntax": "passed",
-      "data_bytes_identical": false,
-      "worldbook_bytes_identical": false,
+      "comparison_version": "1.8.4",
+      "data_bytes_identical": true,
+      "worldbook_bytes_identical": true,
       "corpus_identical": true,
       "routes_identical": true,
       "worldbook_binding_identical": true,
-      "worldbook_changed_uids": [1013],
+      "worldbook_changed_uids": [],
       "summary_all_routes_order_matches": true,
       "summary_original_drafts_preserved": true,
       "all_routes_prompt_injection_unchanged": true,
@@ -68,10 +69,12 @@
         "physical_tests": "read_write_mock;server_deployment_receipt_records_actual_api_test"
       },
       "paid_model_calls": 0,
-      "browser_ui": "isolated local Chrome; real UI and built data with test host; not user SillyTavern",
-      "browser_cases": "雪原19幕首尾、切幕和末幕退出；摘要/立绘分离；220幕长线滚动；备注与战斗标记；390px无横向溢出；14px/600下限；键盘返回及可见焦点；零页面错误",
-      "typography_default_size": 14,
-      "typography_default_weight": 600,
+      "browser_ui": "isolated local Chrome; production StoryTab and compiled card console with in-memory test host; not user SillyTavern",
+      "browser_cases": "雪原19幕首尾、切幕和末幕退出；摘要/立绘分离；220幕长线滚动；备注与战斗标记；历史只读并返回实时幕且进度不变；390px摘要无横向溢出；完整控制台主页/世界书/设置/剧情在1365×900与390×844下正文16px/400、标题分层、触控至少44px、顶中底不重叠；明暗主题、关闭/Escape重开、手动检测入口及历史保留；零页面错误",
+      "browser_limitations": "真实UI及成品数据在隔离本地Chrome测试宿主运行；JS依赖及图标字体本地提供，未验证外部CDN可达性；世界书仅一条合成fixture；用户酒馆原失败动作、全部图片/官方事实及多窗口并发未验证；未部署服务器、未调用模型。",
+      "typography_default_size": 16,
+      "typography_default_weight": 400,
+      "typography_family": "SimHei, 黑体, Microsoft YaHei, sans-serif",
       "outside_chat_text_unchanged": true
     },
     "target_selection_tests": 6,
@@ -82,7 +85,7 @@
     "actor_transition_candidates_unverified": 31,
     "names_without_independent_entry": 2376,
     "worldbook_content_version": "1.7.0",
-    "server_deployment": "1.8.4本轮未部署服务器，未访问用户聊天或调用模型；全部新摘要已进入发布成品。最后已核验服务器卡仍为2026-11-17授权部署的1.8.3，当时实际选中卡、脚本SHA和HTTP文件已核对，聊天及2089条现有世界书字节保留。本轮隔离本地Chrome验收不能替代远程酒馆实测。",
+    "server_deployment": "1.8.5本轮未部署服务器，未访问用户聊天或调用模型；全部摘要、原文和世界书保留，相对1.8.4数据与原生书逐字节不变。最后已核验服务器卡仍为2026-11-17授权部署的1.8.3，当时实际选中卡、脚本SHA和HTTP文件已核对，聊天及2089条现有世界书字节保留。本轮隔离本地Chrome验收不能替代远程酒馆实测。",
     "actual_worldbook_entries": 2089,
     "preserved_extra_worldbook_entries": 40
   },
@@ -247,6 +250,20 @@
       "card_sha256": "f1efc9cefc44f5798981179627bd2e3f12b747c06bdae3fc4b35bc356dd77056",
       "card_bytes": 16087279,
       "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.4/cards/ark-story-v1.8.4.png"
+    },
+    {
+      "version": "1.8.5",
+      "tag": "v1.8.5",
+      "build_id": "78ef63cb6a9c",
+      "data_version": "c1e31c2c8585",
+      "worldbook": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+      "tests": 265,
+      "gate": 165,
+      "verification_label": "265项测试全部通过且零跳过/165项成品检查/最终脚本语法检查；隔离本地Chrome完整控制台及剧情页桌面/窄屏交互验收，数据和书相对1.8.4字节不变，无远程部署或模型调用",
+      "commit": "8314afb08571ecfa91d9300aaa791ab4cee29cf8",
+      "card_sha256": "4841cac3390372bf1694a947c84673f3f76f3e308376026705c56d3283dda052",
+      "card_bytes": 16077131,
+      "card_url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.8.5/cards/ark-story-v1.8.5.png"
     }
   ],
   "evidence_sources": {
@@ -271,7 +288,8 @@
     "S19": "服务器更新记录_1.8.1.md、现有世界书兼容核验.json及服务器部署核验.json；实际2089条书含40条额外内容，修复安装工具后逐字节保留；5项Python回归通过。",
     "S20": "用户两张真实界面截图（未公开）、全屏内容区与独立页面修复_1.8.2.md、layout_red.tap（3项失败）、layout_1_8_2.tap（26项通过）、gate_1_8_2.txt（165/165）、完整脚本语法检查；Windows页面工具因URL置信度不足停止。 用户随后明确授权部署1.8.2并核验，服务器部署核验.json确认卡版本、脚本哈希、HTTP文件及2089条书字节保留；无模型调用。",
     "S21": "全插件字体统一_1.8.3.md、src/ui/typography.js、typography.test.js、typography_1_8_3.tap（29项）、gate_1_8_3.txt（165项）和脚本语法检查；参考标题源码14px/600，真实页面效果未验收。 用户随后明确授权1.8.3部署并核验，服务器部署核验.json确认实际选中卡、脚本SHA、HTTP文件、原聊天和2089条书字节保留；没有字体几何或模型实测。",
-    "S22": "1.8.4 release.json、work/plugin_hierarchy/工程/work/summary_1_8_4.tap（259/259，零跳过）、tests/player_summaries.test.js、tests/story_reference_panels.test.js及tests/summary_browser.cjs；work/delivery_1_8_4/验收报告.json（165/165）。桌面与窄屏截图位于工程work/summary_desktop.png及summary_mobile.png；本地Chrome测试宿主、成品数据，不是用户远程酒馆。"
+    "S22": "1.8.4 release.json、work/plugin_hierarchy/工程/work/summary_1_8_4.tap（259/259，零跳过）、tests/player_summaries.test.js、tests/story_reference_panels.test.js及tests/summary_browser.cjs；work/delivery_1_8_4/验收报告.json（165/165）。当时本地Chrome测试宿主及成品数据有桌面/窄屏截图，不是用户远程酒馆；工程work同名截图为滚动验收输出，当前对应S23的1.8.5，不能拿当前图片冒充旧版基线。",
+    "S23": "1.8.5 release.json、work/plugin_hierarchy/工程/work/optimization_1_8_5.tap（265/265、零跳过）、browser_1_8_5.log、tests/summary_browser.cjs、adapter/ui_dom/typography/plugin/bundle回归及对应src/scripts；work/delivery_1_8_5/验收报告.json（165/165）。构建78ef63cb6a9c最终卡脚本语法、PNG内嵌脚本相等及卡SHA独立核对；数据和原生书相对1.8.4用Buffer.equals确认字节不变。完整控制台各页1365/390截图、summary_desktop/mobile及console_settings_dark_390位于工程work；隔离本地Chrome，依赖本地提供、世界书为合成fixture，无用户酒馆访问/模型调用。"
   },
   "issues": [
     {
@@ -619,12 +637,13 @@
       "kind": "异步缺陷",
       "status": "已修复并回归",
       "title": "等待生成卡死、迟到回复写进新场景",
-      "problem": "busy锁、超时及聊天/场景变化未充分协调。",
-      "fix": "超时释放、手动取消、epoch守卫；迟到结果不提交，不自动无限重试。",
-      "verification": "A14、H03/H04及物理同步串行回归。",
-      "caveat": "异步测试要等待生成真实开始信号，不用固定睡眠或删除断言。",
+      "problem": "busy锁、超时及聊天/场景变化未充分协调。1.8.5另复现开场重试在await后取token导致旧操作获得新令牌、reload未清busy及StoryTab等待/迟到错误跨聊天残留。",
+      "fix": "保留超时释放、手动取消和epoch守卫；重试在等待世界书同步前捕获token，reload立即清busy；StoryTab响应reload清本地等待与选择，旧操作错误按operationId隔离。不自动无限重试。",
+      "verification": "既有A14、H03/H04及物理同步串行回归；新增A28/A29/D14先失败后通过，1.8.5全量265项通过。",
+      "caveat": "异步测试要等待生成真实开始信号，不用固定睡眠或删除断言；这些结果不代表所有宿主并发路径均已穷尽。",
       "refs": [
-        "S06"
+        "S06",
+        "S23"
       ]
     },
     {
@@ -708,12 +727,13 @@
       "kind": "状态一致性",
       "status": "已修复并回归",
       "title": "旧楼层/历史状态栏操作了当前进度",
-      "problem": "旧快照、过期entryPlan与当前路线不一致，历史按钮可能重复推进。",
-      "fix": "revision校验、历史只读、消息与swipe版本索引，明确回到当前。",
-      "verification": "A18/A21、E01及历史视图回归。",
-      "caveat": "相同消息/渲染回调幂等；新文本从原before状态重新计算。",
+      "problem": "旧快照、过期entryPlan与当前路线不一致，历史按钮可能重复推进。1.8.5复现历史正文未完整呈现、离开历史仍使用旧快照及历史视图混入实时操作。",
+      "fix": "保留revision、消息与swipe索引；历史页完整渲染只读正文/侧栏，不提供实时推进或重开，离开历史清快照选择，返回当前读取实时状态。",
+      "verification": "既有A18/A21/E01；D13先失败后通过；1.8.5本地Chrome在首幕快照与第19幕实时状态之间切换，历史无推进/重开按钮、返回显示第19幕、状态JSON不变。",
+      "caveat": "相同消息/渲染回调幂等；新文本从原before状态重新计算。浏览器记录来自隔离宿主，不是用户聊天。",
       "refs": [
-        "S06"
+        "S06",
+        "S23"
       ]
     },
     {
@@ -1469,15 +1489,16 @@
       "area": "交互与状态栏",
       "kind": "界面修正",
       "status": "已修复并回归",
-      "title": "正式剧情页残留正在加载提示和父容器透明度",
-      "problem": "占位函数直接写父容器样式，正式页只追加子树，导致加载文字未消失且正式内容继承低透明度。",
-      "fix": "加载提示改为单独子元素，正式挂载清空占位，不向父容器写加载专属样式。",
-      "verification": "原占位残留用例失败、修复后通过；不把加载文字存在误判为原文库尚未加载。",
-      "caveat": "26项相关回归及165项成品检查通过，用户明确授权后已部署服务器1.8.2并核对实际选中卡及HTTP文件，原书与聊天保留；真实页面几何仍未验收。",
+      "title": "加载占位残留、失败不更新及迟到挂载",
+      "problem": "旧占位直接写父容器样式造成正式内容低透明度。1.8.5另复现已挂占位加载失败不显示错误、加载中取消仍被迟到重挂、旧占位句柄无法卸载正式页面。",
+      "fix": "占位独立子元素；pending Map统一成功/失败重挂，取消先移除登记，句柄代理正式refresh/unmount，清空占位且不污染父样式。",
+      "verification": "原占位残留回归保留；P11/P12先失败后通过，覆盖失败、句柄/全局取消、迟到成功及旧句柄卸载；1.8.5全量265项与成品165项通过。",
+      "caveat": "1.8.2曾经授权部署；1.8.5仅本地成品与隔离Chrome验证，没有更新用户服务器，也不证明静态CDN可达。",
       "refs": [
         "S01",
         "S06",
-        "S20"
+        "S20",
+        "S23"
       ]
     },
     {
@@ -1485,17 +1506,42 @@
       "area": "交互与状态栏",
       "kind": "字体体验",
       "status": "已修复并回归",
-      "title": "全插件字号偏小且字重不统一",
-      "problem": "用户以历史回复快照为基准，要求整个插件的小字提升且全部加粗；原说明、标签和状态栏存在10—13px等更小文字。",
-      "fix": "增加统一字体下限处理，默认14px/600，覆盖控制台各页、导航、按钮、说明、开局和状态栏；保留较大/更粗文字及字体家族，切页自动处理，不影响其他聊天。",
-      "verification": "29项相关回归及165项成品检查通过；对小字、更大标题、所有根容器、外部聊天、动态内容及停止监听有针对性回归，三个构建器模块表已同步。",
-      "caveat": "用户远程酒馆字体效果仍未页面实测；1.8.4在隔离本地Chrome的摘要页面实测390px无横向溢出及14px/600下限，不代表所有控制台页面均完成视觉验收。全部新摘要已录入1.8.4成品；最后已核验服务器仍为1.8.3，本轮未部署。",
+      "title": "全插件字号、字重及字体不符合当前要求",
+      "problem": "1.8.3按当时要求提升为14px/600；用户现要求黑体小四不加粗。完整控制台旧高优先级样式还把手动检测字号压到12px、关闭按钮高度压到44px以下。",
+      "fix": "1.8.5统一SimHei优先、正文16px/400、标题24/20/18px；高优先级静态作用域CSS替代全页测量/观察器，保留图标字体及外部聊天；至少44px触控，折叠说明和切幕/摘要窄屏布局优化。",
+      "verification": "TY01/TY02验证无扫描/监听、单样式幂等及卸载；完整控制台四个主页面1365×900/390×844、明暗主题、摘要和历史在隔离Chrome实测；可见正文最小16px、字重400、外部文字不变、无横向溢出，旧覆盖冲突失败后修正。",
+      "caveat": "字体家族取computed style且本机存在SimHei，未作逐字形CDP鉴定；图标和JS依赖本地提供，不证明用户外部CDN可达。用户酒馆尚未实测，本轮未部署。",
       "refs": [
         "S01",
         "S06",
         "S21",
-        "S22"
+        "S22",
+        "S23"
       ]
+    },
+    {
+      "id": "B083",
+      "area": "交互与状态栏",
+      "kind": "废弃入口",
+      "status": "已修复并回归",
+      "title": "全屏和原生发送启用后仍展示无效设置",
+      "problem": "旧宽高/基准字号滑块已被自适应全屏和静态字体覆盖，发送/回车拦截开关对应的拦截实现已移除，控件仍可见并误导用户。",
+      "fix": "移除这些控件及对应局部状态，改为固定排版和原生发送说明；保留主题、手动检测、Token估算、条目管理、历史和已保存配置。世界书默认进入条目页。",
+      "verification": "完整控制台浏览器否定断言在旧实现失败，1.8.5通过；明暗切换、手动检测入口及历史仍可操作，设置中不再出现无效滑块或拦截开关。",
+      "caveat": "不删用户世界书、聊天或历史资料，不把手动检测称为模型调用或自动发送拦截。",
+      "refs": ["S06", "S23"]
+    },
+    {
+      "id": "B084",
+      "area": "工程与交付",
+      "kind": "维护缺陷",
+      "status": "已修复并回归",
+      "title": "重复构建模块表与失效npm入口",
+      "problem": "三个构建器独立维护模块与加载器，历史表漏corpus/guide；package入口引用不存在脚本，pretest还会隐式重编数据。旧私有诊断渲染与被覆盖布局CSS已无有效调用。",
+      "fix": "scripts/bundle_modules.cjs统一25个模块及加载器，三个构建器共用；正式npm构建/验证入口改为现有cjs，test只运行测试。删除无调用私有渲染和被替代CSS，保留公开诊断及历史构建器。",
+      "verification": "B09通过公开模块入口加载全部模块；npm test完整265项通过且未触发数据重编，正式构建及165项成品检查通过，最终PNG内脚本与被测成品一致。",
+      "caveat": "旧build_card/scripts_src输入链未重跑，不能把历史bundle测试当成重新验证全部旧构建流程；生产卡另由plugin测试、成品闸门和完整控制台浏览器覆盖。",
+      "refs": ["S06", "S23"]
     }
   ]
 }
