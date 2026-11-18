@@ -44,8 +44,9 @@ const stableBodies = JSON.stringify(originals.map(e => [e.uid, e.content]));
 (async () => {
   for (const scenario of tableExports.g) {
     const native = structuredClone(book);
-    const service = vm.runInNewContext('({' + method + '})', {
+    const context = {
       a: { g: tableExports.g }, n: normalize,
+      getWorldbook: async () => Object.values(native.entries).map(mapper),
       toastr: { info() {}, success() { successes++; }, error() {} }, console: { info() {}, error() {} },
       document: { dispatchEvent() {} }, CustomEvent: function(type, options) { this.type = type; this.detail = options?.detail; },
       updateWorldbookWith: async (name, updater) => {
@@ -54,7 +55,10 @@ const stableBodies = JSON.stringify(originals.map(e => [e.uid, e.content]));
         for (const row of changed) native.entries[row.uid].disable = !row.enabled;
         updates++;
       }
-    });
+    };
+    const switchStart = script.indexOf('const __ARK_CONSOLE_SCENARIOS__=');
+    if (switchStart >= 0) context.__ARK_CONSOLE_SCENARIOS__ = vm.runInNewContext(script.slice(switchStart, script.indexOf('const __ARK_CONSOLE_BOOK__=', switchStart)) + '\n__ARK_CONSOLE_SCENARIOS__;', context);
+    const service = vm.runInNewContext('({' + method + '})', context);
     service.getWorldbookStatus = async () => 'original';
     await service.applyScenario(book.name, scenario.swipeId);
     for (const e of Object.values(native.entries)) {

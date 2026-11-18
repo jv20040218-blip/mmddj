@@ -65,13 +65,71 @@ function createConsoleBook(api, expectedName) {
   };
 }
 
-function patchConsole(source, expectedName) {
+function createScenarioSwitch(api, groups) {
+  return {
+    async apply(book, scenario, normalize) {
+      const story = api.story();
+      if (story?.adapter.getState().active_route) {
+        story.adapter.cancelPending();
+        const exited = await story.adapter.exitRoute(null);
+        if (!exited.ok) throw Error('退出原剧情失败：' + (exited.detail || exited.error));
+        const restored = await story.adapter.flushWorldbook();
+        if (restored && !restored.ok) throw Error('恢复开局世界书失败：' + restored.error);
+      }
+      let changes = [], desired;
+      await api.write(book, entries => {
+        const signature = text => {
+          const value = normalize(text).replace(/^\[联动角色\]/, '[角色]');
+          const bracket = value.indexOf('('), name = (bracket < 0 ? value : value.slice(0, bracket)).trim();
+          const state = bracket >= 0 && name.startsWith('[角色]') ? value.slice(bracket + 1).split(/[,)]/)[0].trim() : '';
+          return name + (state && !state.startsWith('与') ? '(' + state : '');
+        };
+        const resolve = ref => {
+          let found = entries.filter(e => normalize(e.name) === normalize(ref));
+          if (!found.length) found = entries.filter(e => signature(e.name) === signature(ref));
+          if (!found.length) found = entries.filter(e => (e.strategy?.keys || []).some(key => typeof key === 'string' && normalize(key) === normalize(ref)));
+          if (found.length !== 1) throw Error('开局条目' + (found.length ? '匹配不唯一：' : '未找到：') + ref);
+          return found[0].uid;
+        };
+        const enable = new Set(scenario.linkedWorldInfo.map(resolve));
+        const disable = new Set((scenario.disabledWorldInfo || []).map(resolve));
+        for (const uid of disable) enable.delete(uid);
+        for (const group of groups) if (group.some(uid => enable.has(uid))) {
+          for (const uid of group) if (!enable.has(uid)) disable.add(uid);
+        }
+        desired = new Map([...disable].map(uid => [uid, false]));
+        for (const uid of enable) desired.set(uid, true);
+        const present = new Set(entries.map(e => e.uid));
+        for (const uid of desired.keys()) if (!present.has(uid)) throw Error('开局形态条目缺失 UID ' + uid);
+        changes = [];
+        return entries.map(entry => {
+          const enabled = desired.has(entry.uid) ? desired.get(entry.uid) : !!entry.enabled;
+          if (enabled !== !!entry.enabled) changes.push({ uid: entry.uid, comment: entry.name, from: !!entry.enabled, to: enabled });
+          return { ...entry, enabled };
+        });
+      });
+      if (!desired) throw Error('开局世界书更新未执行');
+      const actual = new Map((await api.read(book)).map(e => [e.uid, !!e.enabled]));
+      for (const [uid, enabled] of desired) if (actual.get(uid) !== enabled) throw Error('开局世界书回读不一致 UID ' + uid);
+      return changes;
+    }
+  };
+}
+
+function patchConsole(source, expectedName, groups) {
   let result = source;
   function replaceOnce(from, to) {
     if (result.split(from).length !== 2) throw new Error('Console patch anchor is not unique: ' + from.slice(0, 100));
     result = result.replace(from, to);
   }
+  const scenarioStart = result.indexOf('async applyScenario(e,t,o=!1){');
+  const scenarioEnd = result.indexOf('},607(e,t,o)', scenarioStart);
+  if (scenarioStart < 0 || scenarioEnd < scenarioStart) throw Error('Opening service anchors changed');
+  const scenarioMethod = result.slice(scenarioStart, scenarioEnd);
+  replaceOnce(scenarioMethod, scenarioMethod.replace(/let t=\[\];if\(await updateWorldbookWith[\s\S]*?(?=document\.dispatchEvent)/,
+    'const t=await __ARK_CONSOLE_SCENARIOS__.apply(e,r,n);if('));
   replaceOnce('var t={261(',
+    'const __ARK_CONSOLE_SCENARIOS__=(' + createScenarioSwitch.toString() + ')({read:name=>getWorldbook(name),write:(name,update)=>updateWorldbookWith(name,update),story:()=>typeof globalThis.__ARK_STORY_GET__===\'function\'?globalThis.__ARK_STORY_GET__():null},' + JSON.stringify(groups) + ');' +
     'const __ARK_CONSOLE_BOOK__=(' + createConsoleBook.toString() + ')({' +
     "books:()=>getCharWorldbookNames('current')," +
     "characterName:()=>typeof getCurrentCharacterName==='function'?getCurrentCharacterName():''," +

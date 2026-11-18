@@ -4,7 +4,7 @@ const BASE = new URL('.', import.meta.url);
 const DATA_URL = new URL('data/story_runtime.json', BASE).href;
 const MANIFEST_URL = new URL('data/data_manifest.json', BASE).href;
 
-window.__ARK_STORY_EXTENSION__ = { base: BASE.href, dataUrl: DATA_URL, manifestUrl: MANIFEST_URL, version: '1.8.5' };
+window.__ARK_STORY_EXTENSION__ = { base: BASE.href, dataUrl: DATA_URL, manifestUrl: MANIFEST_URL, version: '1.8.6' };
 
 async function selfCheck() {
     try {
