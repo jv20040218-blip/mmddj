@@ -1,12 +1,12 @@
 {
-  "version": "1.9.1",
-  "tag": "v1.9.1",
-  "published_date": "2026-11-18",
+  "version": "1.9.2",
+  "tag": "v1.9.2",
+  "published_date": "2026-11-19",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "d4746c8ed18b",
+  "build_id": "c3c4fa2a9125",
   "data_version": "a271be482e3e",
-  "card_script_sha256": "09e0788d01d56b071152b4665c9c1f39d44eb78a7618303def48c8e6c13c602b",
+  "card_script_sha256": "37d156c066bac26d16b3454914202ec61b9518a718f38cdba024f3484072ba86",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 67846077,
@@ -19,35 +19,20 @@
     "sha256": "ae3e4480888810a93ee042e7643b7239ff46e3bbe24f6effabf302c58d6b7c38"
   },
   "card": {
-    "path": "cards/ark-story-v1.9.1.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.1/cards/ark-story-v1.9.1.png",
-    "bytes": 16086015,
-    "sha256": "24b1b53f6d760696a03838ab97224e32137491c162df06a7857df80d64d768d7",
+    "path": "cards/ark-story-v1.9.2.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.2/cards/ark-story-v1.9.2.png",
+    "bytes": 16089859,
+    "sha256": "6c888963a9f536a5c2ae6fc3a9cde3037c04f6f82a25ae624854a4ed861665ff",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
-    "统一入幕、当前状态和旧回复的立绘选择规则",
-    "雪原斗士、黑蛇、新整合运动分形态选图，同形态图源失败后回退",
-    "移除阿勒黛童年资源的成年误用并去重资源标识"
+    "按资源内容标识缓存压缩剧情库",
+    "减少长存档回复的历史快照复制和页面刷新"
   ],
   "verification": {
-    "baseline": "1.8.7",
-    "portrait_assets_before": 2780,
-    "portrait_assets": 2437,
-    "removed_missing_urls": 357,
-    "recovered_npc_portraits": 17,
-    "tests_passed": 5,
-    "tests_total": 5,
-    "routes": 849,
-    "scene_visits": 9885,
-    "portrait_selections": 65691,
-    "checked_image_groups": 484,
-    "invalid_image_groups": 0,
-    "snowfield_stages": 19,
-    "isolated_browser_decoded_same_form_fallback": true,
-    "unavailable_verified_forms_for_cataloged_characters": 119,
-    "paid_model_calls": 0
+    "baseline": "1.9.1",
+    "packed_bytes": 16753082
   },
   "worldbook_content_version": "1.7.0"
 }

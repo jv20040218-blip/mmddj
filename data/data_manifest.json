@@ -3,9 +3,14 @@
   "bytes": 67846077,
   "sha256": "09caf7b52651d38a1c39f5593529f96b78c21132cd23a9003c26505e79f70b4a",
   "data_version": "a271be482e3e",
-  "build_id": "d4746c8ed18b",
+  "build_id": "c3c4fa2a9125",
   "corpus_nodes": 4370,
   "corpus_texts": 1433,
   "guide_lines": 849,
-  "generated_from": "work/runtime_v2.json"
+  "generated_from": "work/runtime_v2.json",
+  "packed": {
+    "path": "data/story_runtime.09caf7b52651d38a.json.gz",
+    "bytes": 16753082,
+    "sha256": "cec410840c87bde4d2ab3a1fddbdad3bdbd254dfc89fca815cf7bb64864819d0"
+  }
 }
