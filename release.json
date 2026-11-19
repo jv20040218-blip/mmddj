@@ -1,12 +1,12 @@
 {
-  "version": "1.9.2",
-  "tag": "v1.9.2",
+  "version": "1.9.3",
+  "tag": "v1.9.3",
   "published_date": "2026-11-19",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "c3c4fa2a9125",
+  "build_id": "83fdbc4966c2",
   "data_version": "a271be482e3e",
-  "card_script_sha256": "37d156c066bac26d16b3454914202ec61b9518a718f38cdba024f3484072ba86",
+  "card_script_sha256": "c96339a03df87bfaa5d1d8652461e2f9fac769cc8db4b8e4a0febb6e45d5f9d4",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 67846077,
@@ -19,16 +19,18 @@
     "sha256": "ae3e4480888810a93ee042e7643b7239ff46e3bbe24f6effabf302c58d6b7c38"
   },
   "card": {
-    "path": "cards/ark-story-v1.9.2.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.2/cards/ark-story-v1.9.2.png",
-    "bytes": 16089859,
-    "sha256": "6c888963a9f536a5c2ae6fc3a9cde3037c04f6f82a25ae624854a4ed861665ff",
+    "path": "cards/ark-story-v1.9.3.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.3/cards/ark-story-v1.9.3.png",
+    "bytes": 16091891,
+    "sha256": "6dc92efc533f7d812ad38f97ecb973a87537f13512f12c43e399c94b03caa72e",
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
     "worldbook_entries": 2049
   },
   "changes": [
     "按资源内容标识缓存压缩剧情库",
-    "减少长存档回复的历史快照复制和页面刷新"
+    "减少长存档回复的历史快照复制和页面刷新",
+    "预演复用正在进行的世界书同步，实际发送仍校验",
+    "精简重复注入信息，条目无变化时省略重复读写"
   ],
   "verification": {
     "baseline": "1.9.1",

@@ -4,7 +4,7 @@ const BASE = new URL('.', import.meta.url);
 const DATA_URL = new URL('data/story_runtime.json', BASE).href;
 const MANIFEST_URL = new URL('data/data_manifest.json', BASE).href;
 
-window.__ARK_STORY_EXTENSION__ = { base: BASE.href, dataUrl: DATA_URL, manifestUrl: MANIFEST_URL, version: '1.9.2', packed: { url: new URL('data/story_runtime.09caf7b52651d38a.json.gz', BASE).href, version: 'a271be482e3e' } };
+window.__ARK_STORY_EXTENSION__ = { base: BASE.href, dataUrl: DATA_URL, manifestUrl: MANIFEST_URL, version: '1.9.3', packed: { url: new URL('data/story_runtime.09caf7b52651d38a.json.gz', BASE).href, version: 'a271be482e3e' } };
 
 async function selfCheck() {
     try {
