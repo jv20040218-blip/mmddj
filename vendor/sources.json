@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/shared@3.5.22/+esm",
+    "file": "221521ff4db517d2.mjs",
+    "sha256": "4452d840b49f12c2d8297499e8502701a58b0f6f496c0f5a3949c9b32b056366"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/reactivity@3.5.22/+esm",
+    "file": "99088e50c898de60.mjs",
+    "sha256": "668bab08285682ac77a1fe0804c7cd7337411847327b4db729a89a7d6d7ed458"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/runtime-core@3.5.22/+esm",
+    "file": "c27c042779d61f41.mjs",
+    "sha256": "9a29da4a567e068cfa1e2f0d3cafc0b8712aff56ce417a6efc0639704a901819"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/runtime-dom@3.5.22/+esm",
+    "file": "8d3841bd22e94a95.mjs",
+    "sha256": "7b1f0637d3ae4322de519949a5a11e4e59c97d62496438b1c73cd611806419a3"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/vue@3.5.22/+esm",
+    "file": "54ed36d2a4bb4846.mjs",
+    "sha256": "99cb5a36e16d0d8ce2d1a8cf28899abbc63c418e02a3256f92f90a6186d1ba7c"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/devtools-shared@7.7.7/+esm",
+    "file": "48cf4fb1b4344294.mjs",
+    "sha256": "ba9472230967da04dd8e3e9c99e6379ba1444f8f2c686a2dbbf8a068b5afbf5a"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/perfect-debounce@1.0.0/+esm",
+    "file": "5bb337d01e10e3ba.mjs",
+    "sha256": "f923a32a70d33cce2c8f8b7dc2ec113a27dc6daef8162ec2632dff5b71b6f49b"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/hookable@5.5.3/+esm",
+    "file": "9fcc7a0f327e4308.mjs",
+    "sha256": "b360157af84c21022ba4d017d64c4bcbfee1bfb39ec627bb88563a3dc0304827"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/birpc@2.4.0/+esm",
+    "file": "8fe5b61ea3cf9312.mjs",
+    "sha256": "754e6f566a92152c038234692de52e483165066689cb71819efb02f74507146d"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/devtools-kit@7.7.7/+esm",
+    "file": "d65e35cba381e536.mjs",
+    "sha256": "2403f57bd1046da423eb80ba975d45b7384e32a9b5d8cb5bd70170cd0766b8bf"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/@vue/devtools-api@7.7.7/+esm",
+    "file": "a71a2e3cd68556dc.mjs",
+    "sha256": "49d90e0f7d3b8af04786cc5dceba1b76ad0378900251b6696d1948560b3f7165"
+  },
+  {
+    "url": "https://testingcf.jsdelivr.net/npm/pinia@3.0.4/+esm",
+    "file": "pinia.mjs",
+    "sha256": "1b1fd717f261fe5ee1d47774efce2819c6bf519dd19ab90e0110819d0ae87a5f"
+  }
+]

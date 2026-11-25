@@ -1,12 +1,12 @@
 {
-  "version": "1.9.3",
-  "tag": "v1.9.3",
-  "published_date": "2026-11-19",
+  "version": "1.9.5",
+  "tag": "v1.9.5",
+  "published_date": "2026-11-26",
   "repository": "https://github.com/jv20040218-blip/mmddj",
   "branch": "main",
-  "build_id": "83fdbc4966c2",
+  "build_id": "c3e2591ca5ef",
   "data_version": "a271be482e3e",
-  "card_script_sha256": "c96339a03df87bfaa5d1d8652461e2f9fac769cc8db4b8e4a0febb6e45d5f9d4",
+  "card_script_sha256": "8d1dc8575857f49134efa051666ea571b6debd18b884eb856adacdccef7f1280",
   "data": {
     "path": "data/story_runtime.json",
     "bytes": 67846077,
@@ -19,22 +19,34 @@
     "sha256": "ae3e4480888810a93ee042e7643b7239ff46e3bbe24f6effabf302c58d6b7c38"
   },
   "card": {
-    "path": "cards/ark-story-v1.9.3.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.3/cards/ark-story-v1.9.3.png",
-    "bytes": 16091891,
-    "sha256": "6dc92efc533f7d812ad38f97ecb973a87537f13512f12c43e399c94b03caa72e",
-    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0",
+    "name": "明日方舟·剧情完整版（1.9.5）",
+    "filename": "ark-story-v1.9.5.png",
+    "path": "cards/ark-story-v1.9.5.png",
+    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.5/cards/ark-story-v1.9.5.png",
+    "sha256": "7d8304190fed1897dca02dd8a1b924c7f6519c265a073ed97efae2a125d507da",
+    "script_sha256": "8d1dc8575857f49134efa051666ea571b6debd18b884eb856adacdccef7f1280",
+    "bytes": 16101227,
+    "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0 (1.9.4 纯净版)",
     "worldbook_entries": 2049
   },
   "changes": [
-    "按资源内容标识缓存压缩剧情库",
-    "减少长存档回复的历史快照复制和页面刷新",
-    "预演复用正在进行的世界书同步，实际发送仍校验",
-    "精简重复注入信息，条目无变化时省略重复读写"
+    "剧情开场通过当前预设接收用户请求及当前段资料",
+    "只读取近期楼层与本插件变量",
+    "同源Pinia依赖",
+    "开场取消和截止时间保护",
+    "聊天保存版本检查"
   ],
   "verification": {
-    "baseline": "1.9.1",
-    "packed_bytes": 16753082
+    "runtime_tests": 165,
+    "save_guard_tests": 4,
+    "browser_widths": [
+      1200,
+      390
+    ],
+    "model_story_end_to_end": false
   },
-  "worldbook_content_version": "1.7.0"
+  "worldbook_content_version": "1.7.0",
+  "archives_enabled": false,
+  "data_unchanged_from": "1.9.3",
+  "source_commit": "b42d197221f2419f926ae96aafaac0d90bc45baf"
 }
