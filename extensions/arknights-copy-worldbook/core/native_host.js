@@ -81,8 +81,8 @@ function createNativeHost(root, options) {
     const ptr = pointers.get(ticket.key), entries = {};
     for (const e of books.get(ptr.book) || []) {
       const uid = Number(e.uid); if (!Number.isInteger(uid) || uid === META_UID || entries[uid]) throw Error('invalid_clone_uid');
-      const src = baseline.find(b => String(b.uid) === String(e.source_uid)) || {};
-      entries[uid] = { ...src, ...e, uid, key: e.keys || e.key || [], keysecondary: e.keysecondary || [],
+      const src = baseline.find(b => String(b.uid) === String(e.source_uid)) || baseline.find(b => (b.comment||b.name) === e.comment_pk) || {};
+      entries[uid] = { order:100, position:0, depth:4, probability:100, useProbability:true, selective:true, selectiveLogic:0, ...src, ...e, uid, key: e.keys || e.key || [], keysecondary: e.keysecondary || [],
         disable: e.enabled === false || e.disable === true, constant: e.constant !== false, content: String(e.content || '') };
     }
     entries[META_UID] = { uid: META_UID, comment: META_COMMENT, key: [], keysecondary: [], disable: true, constant: false,

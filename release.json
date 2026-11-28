@@ -56,7 +56,7 @@
   "verification": {
     "model_calls": 0,
     "legacy_plugin_tests": 141,
-    "native_integration_tests": 9,
+    "native_integration_tests": 10,
     "story_structure_tests": 17,
     "browser": "isolated browser: manager,390px,form switch,reload,A/B books; real tablet pending"
   },

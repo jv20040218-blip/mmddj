@@ -42,7 +42,7 @@ Object.assign(meta,{version:'1.9.6-pre4',tag:'v1.9.6-pre4',branch:'release/1.9.6
 Object.assign(meta.card,{name:cfg.card_name,filename:'ark-story-v1.9.6-pre4.png',path:'cards/ark-story-v1.9.6-pre4.png',sha256:sha(png),script_sha256:sha(runtime),bytes:png.length});
 meta.extensions['arknights-copy-worldbook'].manifest_version=manifest.version;
 meta.changes=meta.changes.filter(s=>!s.startsWith('pre4：'));meta.changes.unshift('pre4：修复原生副本落盘与Chat Lore、父子页面桥接、动态档案逐轮钩子、真实角色管理状态、异步跨档保护和便携测试路径；剧情数据及三篇锁定文本逐字节不变');
-meta.verification={model_calls:0,legacy_plugin_tests:141,native_integration_tests:9,story_structure_tests:17,browser:'isolated browser: manager,390px,form switch,reload,A/B books; real tablet pending'};
+meta.verification={model_calls:0,legacy_plugin_tests:141,native_integration_tests:10,story_structure_tests:17,browser:'isolated browser: manager,390px,form switch,reload,A/B books; real tablet pending'};
 fs.writeFileSync(path.join(root,'release.json'),JSON.stringify(meta,null,2)+'\n');
 const pmanifest=JSON.parse(fs.readFileSync(path.join(root,'manifest.json'),'utf8'));pmanifest.version=meta.version;fs.writeFileSync(path.join(root,'manifest.json'),JSON.stringify(pmanifest,null,2)+'\n');
 let index=fs.readFileSync(path.join(root,'index.js'),'utf8').replaceAll("version: '1.9.6-pre3'","version: '1.9.6-pre4'");fs.writeFileSync(path.join(root,'index.js'),index);

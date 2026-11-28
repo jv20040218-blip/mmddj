@@ -36,6 +36,11 @@ test('unchanged clone contents do not repeat native worldbook writes',async()=>{
  const f=fixture();await f.host.prepare('A');const e=f.plugin.enableCloneMode('A');const rows=[{uid:100001,source_uid:1,keys:['塔露拉'],content:'same',enabled:true}];
  f.host.writeBook(e.book,rows);await f.host.flush();f.host.writeBook(e.book,rows);await f.host.flush();assert.equal(f.calls.write,1);
 });
+test('compiled entries without a source UID still have valid native insertion fields',async()=>{
+ const f=fixture();await f.host.prepare('A');const ptr=f.plugin.enableCloneMode('A');
+ f.host.writeBook(ptr.book,[{uid:100001,comment_pk:'temporary',keys:['塔露拉'],content:'临时章节形态',enabled:true}]);await f.host.flush();
+ const row=f.db.get(ptr.book).entries[100001];assert.equal(row.position,0);assert.equal(row.order,100);assert.equal(row.depth,4);assert.equal(row.probability,100);
+});
 test('late summarizer result is rejected after changing to another chat',async()=>{
  const f=fixture();await f.host.prepare('A');f.plugin.enableCloneMode('A');let resolve,started;
  const waiting=new Promise(r=>started=r);
