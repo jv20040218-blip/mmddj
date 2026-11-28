@@ -8,3 +8,4 @@
 .ark-cwb-panel label{display:inline-flex;align-items:center;gap:6px}
 .ark-cwb-panel input[type=text],.ark-cwb-panel input[type=password]{min-width:220px}
 .ark-cwb-muted{opacity:.75;font-size:12px}
+[data-ark-original-hidden="1"] { display: none !important; }
