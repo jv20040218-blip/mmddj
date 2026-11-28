@@ -1,3 +1,10 @@
+# 1.9.6-pre4 发布分支
+
+本分支是pre3运行链路修复。main不变。新增配套卡，不切换当前角色；原剧情数据逐字节保留。见[修复说明](docs/pre4-repair-notes.md)。
+
+---
+以下为1.9.5历史说明。
+
 # 明日方舟剧情模块 · 1.9.5
 
 [原插件安装／更新链接](https://github.com/jv20040218-blip/mmddj) · [配套1.9.5角色卡](https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.5/cards/ark-story-v1.9.5.png)

@@ -1,0 +1,757 @@
+{
+  "schema": "ark_attribution_cleanup_v1",
+  "generated_at": "2026-11-28T10:03:54+08:00",
+  "restored_from": "runtime display_label_previous after second apply overwrote the first 75-row report",
+  "changes": [
+    {
+      "route_id": "story_5ab306fea8:route:QJ",
+      "story_id": "story_5ab306fea8",
+      "story_title": "不义之财",
+      "previous_display_label": "“桥夹”克里夫线",
+      "new_display_label": "伍德洛与秘书线（原误标「“桥夹”克里夫线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 9
+    },
+    {
+      "route_id": "story_739c51eccc:route:ST",
+      "story_id": "story_739c51eccc",
+      "story_title": "人们，我们",
+      "previous_display_label": "“研讨会”成员线",
+      "new_display_label": "凛冬与烈夏线（原误标「“研讨会”成员线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 17
+    },
+    {
+      "route_id": "story_cd32901b6c:route:支线",
+      "story_id": "story_cd32901b6c",
+      "story_title": "众生行记",
+      "previous_display_label": "牧首线",
+      "new_display_label": "安多恩与Mon3tr线（原误标「牧首线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 8
+    },
+    {
+      "route_id": "story_cd32901b6c:route:日谈",
+      "story_id": "story_cd32901b6c",
+      "story_title": "众生行记",
+      "previous_display_label": "伊万杰利斯塔十一世线",
+      "new_display_label": "综合线（原误标「伊万杰利斯塔十一世线」；主要发言：？？？、普瑞赛斯、费德里科）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; no single dominant speaker ≥40%",
+      "acts": 8
+    },
+    {
+      "route_id": "story_d9fd98ac56:route:GR",
+      "story_id": "story_d9fd98ac56",
+      "story_title": "反常光谱",
+      "previous_display_label": "年迈的老妇线",
+      "new_display_label": "雷尔金与尼克托线（原误标「年迈的老妇线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.7% of acts; dominant speakers used instead",
+      "acts": 27
+    },
+    {
+      "route_id": "story_8786c9d0ad:route:CZ",
+      "story_id": "story_8786c9d0ad",
+      "story_title": "叙拉古人",
+      "previous_display_label": "卡彭线 · 分线2",
+      "new_display_label": "拉维妮娅与德克萨斯线（原误标「卡彭线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 13.8% of acts; dominant speakers used instead",
+      "acts": 29
+    },
+    {
+      "route_id": "story_8786c9d0ad:route:DG",
+      "story_id": "story_8786c9d0ad",
+      "story_title": "叙拉古人",
+      "previous_display_label": "扎罗线",
+      "new_display_label": "德克萨斯与拉普兰德线（原误标「扎罗线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.6% of acts; dominant speakers used instead",
+      "acts": 28
+    },
+    {
+      "route_id": "story_8786c9d0ad:route:QE",
+      "story_id": "story_8786c9d0ad",
+      "story_title": "叙拉古人",
+      "previous_display_label": "卡彭线",
+      "new_display_label": "能天使与可颂线（原误标「卡彭线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.4% of acts; dominant speakers used instead",
+      "acts": 29
+    },
+    {
+      "route_id": "story_e02b982bdc:route:塞西莉亚线",
+      "story_id": "story_e02b982bdc",
+      "story_title": "吾导先路",
+      "previous_display_label": "病重的母亲线",
+      "new_display_label": "塞茜莉亚与艾泽尔线（原误标「病重的母亲线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 4.8% of acts; dominant speakers used instead",
+      "acts": 21
+    },
+    {
+      "route_id": "story_e02b982bdc:route:教宗线",
+      "story_id": "story_e02b982bdc",
+      "story_title": "吾导先路",
+      "previous_display_label": "奥伦线",
+      "new_display_label": "教宗与薇尔丽芙线（原误标「奥伦线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 6.7% of acts; dominant speakers used instead",
+      "acts": 15
+    },
+    {
+      "route_id": "story_f04d69cf08:route:XX",
+      "story_id": "story_f04d69cf08",
+      "story_title": "墟",
+      "previous_display_label": "文月线",
+      "new_display_label": "星熊与萌萌香线（原误标「文月线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 2.6% of acts; dominant speakers used instead",
+      "acts": 39
+    },
+    {
+      "route_id": "story_fb99bf94ba:route:LY",
+      "story_id": "story_fb99bf94ba",
+      "story_title": "多索雷斯假日",
+      "previous_display_label": "鼠王线",
+      "new_display_label": "林雨霞与坎黛拉线（原误标「鼠王线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 5.3% of acts; dominant speakers used instead",
+      "acts": 19
+    },
+    {
+      "route_id": "story_a5cec477f8:route:MN",
+      "story_id": "story_a5cec477f8",
+      "story_title": "太阳甩在身后",
+      "previous_display_label": "米诺斯游客线",
+      "new_display_label": "阿斯帕齐娅与迷路的游客线（原误标「米诺斯游客线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; dominant speakers used instead",
+      "acts": 5
+    },
+    {
+      "route_id": "story_a5cec477f8:route:NT",
+      "story_id": "story_a5cec477f8",
+      "story_title": "太阳甩在身后",
+      "previous_display_label": "阔绰的游客线",
+      "new_display_label": "娜仁图亚与阿斯帕齐娅线（原误标「阔绰的游客线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 8
+    },
+    {
+      "route_id": "story_a5cec477f8:route:PT",
+      "story_id": "story_a5cec477f8",
+      "story_title": "太阳甩在身后",
+      "previous_display_label": "出身高贵的学者线",
+      "new_display_label": "佩佩与紧张的集会裁判线（原误标「出身高贵的学者线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; dominant speakers used instead",
+      "acts": 7
+    },
+    {
+      "route_id": "story_99fd20445c:route:LB",
+      "story_id": "story_99fd20445c",
+      "story_title": "孤岛风云",
+      "previous_display_label": "A区囚犯A线",
+      "new_display_label": "罗宾与安东尼线（原误标「A区囚犯A线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; dominant speakers used instead",
+      "acts": 10
+    },
+    {
+      "route_id": "story_899cfa8775:route:FK",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "杰克逊线",
+      "new_display_label": "综合线（原误标「杰克逊线」；主要发言：斐尔迪南、布莱克、哥伦比亚士兵）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 10.3% of acts; no single dominant speaker ≥40%",
+      "acts": 29
+    },
+    {
+      "route_id": "story_899cfa8775:route:KW",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "娜斯提线",
+      "new_display_label": "克丽斯腾线（原误标「娜斯提线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 8
+    },
+    {
+      "route_id": "story_899cfa8775:route:MI",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "雅拉线",
+      "new_display_label": "综合线（原误标「雅拉线」；主要发言：迷迭香、杰克逊、雅拉）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; no single dominant speaker ≥40%",
+      "acts": 28
+    },
+    {
+      "route_id": "story_899cfa8775:route:OH",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "霍尔海雅线",
+      "new_display_label": "赫默与雅拉线（原误标「霍尔海雅线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 6.7% of acts; dominant speakers used instead",
+      "acts": 30
+    },
+    {
+      "route_id": "story_899cfa8775:route:RD",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "缪尔赛思线",
+      "new_display_label": "博士线（原误标「缪尔赛思线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 17.9% of acts; dominant speakers used instead",
+      "acts": 56
+    },
+    {
+      "route_id": "story_899cfa8775:route:SR",
+      "story_id": "story_899cfa8775",
+      "story_title": "孤星",
+      "previous_display_label": "锡人线",
+      "new_display_label": "塞雷娅线（原误标「锡人线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 6.2% of acts; dominant speakers used instead",
+      "acts": 32
+    },
+    {
+      "route_id": "story_a0bd21f113:route:老鲤线",
+      "story_id": "story_a0bd21f113",
+      "story_title": "将进酒",
+      "previous_display_label": "客栈伙计线",
+      "new_display_label": "老鲤与杜小姐线（原误标「客栈伙计线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 5.9% of acts; dominant speakers used instead",
+      "acts": 17
+    },
+    {
+      "route_id": "story_3d74460573:route:HJ",
+      "story_id": "story_3d74460573",
+      "story_title": "崔林特尔梅之金",
+      "previous_display_label": "疲倦的执勤人员线",
+      "new_display_label": "黑键与莱辛线（原误标「疲倦的执勤人员线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.3% of acts; dominant speakers used instead",
+      "acts": 30
+    },
+    {
+      "route_id": "story_3d74460573:route:SZ",
+      "story_id": "story_3d74460573",
+      "story_title": "崔林特尔梅之金",
+      "previous_display_label": "年轻的贵族线",
+      "new_display_label": "费德里科与阿尔图罗线（原误标「年轻的贵族线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.8% of acts; dominant speakers used instead",
+      "acts": 26
+    },
+    {
+      "route_id": "story_f21d2609ad:route:ED",
+      "story_id": "story_f21d2609ad",
+      "story_title": "怀黍离",
+      "previous_display_label": "黍线 · 分线2",
+      "new_display_label": "禾生线（原误标「黍线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; dominant speakers used instead",
+      "acts": 5
+    },
+    {
+      "route_id": "story_f21d2609ad:route:WQ",
+      "story_id": "story_f21d2609ad",
+      "story_title": "怀黍离",
+      "previous_display_label": "疲惫的职农线",
+      "new_display_label": "禾生与左乐线（原误标「疲惫的职农线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 10.0% of acts; dominant speakers used instead",
+      "acts": 10
+    },
+    {
+      "route_id": "story_49947c64bb:route:AM",
+      "story_id": "story_49947c64bb",
+      "story_title": "怒号光明",
+      "previous_display_label": "九线",
+      "new_display_label": "阿米娅与陈线",
+      "action": "kept_existing_verified_correction",
+      "reason": "九 only speaks in AM1; AM2-AM7 are Amiya/Chen vs Tallulah/Black Snake. Keep 7 acts and IDs.",
+      "acts": 7
+    },
+    {
+      "route_id": "story_49947c64bb:route:ED",
+      "story_id": "story_49947c64bb",
+      "story_title": "怒号光明",
+      "previous_display_label": "弑君者线",
+      "new_display_label": "综合线（原误标「弑君者线」；主要发言：弑君者）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; no single dominant speaker ≥40%",
+      "acts": 5
+    },
+    {
+      "route_id": "story_d11b23b39f:route:整合运动",
+      "story_id": "story_d11b23b39f",
+      "story_title": "恶兆湍流",
+      "previous_display_label": "整合运动线",
+      "new_display_label": "Guard与塔露拉线（原误标「整合运动线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 18.2% of acts; dominant speakers used instead",
+      "acts": 22
+    },
+    {
+      "route_id": "story_d11b23b39f:route:日谈",
+      "story_id": "story_d11b23b39f",
+      "story_title": "恶兆湍流",
+      "previous_display_label": "开斯特公爵线",
+      "new_display_label": "综合线（原误标「开斯特公爵线」；主要发言：女妖、Logos、高多汀公爵）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; no single dominant speaker ≥40%",
+      "acts": 6
+    },
+    {
+      "route_id": "story_d11b23b39f:route:陈",
+      "story_id": "story_d11b23b39f",
+      "story_title": "恶兆湍流",
+      "previous_display_label": "陈线",
+      "new_display_label": "冷漠的感染者与愤怒的感染者线（原误标「陈线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 3
+    },
+    {
+      "route_id": "story_3be5d22a8b:route:佣兵小队",
+      "story_id": "story_3be5d22a8b",
+      "story_title": "惊霆无声",
+      "previous_display_label": "闪灵线",
+      "new_display_label": "伊内丝与珀茜瓦尔线（原误标「闪灵线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 11.1% of acts; dominant speakers used instead",
+      "acts": 9
+    },
+    {
+      "route_id": "story_3be5d22a8b:route:格拉斯哥帮",
+      "story_id": "story_3be5d22a8b",
+      "story_title": "惊霆无声",
+      "previous_display_label": "格拉斯哥帮线",
+      "new_display_label": "推进之王与摩根线（原误标「格拉斯哥帮线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 12
+    },
+    {
+      "route_id": "story_c490ad7cbf:route:LM",
+      "story_id": "story_c490ad7cbf",
+      "story_title": "愚人号",
+      "previous_display_label": "极境线 · 分线2",
+      "new_display_label": "乔迪与恐鱼线（原误标「极境线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; dominant speakers used instead",
+      "acts": 18
+    },
+    {
+      "route_id": "story_c490ad7cbf:route:UB",
+      "story_id": "story_c490ad7cbf",
+      "story_title": "愚人号",
+      "previous_display_label": "诡异的教徒线",
+      "new_display_label": "乌尔比安与阿玛雅线（原误标「诡异的教徒线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; dominant speakers used instead",
+      "acts": 14
+    },
+    {
+      "route_id": "story_452d16efe2:route:W",
+      "story_id": "story_452d16efe2",
+      "story_title": "慈悲灯塔",
+      "previous_display_label": "W／维什戴尔线 · 分线2",
+      "new_display_label": "博士与阿米娅线（原误标「W／维什戴尔线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 8
+    },
+    {
+      "route_id": "story_452d16efe2:route:众魂",
+      "story_id": "story_452d16efe2",
+      "story_title": "慈悲灯塔",
+      "previous_display_label": "Logos线 · 分线2",
+      "new_display_label": "特蕾西娅与阿米娅线（原误标「Logos线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; dominant speakers used instead",
+      "acts": 6
+    },
+    {
+      "route_id": "story_452d16efe2:route:整合运动",
+      "story_id": "story_452d16efe2",
+      "story_title": "慈悲灯塔",
+      "previous_display_label": "整合运动线",
+      "new_display_label": "塔露拉与伦蒂尼姆工人B线（原误标「整合运动线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; dominant speakers used instead",
+      "acts": 6
+    },
+    {
+      "route_id": "story_452d16efe2:route:罗德岛",
+      "story_id": "story_452d16efe2",
+      "story_title": "慈悲灯塔",
+      "previous_display_label": "船舱中的影子线",
+      "new_display_label": "博士与凯尔希线（原误标「船舱中的影子线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 11.1% of acts; dominant speakers used instead",
+      "acts": 9
+    },
+    {
+      "route_id": "story_452d16efe2:route:萨卡兹",
+      "story_id": "story_452d16efe2",
+      "story_title": "慈悲灯塔",
+      "previous_display_label": "食腐者之王／孽茨雷线",
+      "new_display_label": "综合线（原误标「食腐者之王／孽茨雷线」；主要发言：娜汀、曼弗雷德、特雷西斯）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; no single dominant speaker ≥40%",
+      "acts": 10
+    },
+    {
+      "route_id": "story_ee14dfe316:route:KH",
+      "story_id": "story_ee14dfe316",
+      "story_title": "揭幕者们",
+      "previous_display_label": "大祭司线",
+      "new_display_label": "综合线（原误标「大祭司线」；主要发言：？？？、伊雷妮、安东尼奥）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 4.5% of acts; no single dominant speaker ≥40%",
+      "acts": 22
+    },
+    {
+      "route_id": "story_c579b90d26:route:AL",
+      "story_id": "story_c579b90d26",
+      "story_title": "时间啊，向前！",
+      "previous_display_label": "工厂代表线",
+      "new_display_label": "阿洛伊泽与卡特琳娜线（原误标「工厂代表线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 10.0% of acts; dominant speakers used instead",
+      "acts": 10
+    },
+    {
+      "route_id": "story_c579b90d26:route:ED",
+      "story_id": "story_c579b90d26",
+      "story_title": "时间啊，向前！",
+      "previous_display_label": "米拉娜线 · 分线3",
+      "new_display_label": "综合线（原误标「米拉娜线」；主要发言：柳德米拉、米拉娜、感染者工人） · 分线3",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; no single dominant speaker ≥40%",
+      "acts": 12
+    },
+    {
+      "route_id": "story_be4496c1d4:route:日谈",
+      "story_id": "story_be4496c1d4",
+      "story_title": "淬火尘霾",
+      "previous_display_label": "维娜／推进之王线 · 分线2",
+      "new_display_label": "综合线（原误标「维娜／推进之王线」；主要发言：博士、费斯特、阿勒黛） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 13.3% of acts; no single dominant speaker ≥40%",
+      "acts": 15
+    },
+    {
+      "route_id": "story_be4496c1d4:route:萨卡兹",
+      "story_id": "story_be4496c1d4",
+      "story_title": "淬火尘霾",
+      "previous_display_label": "特雷西斯线",
+      "new_display_label": "综合线（原误标「特雷西斯线」；主要发言：莱托中校、萨卡兹战士、血魔大君）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; no single dominant speaker ≥40%",
+      "acts": 7
+    },
+    {
+      "route_id": "story_be4496c1d4:route:蒸汽骑士",
+      "story_id": "story_be4496c1d4",
+      "story_title": "淬火尘霾",
+      "previous_display_label": "蒸汽骑士线",
+      "new_display_label": "推进之王与阿勒黛线（原误标「蒸汽骑士线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 2
+    },
+    {
+      "route_id": "story_09039561a0:route:列维线",
+      "story_id": "story_09039561a0",
+      "story_title": "源石尘行动",
+      "previous_display_label": "幕简介线",
+      "new_display_label": "德鲁奇与列维线（原误标「幕简介线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 8
+    },
+    {
+      "route_id": "story_09039561a0:route:彩六线",
+      "story_id": "story_09039561a0",
+      "story_title": "源石尘行动",
+      "previous_display_label": "艾拉线",
+      "new_display_label": "灰烬与战车线（原误标「艾拉线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 1.4% of acts; dominant speakers used instead",
+      "acts": 69
+    },
+    {
+      "route_id": "story_09039561a0:route:支线",
+      "story_id": "story_09039561a0",
+      "story_title": "源石尘行动",
+      "previous_display_label": "艾拉线 · 分线2",
+      "new_display_label": "德鲁奇与皮加尔线（原误标「艾拉线」） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 8.3% of acts; dominant speakers used instead",
+      "acts": 12
+    },
+    {
+      "route_id": "story_161b9f452e:route:NF",
+      "story_id": "story_161b9f452e",
+      "story_title": "熔炉“还魂”记",
+      "previous_display_label": "修整武器的雇佣兵线",
+      "new_display_label": "妮芙与珀耳线（原误标「修整武器的雇佣兵线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 9.1% of acts; dominant speakers used instead",
+      "acts": 33
+    },
+    {
+      "route_id": "story_c7f483e237:route:IR",
+      "story_id": "story_c7f483e237",
+      "story_title": "生路",
+      "previous_display_label": "圣徒卡门线",
+      "new_display_label": "艾丽妮与西昆妲线（原误标「圣徒卡门线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; dominant speakers used instead",
+      "acts": 14
+    },
+    {
+      "route_id": "story_c7f483e237:route:KS",
+      "story_id": "story_c7f483e237",
+      "story_title": "生路",
+      "previous_display_label": "歌蕾蒂娅线",
+      "new_display_label": "凯尔希与博士线（原误标「歌蕾蒂娅线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; dominant speakers used instead",
+      "acts": 15
+    },
+    {
+      "route_id": "story_ac84e514ec:route:终幕",
+      "story_id": "story_ac84e514ec",
+      "story_title": "登临意",
+      "previous_display_label": "山海众头目线",
+      "new_display_label": "重岳与魏彦吾线（原误标「山海众头目线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; dominant speakers used instead",
+      "acts": 6
+    },
+    {
+      "route_id": "story_8fb5499c04:route:RD",
+      "story_id": "story_8fb5499c04",
+      "story_title": "相变临界",
+      "previous_display_label": "瓦西里线",
+      "new_display_label": "阿米娅与博士线（原误标「瓦西里线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 3.6% of acts; dominant speakers used instead",
+      "acts": 28
+    },
+    {
+      "route_id": "story_8fb5499c04:route:TY",
+      "story_id": "story_8fb5499c04",
+      "story_title": "相变临界",
+      "previous_display_label": "友善的工人线",
+      "new_display_label": "瑭雅与纳杰日达线（原误标「友善的工人线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 14.3% of acts; dominant speakers used instead",
+      "acts": 7
+    },
+    {
+      "route_id": "story_a767030eb0:route:佣兵",
+      "story_id": "story_a767030eb0",
+      "story_title": "破碎日冕",
+      "previous_display_label": "佣兵线",
+      "new_display_label": "赫德雷与阿斯卡纶线（原误标「佣兵线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 3
+    },
+    {
+      "route_id": "story_a767030eb0:route:萨卡兹",
+      "story_id": "story_a767030eb0",
+      "story_title": "破碎日冕",
+      "previous_display_label": "特雷西斯线",
+      "new_display_label": "曼弗雷德与萨卡兹战士线（原误标「特雷西斯线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 12.5% of acts; dominant speakers used instead",
+      "acts": 16
+    },
+    {
+      "route_id": "story_aeed95899c:route:PR",
+      "story_id": "story_aeed95899c",
+      "story_title": "离解复合",
+      "previous_display_label": "PRTS线",
+      "new_display_label": "普瑞赛斯与博士线（原误标「PRTS线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 18.2% of acts; dominant speakers used instead",
+      "acts": 11
+    },
+    {
+      "route_id": "story_aeed95899c:route:SI",
+      "story_id": "story_aeed95899c",
+      "story_title": "离解复合",
+      "previous_display_label": "疲惫的伤员线",
+      "new_display_label": "希尔达与屈光者线（原误标「疲惫的伤员线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 5.3% of acts; dominant speakers used instead",
+      "acts": 19
+    },
+    {
+      "route_id": "story_aeed95899c:route:ST",
+      "story_id": "story_aeed95899c",
+      "story_title": "离解复合",
+      "previous_display_label": "维娜／推进之王线",
+      "new_display_label": "综合线（原误标「维娜／推进之王线」；主要发言：维娜）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; no single dominant speaker ≥40%",
+      "acts": 5
+    },
+    {
+      "route_id": "story_691fc8b419:route:SK",
+      "story_id": "story_691fc8b419",
+      "story_title": "覆潮之下",
+      "previous_display_label": "罗德岛干员线",
+      "new_display_label": "斯卡蒂与安妮塔线（原误标「罗德岛干员线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 11.1% of acts; dominant speakers used instead",
+      "acts": 9
+    },
+    {
+      "route_id": "story_e32d571bf9:route:HJ",
+      "story_id": "story_e32d571bf9",
+      "story_title": "辞岁行",
+      "previous_display_label": "后线",
+      "new_display_label": "莫佚与左乐线（原误标「后线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 9.1% of acts; dominant speakers used instead",
+      "acts": 22
+    },
+    {
+      "route_id": "story_e32d571bf9:route:日谈",
+      "story_id": "story_e32d571bf9",
+      "story_title": "辞岁行",
+      "previous_display_label": "陈昭芊线",
+      "new_display_label": "综合线（原误标「陈昭芊线」；主要发言：陈昭芊）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 16.7% of acts; no single dominant speaker ≥40%",
+      "acts": 6
+    },
+    {
+      "route_id": "story_0efa758501:route:GD",
+      "story_id": "story_0efa758501",
+      "story_title": "遗尘漫步",
+      "previous_display_label": "负伤的雇佣兵线",
+      "new_display_label": "凯尔希与艾利奥特线（原误标「负伤的雇佣兵线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 5.3% of acts; dominant speakers used instead",
+      "acts": 19
+    },
+    {
+      "route_id": "story_07b777b501:route:SR",
+      "story_id": "story_07b777b501",
+      "story_title": "银心湖列车",
+      "previous_display_label": "“灰礼帽”线",
+      "new_display_label": "哈洛德与烈夏线（原误标「“灰礼帽”线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 10
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:official_focus:char_368",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "阿米娅线 · 分线2",
+      "new_display_label": "阿米娅焦点标注（全章转写，非独立视角线） · 分线2",
+      "action": "relabeled",
+      "reason": "official_focus line repeats the full chapter scene list; label is a focus tag, not a POV route",
+      "acts": 128
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:official_focus:char_51",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "玛恩纳线",
+      "new_display_label": "玛恩纳焦点标注（全章转写，非独立视角线）",
+      "action": "relabeled",
+      "reason": "official_focus line repeats the full chapter scene list; label is a focus tag, not a POV route",
+      "acts": 128
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:official_focus:char_543",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "芙蓉线",
+      "new_display_label": "芙蓉焦点标注（全章转写，非独立视角线）",
+      "action": "relabeled",
+      "reason": "official_focus line repeats the full chapter scene list; label is a focus tag, not a POV route",
+      "acts": 128
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:official_focus:spk_7bc7c33ef0",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "发言人麦基线 · 分线2",
+      "new_display_label": "发言人麦基焦点标注（全章转写，非独立视角线） · 分线2",
+      "action": "relabeled",
+      "reason": "official_focus line repeats the full chapter scene list; label is a focus tag, not a POV route",
+      "acts": 128
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:official_focus:spk_d86ab43805",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "发言人马克维茨线",
+      "new_display_label": "发言人马克维茨焦点标注（全章转写，非独立视角线）",
+      "action": "relabeled",
+      "reason": "official_focus line repeats the full chapter scene list; label is a focus tag, not a POV route",
+      "acts": 128
+    },
+    {
+      "route_id": "story_a9adfd2c12:route:终幕决赛开幕",
+      "story_id": "story_a9adfd2c12",
+      "story_title": "长夜临光",
+      "previous_display_label": "佐菲娅线",
+      "new_display_label": "综合线（原误标「佐菲娅线」；主要发言：玛莉娅、老工匠、光头马丁）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; no single dominant speaker ≥40%",
+      "acts": 5
+    },
+    {
+      "route_id": "story_5b7d843eca:route:XL",
+      "story_id": "story_5b7d843eca",
+      "story_title": "阴云火花",
+      "previous_display_label": "冷静的荒地人线",
+      "new_display_label": "夏栎与夜烟线（原误标「冷静的荒地人线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; dominant speakers used instead",
+      "acts": 5
+    },
+    {
+      "route_id": "official_c32b61e9bd:route:official_focus:spk_a7834e788b",
+      "story_id": "official_c32b61e9bd",
+      "story_title": "隐藏剧情·特殊",
+      "previous_display_label": "预言家线",
+      "new_display_label": "Sharp与Touch线（原误标「预言家线」）",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 0.0% of acts; dominant speakers used instead",
+      "acts": 2
+    },
+    {
+      "route_id": "story_1beb5b4d54:route:终幕",
+      "story_id": "story_1beb5b4d54",
+      "story_title": "风暴瞭望",
+      "previous_display_label": "Outcast线 · 分线2",
+      "new_display_label": "综合线（原误标「Outcast线」；主要发言：雄辩家、Outcast、Misery） · 分线2",
+      "action": "relabeled",
+      "reason": "named label speaker appears in 20.0% of acts; no single dominant speaker ≥40%",
+      "acts": 5
+    }
+  ]
+}

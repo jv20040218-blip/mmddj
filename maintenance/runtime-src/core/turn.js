@@ -10,6 +10,8 @@ const R = require('./routes');
 const N = require('./narrative');
 const C = require('./corpus');
 const Nav = require('./navigation');
+const PhaseA = require('./phase_a');
+const Plot = require('./plot_direction');
 
 const PRESENCE = ['onstage', 'voice', 'memory', 'mentioned'];
 const RESULT_ENUM = ['completed', 'achieved', 'occurred', 'failed', 'changed'];
@@ -84,6 +86,10 @@ function reduceTurn(state, turnResult, data, opts) {
   const o = opts || {};
   const v = validateTurnResult(turnResult, state, data);
   if (!v.ok) return { ok: false, errors: v.errors, state, turnSnapshot: null };
+  if (Plot.blocksSettlement(state, turnResult)) {
+    turnResult = { ...turnResult, completed_scene_ids: [], event_results: [] };
+    delete turnResult.segment_ack;
+  }
   // 原文库段落游标校验：节点/修订号/合法后继/共享事件由程序复核，不采信模型自报推进。
   const ci = data.corpusIndex || C.buildCorpusIndex(data.corpus || {});
   const segCtx = C.validationContext(ci, state, data);
@@ -179,7 +185,15 @@ function reduceTurn(state, turnResult, data, opts) {
       { anchors: nextAnchors, period_tags: scopePeriodTags }).actor_states;
     if (active.context_mode === 'live' && nextTime.ordinal_minute != null) ns.world_time = T.makeTime(Math.max(ns.world_time.ordinal_minute || 0, nextTime.ordinal_minute));
   }
+  const plotSignal = Plot.signalFromTurn(state, ns, turnResult);
+  if (plotSignal) Plot.consider(ns, plotSignal);
+  PhaseA.recordEntrySnapshot(ns);
   ns.revision += 1;
+  if (ns.plot_direction && ns.plot_direction.pending) {
+    ns.plot_direction.pending.at_revision = ns.revision;
+    if (ns.plot_direction.pending.request) ns.plot_direction.pending.request.base_revision = ns.revision;
+  }
+  if (Plot.releaseInapplicableCursor) Plot.releaseInapplicableCursor(ns);
   // 回忆体验进度：实际完成末节点才标记 experienced；不等同现实事件发生。
   N.noteMemoryProgress(ns, route, rp, data);
   const snapshotBase = 'snap_' + ns.revision + '_' + turnId;

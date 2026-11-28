@@ -7,6 +7,7 @@ function pick(requirePath, globalKey) {
   return (typeof globalThis !== 'undefined') ? globalThis[globalKey] : null;
 }
 const ST = pick('./styles', '__ARK_UI_STYLES__');
+const Perf = pick('./perf', '__ARK_UI_PERF__');
 const el = ST.el, icon = ST.icon, clear = ST.clear;
 
 const STATUS_CSS = `
@@ -146,16 +147,36 @@ function mountStoryStatusbar(ctx) {
   }
   const unsubscribe = adapter.subscribe(() => { selectedStatus = null; refresh(); });
   const Observer = doc.defaultView && doc.defaultView.MutationObserver;
+  let debounce = null;
   const observer = Observer ? new Observer(() => {
-    const host = getHost();
-    if (host && (!node || node.parentNode !== host)) refresh();
+    const ctrl = Perf && Perf.getController && Perf.getController(doc.defaultView || globalThis);
+    if (ctrl && ctrl.paused) return;
+    if (observer.__arkRec) observer.__arkRec.calls = (observer.__arkRec.calls || 0) + 1;
+    if (debounce) clearTimeout(debounce);
+    debounce = setTimeout(() => {
+      debounce = null;
+      const host = getHost();
+      if (host && (!node || node.parentNode !== host)) refresh();
+    }, 150);
+    if (debounce && debounce.unref) debounce.unref();
   }) : null;
-  if (observer) observer.observe(doc.body, { childList: true, subtree: true });
+  const observeTarget = doc.getElementById('chat') || getHost() || doc.body;
+  if (observer) {
+    observer.observe(observeTarget, { childList: true, subtree: false });
+    if (Perf && Perf.getController) Perf.getController(doc.defaultView || globalThis).register(observer, observeTarget, { childList: true, subtree: false });
+  }
   refresh();
   return { get mounted() { return !!node; }, get node() { return node; }, refresh,
     setMessage: id => { selectedStatus = null; messageId = id; refresh(); },
     setStatus: status => { selectedStatus = status; messageId = null; refresh(); },
-    unmount: () => { unsubscribe(); if (observer) observer.disconnect(); if (node && node.parentNode) node.parentNode.removeChild(node); node = null; if (ownedHost && ownedHost.parentNode) ownedHost.parentNode.removeChild(ownedHost); ownedHost = null; }
+    unmount: () => {
+      unsubscribe();
+      if (debounce) clearTimeout(debounce);
+      if (Perf && Perf.getController) Perf.getController(doc.defaultView || globalThis).unregister(observer);
+      if (observer) observer.disconnect();
+      if (node && node.parentNode) node.parentNode.removeChild(node); node = null;
+      if (ownedHost && ownedHost.parentNode) ownedHost.parentNode.removeChild(ownedHost); ownedHost = null;
+    }
   };
 }
 

@@ -376,6 +376,25 @@ function mountStoryTab(container, ctx) {
     if (a.can_restart) wrap.appendChild(el('button', { type: 'button', onclick: () => changeRoute(() => adapter.enterRoute(state().active_route.route_id, 'restart')) }, [icon('replay'), '重开本线']));
     if (a.can_exit) wrap.appendChild(el('button', { type: 'button', onclick: () => changeRoute(() => adapter.exitRoute(null)) }, [icon('logout'), view.context_kind === 'memory' ? '退出回忆' : '退出本线']));
     if (opts.debug && a.can_continue) wrap.appendChild(el('button', { type: 'button', class: 'ark-primary', title: '仅调试：模拟完成当前段', onclick: () => { if (typeof opts.onEarly === 'function') opts.onEarly(); refresh(); } }, [icon('fast_forward'), '提前完成转折(调试)']));
+    if (a.can_direct_read) wrap.appendChild(el('button', { type: 'button', class: 'ark-primary', title: '把当前段原文直接写成旁白楼，不调用模型', onclick: async () => {
+      try { const r = await adapter.directReadCurrentSegment(); if (!r.ok) errorMessage = r.error || r.reason || '自由阅读失败'; } catch (e) { errorMessage = e.message; }
+      refresh();
+    } }, [icon('menu_book'), '自由阅读本段']));
+    if (a.can_skip) wrap.appendChild(el('button', { type: 'button', title: '跳过当前段：不写旁白、不调用模型，只推进游标并应用世界书开关', onclick: async () => {
+      try { const r = await adapter.skipCurrentSegment(); if (!r.ok) errorMessage = r.error || r.reason || '跳过失败'; } catch (e) { errorMessage = e.message; }
+      refresh();
+    } }, [icon('skip_next'), '跳过本段']));
+    wrap.appendChild(el('label', { class: 'ark-story-note', style: 'display:inline-flex;align-items:center;gap:6px' }, [
+      el('input', { type: 'checkbox', checked: a.act_summary_injection ? 'checked' : undefined, onchange: ev => { adapter.setUiSettings({ act_summary_injection: ev.target.checked }); refresh(); } }),
+      '向模型注入已经历幕摘要（默认关闭）'
+    ]));
+    if (a.hidden_count) {
+      wrap.appendChild(el('label', { class: 'ark-story-note', style: 'display:inline-flex;align-items:center;gap:6px' }, [
+        el('input', { type: 'checkbox', checked: a.inspect_hidden_floors ? 'checked' : undefined, onchange: ev => { adapter.inspectHiddenFloors(ev.target.checked); refresh(); } }),
+        '查看隐藏的脱轨楼（' + a.hidden_count + '）'
+      ]));
+      wrap.appendChild(el('button', { type: 'button', onclick: () => { adapter.unhideFloors(); refresh(); } }, [icon('visibility'), '取消隐藏全部脱轨楼']));
+    }
     wrap.appendChild(el('span', { class: 'ark-story-note', text: a.hint }));
     return wrap;
   }

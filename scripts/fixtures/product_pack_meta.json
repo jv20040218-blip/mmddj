@@ -1,0 +1,69 @@
+{
+  "version": "1.9.6-pre3",
+  "data_version": "9ff16387db29",
+  "manifest": {
+    "file": "story_runtime.json",
+    "bytes": 77356762,
+    "sha256": "dd7421bbb7605411b5c311c52d758ea7a1605efd3064aa42150a953f494e5949",
+    "data_version": "9ff16387db29",
+    "build_id": "8d014bff20af",
+    "product_version": "1.9.6-pre3",
+    "corpus_nodes": 4370,
+    "corpus_texts": 1433,
+    "guide_lines": 973,
+    "generated_from": "arcs_18_914_merge_packed_as_1_9_6_pre3",
+    "packed": {
+      "path": "data/story_runtime.dd7421bbb7605411.json.gz",
+      "bytes": 19146255,
+      "sha256": "a87ebcef12de93807303c46b6dcfe6426c0d7ccacf3e05d2b60444e0ecb1a76c"
+    },
+    "note": "1.9.6-pre3 pack of already-merged isolated 1–8/9–14 runtime plus landed plugin/runtime work. Still a pre-release: 战后 15–17 and other chapters are not in this pack. 1.9.6-pre2 artifacts were not overwritten.",
+    "merged_at": "2026-11-28T19:05:58+08:00",
+    "working_sha256": "59ac3eea108cecddd18bb2d20c9f22add0a2350777ca352d995020288f0f336e",
+    "isolated_sha256": "59ac3eea108cecddd18bb2d20c9f22add0a2350777ca352d995020288f0f336e",
+    "live_backup_sha256": "340ac81dcac2e53cd5857780c1d925c51041a11c8627ff6998f25aad40877c63",
+    "product_backup_sha256": "448db51e22b5d6f32d4b430df27abc9484e1af19a23f20622cb9df6382b78fe6"
+  },
+  "isolated_no_local_script_routes": 346,
+  "display_changes": 15,
+  "game_order_routes_added": 0,
+  "blocked": [],
+  "alignment_patch": {
+    "generated_at": "2026-11-28T11:00:04+08:00",
+    "originals": "/workspace/official-chapter-originals/from-desktop-pack",
+    "before_unaligned": 250,
+    "placed": 173,
+    "after_unaligned": 77,
+    "method": "chapter_original_anchor_to_existing_official_stage",
+    "blocked": []
+  },
+  "three_chapter_merge": {
+    "generated_at": "2026-11-28T13:38:35+08:00",
+    "working_sha256_before_stamp": "340ac81dcac2e53cd5857780c1d925c51041a11c8627ff6998f25aad40877c63",
+    "product_backup_sha256": "3d9d67d40786ee5d7d8b4c1f98b26daca8c553e48e240821a612925f72243085",
+    "chapters": [
+      "雪原线",
+      "时间啊，向前！",
+      "孤星"
+    ],
+    "added_routes": 5,
+    "guide_lines": 973,
+    "lonestar_game_order_reordered": false
+  },
+  "pre3_pack": {
+    "generated_at": "2026-11-28T19:14:46+08:00",
+    "story_runtime_sha256": "dd7421bbb7605411b5c311c52d758ea7a1605efd3064aa42150a953f494e5949",
+    "packed_gz": "data/story_runtime.dd7421bbb7605411.json.gz",
+    "packed_gz_sha256": "a87ebcef12de93807303c46b6dcfe6426c0d7ccacf3e05d2b60444e0ecb1a76c",
+    "chapters_merged": [
+      "整合运动 1–8",
+      "伦蒂尼姆 9–14"
+    ],
+    "guide_lines": 973,
+    "not_included": [
+      "战后 15–17",
+      "other remaining chapters"
+    ],
+    "pre2_artifacts_overwritten": false
+  }
+}

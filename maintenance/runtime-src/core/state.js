@@ -32,7 +32,16 @@ function createState(opts) {
     narrative_context: defaultNarrativeContext(),
     experience_progress: {},
     memory_scopes: {},
-    memory_progress: {}
+    memory_progress: {},
+    hidden_message_ids: [],
+    segment_entry_snapshots: {},
+    scene_experience: {},
+    ui_settings: { act_summary_injection: false, inspect_hidden_floors: false },
+    reanchor_pending: null,
+    lore_mode: 'baseline',
+    clone_book: null,
+    sidecar_rev: 0,
+    clone_warning: null
   };
 }
 

@@ -252,6 +252,11 @@ function buildStoryPageView(runtime, state, opts) {
       can_continue: !!active && sceneIndex < lastIdx,
       can_restart: !!active,
       can_exit: !!active,
+      can_direct_read: !!active && !(status && status.flow && status.flow.stage === 'finished'),
+      can_skip: !!active && !(status && status.flow && status.flow.stage === 'finished'),
+      act_summary_injection: !!(state.ui_settings && state.ui_settings.act_summary_injection),
+      inspect_hidden_floors: !!(state.ui_settings && state.ui_settings.inspect_hidden_floors),
+      hidden_count: Array.isArray(state.hidden_message_ids) ? state.hidden_message_ids.length : 0,
       at_end: lineCompleted,
       next_entry: nextEntry ? { entry_id: nextEntry.entry_id, title: nextEntry.display_title || nextEntry.title } : null,
       hint: !active ? '选择一条角色线开始' : (status && status.sync_status === 'fallback_zero_delta' ? '本轮未收到状态包：已保存当前快照，时间与剧情未推进' : (nc.kind === 'memory' ? '回忆作用域：事实与纪事独立结算，退出后恢复进入前进度' : (sceneIndex >= lastIdx ? '本线已到收束，可继续下一篇或选择同源另一条线' : (active.context_mode === 'route_replay' ? '当前场景早于世界进度，已按场景时点对齐人物' : '连续推进当前角色线，不中途强切视角'))))

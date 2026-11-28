@@ -5,6 +5,7 @@
 
 const T = require('./time');
 const S = require('./state');
+const PhaseA = require('./phase_a');
 const E = require('./events');
 const A = require('./actors');
 const N = require('./narrative');
@@ -110,6 +111,7 @@ function enterRoute(state, routeId, mode, data) {
   rp.current_goal_id = goal;
   ns.revision += 1;
   ns.entered_routes[routeId] = { transaction_id: transactionId, plan: entryPlan, revision: ns.revision };
+  PhaseA.recordEntrySnapshot(ns);
   return { ok: true, already_entered: false, entryPlan, state: ns };
 }
 

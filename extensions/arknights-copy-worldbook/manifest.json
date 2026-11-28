@@ -1,0 +1,12 @@
+{
+  "display_name": "明日方舟·稀疏克隆世界书",
+  "loading_order": 95,
+  "requires": [],
+  "optional": [],
+  "js": "index.js",
+  "css": "style.css",
+  "author": "明日方舟剧情模块",
+  "version": "1.0.1-pre4",
+  "homePage": "",
+  "auto_update": false
+}

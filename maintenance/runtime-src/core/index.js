@@ -12,6 +12,7 @@ const Nav = require('./navigation');
 const Turn = require('./turn');
 const C = require('./corpus');
 const G = require('./guide');
+const Plot = require('./plot_direction');
 
 function createRuntime(data) {
   const idx = data.actorById ? data : D.buildIndexes(data);
@@ -85,7 +86,7 @@ function createRuntime(data) {
       const guide = G.focusedInjection(gi, state.active_route.route_id, segCtx && segCtx.node_id, segCtx && segCtx.material);
       // 玩家已体验的回忆（玩家知识），不等于当前扮演人物亲历的知识。
       const playerOnlyKnowledge = Object.values(state.memory_progress || {}).filter(mp => mp.experienced).map(mp => ({ memory_id: mp.memory_id, note: '玩家已体验该回忆；当前人物未必亲历，不得自动让人物引用其中细节' }));
-      return {
+      return Plot.decorateInjection(state, {
         route_id: route.route_id, story_id: route.story_id, scene_id: scene.scene_id,
         scene_time: state.active_route.scene_time, world_time: state.world_time, context_mode: state.active_route.context_mode,
         narrative_context: { kind: nc.kind, memory_id: nc.memory_id || null, scope_id: nc.scope_id },
@@ -118,12 +119,12 @@ function createRuntime(data) {
         } : null,
         advance_boundary: { max_elapsed_minutes: 1440, allow_zero_minutes: true, camera_locked_route: route.route_id, auto_switch: false },
         elapsed_instruction: '明确时间指令与场景预定时长高于模型建议；正常对话允许0分钟。日期未知时只记录经过分钟，不编造绝对日期。'
-      };
+      });
     }
   };
 }
 
-const api = { createRuntime, time: T, state: S, events: E, actors: A, routes: R, data: D, narrative: N, navigation: Nav, turn: Turn, corpus: C, guide: G };
+const api = { createRuntime, time: T, state: S, events: E, actors: A, routes: R, data: D, narrative: N, navigation: Nav, turn: Turn, corpus: C, guide: G, plotDirection: Plot };
 if (typeof module !== 'undefined' && module.exports) module.exports = api;
 if (typeof globalThis !== 'undefined') { globalThis.__ARK_STORY_CORE__ = api; }
 

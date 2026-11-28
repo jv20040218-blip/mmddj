@@ -1,0 +1,10 @@
+.ark-cwb-panel{font-size:14px;line-height:1.5;max-width:720px;margin:8px 0;padding:12px 14px;border:1px solid color-mix(in srgb,currentColor 20%,transparent);border-radius:10px}
+.ark-cwb-panel h3{margin:0 0 8px;font-size:16px}
+.ark-cwb-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+.ark-cwb-panel button{cursor:pointer}
+.ark-cwb-warn{color:#b45309;background:#fff7ed;border:1px solid #fdba74;border-radius:8px;padding:8px 10px;margin:8px 0}
+.ark-cwb-ok{color:#166534;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:8px 10px;margin:8px 0}
+.ark-cwb-list{margin:6px 0;padding-left:18px}
+.ark-cwb-panel label{display:inline-flex;align-items:center;gap:6px}
+.ark-cwb-panel input[type=text],.ark-cwb-panel input[type=password]{min-width:220px}
+.ark-cwb-muted{opacity:.75;font-size:12px}

@@ -1,52 +1,77 @@
 {
-  "version": "1.9.5",
-  "tag": "v1.9.5",
-  "published_date": "2026-11-26",
+  "version": "1.9.6-pre4",
+  "tag": "v1.9.6-pre4",
+  "published_date": "2026-11-28",
+  "unreleased": true,
   "repository": "https://github.com/jv20040218-blip/mmddj",
-  "branch": "main",
-  "build_id": "c3e2591ca5ef",
-  "data_version": "a271be482e3e",
-  "card_script_sha256": "8d1dc8575857f49134efa051666ea571b6debd18b884eb856adacdccef7f1280",
+  "branch": "release/1.9.6-pre4",
+  "build_id": "e0ed910c4153",
+  "data_version": "9ff16387db29",
+  "card_script_sha256": "d4ecbbb664d9c7ff04c4b7f5c6622847137eae8ce44680f672f0773bed8d9eb9",
   "data": {
     "path": "data/story_runtime.json",
-    "bytes": 67846077,
-    "sha256": "09caf7b52651d38a1c39f5593529f96b78c21132cd23a9003c26505e79f70b4a"
+    "bytes": 77356762,
+    "sha256": "dd7421bbb7605411b5c311c52d758ea7a1605efd3064aa42150a953f494e5949"
+  },
+  "packed_data": {
+    "path": "data/story_runtime.dd7421bbb7605411.json.gz",
+    "bytes": 19146255,
+    "sha256": "a87ebcef12de93807303c46b6dcfe6426c0d7ccacf3e05d2b60444e0ecb1a76c"
   },
   "worldbook": {
     "path": "data/base_worldbook.json",
     "schema": "sillytavern_native",
-    "bytes": 11953844,
-    "sha256": "ae3e4480888810a93ee042e7643b7239ff46e3bbe24f6effabf302c58d6b7c38"
+    "bytes": 11953906,
+    "sha256": "45e1537a810f956694f6db1a9df6f128fdbf0d1e6076bc0c79a2c97b699684f0"
   },
   "card": {
-    "name": "明日方舟·剧情完整版（1.9.5）",
-    "filename": "ark-story-v1.9.5.png",
-    "path": "cards/ark-story-v1.9.5.png",
-    "url": "https://raw.githubusercontent.com/jv20040218-blip/mmddj/v1.9.5/cards/ark-story-v1.9.5.png",
-    "sha256": "7d8304190fed1897dca02dd8a1b924c7f6519c265a073ed97efae2a125d507da",
-    "script_sha256": "8d1dc8575857f49134efa051666ea571b6debd18b884eb856adacdccef7f1280",
-    "bytes": 16101227,
+    "name": "明日方舟·剧情完整版（1.9.6-pre4）",
+    "filename": "ark-story-v1.9.6-pre4.png",
+    "path": "cards/ark-story-v1.9.6-pre4.png",
+    "sha256": "c9e801e21c00402673ef8fa483685e3c74aa2fb7978adfa14c31ed82d55d2dc0",
+    "script_sha256": "d4ecbbb664d9c7ff04c4b7f5c6622847137eae8ce44680f672f0773bed8d9eb9",
+    "bytes": 16276207,
     "worldbook_name": "明日方舟剧情模块·附加世界书_三级目录_v5_0 (1.9.4 纯净版)",
     "worldbook_entries": 2049
   },
+  "extensions": {
+    "arknights-copy-worldbook": {
+      "path": "extensions/arknights-copy-worldbook",
+      "manifest_version": "1.0.1-pre4"
+    }
+  },
+  "installer": "maintenance/install_1_9_6_pre4.py",
+  "runtime": "runtime-v1.9.6-pre4.mjs",
   "changes": [
-    "剧情开场通过当前预设接收用户请求及当前段资料",
-    "只读取近期楼层与本插件变量",
-    "同源Pinia依赖",
-    "开场取消和截止时间保护",
-    "聊天保存版本检查"
+    "pre4：修复原生副本落盘与Chat Lore、父子页面桥接、动态档案逐轮钩子、真实角色管理状态、异步跨档保护和便携测试路径；剧情数据及三篇锁定文本逐字节不变",
+    "1.9.6-pre3（未发布）：在 1.9.6-pre2 之上并入已批准的《整合运动》1–8、《伦蒂尼姆》9–14 剧情文本整理，以及入口整合、剧情方向层与 ASTER 动态档案修复（Sol 已修 plugin.js）。战后 15–17 及其他章节未纳入。非正式 1.9.6。未部署。",
+    "1.9.6-pre2（未发布）：把已施工的《雪原线》《时间啊，向前！》《孤星》并进 1.9.6-pre 产品；含剧情方向层，设计接口默认使用酒馆已有 API。其余章节未施工。未部署。",
+    "增量补丁：用章节原文把能诚实挂上官方关卡的 _unaligned 场景放进既有年表保底线；放不上的仍留在线末。未部署。",
+    "1.9.6-pre 完整成品（未发布，不可与现网 1.9.5 混淆）：119 篇全部追加 game_order 年表保底线（仅新增 route_id，旧 ID 不改）",
+    "Phase A：世界书单次提交、平板防卡顿、零 AI 自由阅读/跳过本段、脱轨硬锚定、错楼对 AI 隐藏但绝不删 chat[]、幕摘要槽默认关闭并排除嫌疑路线",
+    "Phase B：独立稀疏克隆世界书插件（1 存档对 1 本 Chat Lore、底板只读、CHAT_CHANGED 不为老存档自动建空书、14 段动态档案、形态本地编译、剧情自动开关上限 8）",
+    "Phase C：849 条路线零模型审计；346 条无本地剧本线隔离出 LLM 队列；怒号光明 route:AM 显示名改为阿米娅与陈线；75 条归属失真做展示名安全清理（不合并路线、不改写正文）",
+    "未能与官方关卡 8-gram 对齐的本地场景放入线末 _unaligned 段；雪原线与《精英干员：启程》按可重建的唯一场景序保底；完整对账仍待 明日方舟_使用包"
   ],
   "verification": {
-    "runtime_tests": 165,
-    "save_guard_tests": 4,
-    "browser_widths": [
-      1200,
-      390
-    ],
-    "model_story_end_to_end": false
+    "model_calls": 0,
+    "legacy_plugin_tests": 141,
+    "native_integration_tests": 9,
+    "story_structure_tests": 17,
+    "browser": "isolated browser: manager,390px,form switch,reload,A/B books; real tablet pending"
   },
   "worldbook_content_version": "1.7.0",
   "archives_enabled": false,
-  "data_unchanged_from": "1.9.3",
-  "source_commit": "b42d197221f2419f926ae96aafaac0d90bc45baf"
+  "do_not_enable_1_10_0": true,
+  "data_unchanged_from": null,
+  "safety": {
+    "backup_dir": "/root/.ark-story-deploy-backup/",
+    "rollback": "code+card+extension files only",
+    "never_write": [
+      "chats",
+      "settings",
+      "worldbooks"
+    ],
+    "not_installed_on_domestic_production": true
+  }
 }

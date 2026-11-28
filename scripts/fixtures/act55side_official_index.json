@@ -1,0 +1,200 @@
+{
+  "activity_id": "act55side",
+  "title": "时间啊，向前！",
+  "story_id": "story_c579b90d26",
+  "source_note": "Official review-table order (unlock/dependence), not storySort. Script bodies are not vendored.",
+  "segments": [
+    {
+      "seq": 1,
+      "stage_code": "TL-ST-1",
+      "avg_tag": "幕间",
+      "stage_name": "复生的奇迹",
+      "story_txt": "activities/act55side/level_act55side_st01",
+      "story_id": "act55side_level_act55side_st01"
+    },
+    {
+      "seq": 2,
+      "stage_code": "TL-1",
+      "avg_tag": "行动前",
+      "stage_name": "庸俗的实践",
+      "story_txt": "activities/act55side/level_act55side_01_beg",
+      "story_id": "act55side_level_act55side_01_beg"
+    },
+    {
+      "seq": 3,
+      "stage_code": "TL-1",
+      "avg_tag": "行动后",
+      "stage_name": "庸俗的实践",
+      "story_txt": "activities/act55side/level_act55side_01_end",
+      "story_id": "act55side_level_act55side_01_end"
+    },
+    {
+      "seq": 4,
+      "stage_code": "TL-2",
+      "avg_tag": "行动前",
+      "stage_name": "孑遗的道路",
+      "story_txt": "activities/act55side/level_act55side_02_beg",
+      "story_id": "act55side_level_act55side_02_beg"
+    },
+    {
+      "seq": 5,
+      "stage_code": "TL-2",
+      "avg_tag": "行动后",
+      "stage_name": "孑遗的道路",
+      "story_txt": "activities/act55side/level_act55side_02_end",
+      "story_id": "act55side_level_act55side_02_end"
+    },
+    {
+      "seq": 6,
+      "stage_code": "TL-3",
+      "avg_tag": "行动前",
+      "stage_name": "苦难的历程",
+      "story_txt": "activities/act55side/level_act55side_03_beg",
+      "story_id": "act55side_level_act55side_03_beg"
+    },
+    {
+      "seq": 7,
+      "stage_code": "TL-3",
+      "avg_tag": "行动后",
+      "stage_name": "苦难的历程",
+      "story_txt": "activities/act55side/level_act55side_03_end",
+      "story_id": "act55side_level_act55side_03_end"
+    },
+    {
+      "seq": 8,
+      "stage_code": "TL-4",
+      "avg_tag": "行动前",
+      "stage_name": "刻板的争论",
+      "story_txt": "activities/act55side/level_act55side_04_beg",
+      "story_id": "act55side_level_act55side_04_beg"
+    },
+    {
+      "seq": 9,
+      "stage_code": "TL-4",
+      "avg_tag": "行动后",
+      "stage_name": "刻板的争论",
+      "story_txt": "activities/act55side/level_act55side_04_end",
+      "story_id": "act55side_level_act55side_04_end"
+    },
+    {
+      "seq": 10,
+      "stage_code": "TL-ST-2",
+      "avg_tag": "幕间",
+      "stage_name": "激越的灵魂",
+      "story_txt": "activities/act55side/level_act55side_st02",
+      "story_id": "act55side_level_act55side_st02"
+    },
+    {
+      "seq": 11,
+      "stage_code": "TL-5",
+      "avg_tag": "行动前",
+      "stage_name": "轰鸣的沉默",
+      "story_txt": "activities/act55side/level_act55side_05_beg",
+      "story_id": "act55side_level_act55side_05_beg"
+    },
+    {
+      "seq": 12,
+      "stage_code": "TL-5",
+      "avg_tag": "行动后",
+      "stage_name": "轰鸣的沉默",
+      "story_txt": "activities/act55side/level_act55side_05_end",
+      "story_id": "act55side_level_act55side_05_end"
+    },
+    {
+      "seq": 13,
+      "stage_code": "TL-6",
+      "avg_tag": "行动前",
+      "stage_name": "元音的长度",
+      "story_txt": "activities/act55side/level_act55side_06_beg",
+      "story_id": "act55side_level_act55side_06_beg"
+    },
+    {
+      "seq": 14,
+      "stage_code": "TL-6",
+      "avg_tag": "行动后",
+      "stage_name": "元音的长度",
+      "story_txt": "activities/act55side/level_act55side_06_end",
+      "story_id": "act55side_level_act55side_06_end"
+    },
+    {
+      "seq": 15,
+      "stage_code": "TL-7",
+      "avg_tag": "行动前",
+      "stage_name": "滚烫的双眸",
+      "story_txt": "activities/act55side/level_act55side_07_beg",
+      "story_id": "act55side_level_act55side_07_beg"
+    },
+    {
+      "seq": 16,
+      "stage_code": "TL-7",
+      "avg_tag": "行动后",
+      "stage_name": "滚烫的双眸",
+      "story_txt": "activities/act55side/level_act55side_07_end",
+      "story_id": "act55side_level_act55side_07_end"
+    },
+    {
+      "seq": 17,
+      "stage_code": "TL-ST-3",
+      "avg_tag": "幕间",
+      "stage_name": "孱弱的团结",
+      "story_txt": "activities/act55side/level_act55side_st03",
+      "story_id": "act55side_level_act55side_st03"
+    },
+    {
+      "seq": 18,
+      "stage_code": "TL-8",
+      "avg_tag": "行动前",
+      "stage_name": "潮湿的火焰",
+      "story_txt": "activities/act55side/level_act55side_08_beg",
+      "story_id": "act55side_level_act55side_08_beg"
+    },
+    {
+      "seq": 19,
+      "stage_code": "TL-8",
+      "avg_tag": "行动后",
+      "stage_name": "潮湿的火焰",
+      "story_txt": "activities/act55side/level_act55side_08_end",
+      "story_id": "act55side_level_act55side_08_end"
+    },
+    {
+      "seq": 20,
+      "stage_code": "TL-9",
+      "avg_tag": "行动前",
+      "stage_name": "自由的黄昏",
+      "story_txt": "activities/act55side/level_act55side_09_beg",
+      "story_id": "act55side_level_act55side_09_beg"
+    },
+    {
+      "seq": 21,
+      "stage_code": "TL-9",
+      "avg_tag": "行动后",
+      "stage_name": "自由的黄昏",
+      "story_txt": "activities/act55side/level_act55side_09_end",
+      "story_id": "act55side_level_act55side_09_end"
+    },
+    {
+      "seq": 22,
+      "stage_code": "TL-10",
+      "avg_tag": "行动前",
+      "stage_name": "活着的重量",
+      "story_txt": "activities/act55side/level_act55side_10_beg",
+      "story_id": "act55side_level_act55side_10_beg"
+    },
+    {
+      "seq": 23,
+      "stage_code": "TL-10",
+      "avg_tag": "行动后",
+      "stage_name": "活着的重量",
+      "story_txt": "activities/act55side/level_act55side_10_end",
+      "story_id": "act55side_level_act55side_10_end"
+    },
+    {
+      "seq": 24,
+      "stage_code": "TL-ST-4",
+      "avg_tag": "幕间",
+      "stage_name": "年轻的未来",
+      "story_txt": "activities/act55side/level_act55side_st04",
+      "story_id": "act55side_level_act55side_st04"
+    }
+  ]
+}

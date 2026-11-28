@@ -21,6 +21,16 @@ function migrateSave(oldState, data) {
     if (!st.experience_progress) st.experience_progress = {};
     if (!st.memory_scopes) st.memory_scopes = {};
     if (!st.memory_progress) st.memory_progress = {};
+    if (!Array.isArray(st.hidden_message_ids)) st.hidden_message_ids = [];
+    if (!st.segment_entry_snapshots || typeof st.segment_entry_snapshots !== 'object') st.segment_entry_snapshots = {};
+    if (!st.scene_experience || typeof st.scene_experience !== 'object') st.scene_experience = {};
+    if (!st.ui_settings || typeof st.ui_settings !== 'object') st.ui_settings = { act_summary_injection: false, inspect_hidden_floors: false };
+    if (st.ui_settings.act_summary_injection == null) st.ui_settings.act_summary_injection = false;
+    if (st.ui_settings.inspect_hidden_floors == null) st.ui_settings.inspect_hidden_floors = false;
+    if (!st.lore_mode) st.lore_mode = 'baseline';
+    if (!Object.prototype.hasOwnProperty.call(st, 'clone_book')) st.clone_book = st.book || null;
+    if (st.sidecar_rev == null) st.sidecar_rev = 0;
+    if (!Object.prototype.hasOwnProperty.call(st, 'clone_warning')) st.clone_warning = null;
     // 旧格式人物效果（无时间来源）→按当前分支账本重建来源时间，供早期篇章投影排除未来事实。
     if (st.facts && st.facts.actor_effects && st.event_ledger) {
       const branchId = st.branch_id;
@@ -93,7 +103,7 @@ function migrateSave(oldState, data) {
 // On disk each historical state refers to shared values. Large maps share
 // individual rows, so appending one event does not copy the whole ledger.
 const SHARED_MAPS = new Set(['event_ledger', 'entered_routes', 'route_progress', 'facts',
-  'corpus_progress', 'experience_progress', 'memory_scopes']);
+  'corpus_progress', 'experience_progress', 'memory_scopes', 'segment_entry_snapshots', 'scene_experience']);
 function createSnapshotCodec() {
   let pool = [], index = new Map(), encoded = new WeakMap();
   function intern(value) {

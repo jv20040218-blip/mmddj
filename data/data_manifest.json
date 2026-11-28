@@ -1,16 +1,23 @@
 {
   "file": "story_runtime.json",
-  "bytes": 67846077,
-  "sha256": "09caf7b52651d38a1c39f5593529f96b78c21132cd23a9003c26505e79f70b4a",
-  "data_version": "a271be482e3e",
-  "build_id": "83fdbc4966c2",
+  "bytes": 77356762,
+  "sha256": "dd7421bbb7605411b5c311c52d758ea7a1605efd3064aa42150a953f494e5949",
+  "data_version": "9ff16387db29",
+  "build_id": "8d014bff20af",
+  "product_version": "1.9.6-pre3",
   "corpus_nodes": 4370,
   "corpus_texts": 1433,
-  "guide_lines": 849,
-  "generated_from": "work/runtime_v2.json",
+  "guide_lines": 973,
+  "generated_from": "arcs_18_914_merge_packed_as_1_9_6_pre3",
   "packed": {
-    "path": "data/story_runtime.09caf7b52651d38a.json.gz",
-    "bytes": 16753082,
-    "sha256": "cec410840c87bde4d2ab3a1fddbdad3bdbd254dfc89fca815cf7bb64864819d0"
-  }
+    "path": "data/story_runtime.dd7421bbb7605411.json.gz",
+    "bytes": 19146255,
+    "sha256": "a87ebcef12de93807303c46b6dcfe6426c0d7ccacf3e05d2b60444e0ecb1a76c"
+  },
+  "note": "1.9.6-pre3 pack of already-merged isolated 1–8/9–14 runtime plus landed plugin/runtime work. Still a pre-release: 战后 15–17 and other chapters are not in this pack. 1.9.6-pre2 artifacts were not overwritten.",
+  "merged_at": "2026-11-28T19:05:58+08:00",
+  "working_sha256": "59ac3eea108cecddd18bb2d20c9f22add0a2350777ca352d995020288f0f336e",
+  "isolated_sha256": "59ac3eea108cecddd18bb2d20c9f22add0a2350777ca352d995020288f0f336e",
+  "live_backup_sha256": "340ac81dcac2e53cd5857780c1d925c51041a11c8627ff6998f25aad40877c63",
+  "product_backup_sha256": "448db51e22b5d6f32d4b430df27abc9484e1af19a23f20622cb9df6382b78fe6"
 }

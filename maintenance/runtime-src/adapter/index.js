@@ -10,10 +10,13 @@ const Protocol = pick('./protocol', '__ARK_ADAPTER_PROTOCOL__');
 const Persist = pick('./persistence', '__ARK_ADAPTER_PERSIST__');
 const Tavern = pick('./tavern', '__ARK_ADAPTER_HOST__');
 const WorldSync = pick('./worldbook_sync', '__ARK_WORLDBOOK_SYNC__');
+const PhaseA = pick('../core/phase_a', '__ARK_CORE_PHASE_A__');
+const PhaseB = pick('../core/phase_b_bridge', '__ARK_CORE_PHASE_B__');
+const Plot = pick('../core/plot_direction', '__ARK_CORE_PLOT_DIRECTION__');
 const RULES_ENTRY_NAME = 'ARK剧情运行规则';
 const INJECTION_ID = 'ark-story-runtime';
 const RULES_PROMPT_ID = 'ark-story-rules';
-const INJECTION_IDS = [RULES_PROMPT_ID, INJECTION_ID];
+const INJECTION_IDS = [RULES_PROMPT_ID, INJECTION_ID, PhaseA.ACT_SUMMARY_ID, PhaseA.REANCHOR_PROMPT_ID];
 const clone = value => JSON.parse(JSON.stringify(value));
 
 function createStoryAdapter(opts) {
@@ -25,6 +28,7 @@ function createStoryAdapter(opts) {
   const diag = { applied: [], pending: [], warnings: [] };
   const unsubs = [], listeners = new Set();
   let loadedChatId = host.chatId(), epoch = 0, busy = false, initialized = false, destroyed = false;
+  let lastSaveFingerprint = null, pendingNarrator = null;
   let state, messageIndex = {}, messageVersions = {};
   let snapshotCodec, loadFailed = false;
   let regeneration = null;
@@ -94,6 +98,9 @@ function createStoryAdapter(opts) {
         state.actor_scene_states = Object.fromEntries([...cast].map(id => [id, runtime.resolveActorAtScene(id, ctx, state.facts)]));
       }
     }
+    if (PhaseA) PhaseA.ensurePhaseA(state);
+    if (PhaseB) PhaseB.ensureLoreDefaults(state);
+    lastSaveFingerprint = null;
   }
   load();
   if (o.state && o.state.chat_id === loadedChatId) state = clone(o.state);
@@ -107,17 +114,29 @@ function createStoryAdapter(opts) {
   });
   function syncPhysical() {
     if (loadFailed || !data.worldbook_binding || !data.worldbook_binding.physical) return null;
+    if (PhaseB && PhaseB.shouldNoopBaseFlush(state, loadedChatId).noop) {
+      return { ok: true, changed: 0, writes: 0, reads: 0, noop: true, reason: 'clone_or_degraded' };
+    }
     const chat = loadedChatId, book = detectWorldbookName();
     return physical.sync(computeWorldbookView(), { book, chat, active: !!state.active_route,
       valid: () => !destroyed && chat === host.chatId() && book === detectWorldbookName() });
   }
   async function flushWorldbook() {
+    const copyPlugin = PhaseB?.getPlugin?.();
+    if (copyPlugin?.host?.isReady?.(loadedChatId)) await copyPlugin.host.flush();
+    if (PhaseB && PhaseB.shouldNoopBaseFlush(state, loadedChatId).noop) {
+      return { ok: true, changed: 0, writes: 0, reads: 0, noop: true, reason: 'clone_or_degraded' };
+    }
     const result = await physical.flush();
     if (o.strictPhysical && data.worldbook_binding && state.active_route && result && !result.ok && !result.stale)
       throw Error('世界书条目切换未完成：' + (result.error || '宿主缺少读写接口'));
     return result;
   }
   async function resetWorldbook(name) {
+    if (globalThis.__ARK_STORY_CONFIG__?.sparse_clone_only) throw Error('基准世界书只读；请在当前存档的角色管理中使用快照回退');
+    if (PhaseB && PhaseB.shouldNoopBaseFlush(state, loadedChatId).noop) {
+      throw Error('克隆模式下底板只读，已拒绝重置主世界书');
+    }
     if (busy) throw Error('剧情操作仍在进行，请完成后再重置世界书');
     if (name !== detectWorldbookName()) throw Error('重置目标不是当前角色的主世界书');
     const baseline = data.worldbook_binding && data.worldbook_binding.reset_baseline;
@@ -142,17 +161,25 @@ function createStoryAdapter(opts) {
     return { ok: true, entries: baseline.length, progress_preserved: true };
   }
 
+  function saveEnvelope() {
+    const { snapshots, ...running } = state;
+    return {
+      state: { ...clone(running), schema_version: 4 },
+      snapshot_store: snapshotCodec.pack(snapshots || {}),
+      message_index: { ...messageIndex },
+      message_versions: clone(messageVersions)
+    };
+  }
   function save() {
     if (!validChat()) return false;
     try {
       const vars = host.readChatVar ? {} : (host.readChatVars(loadedChatId) || {});
-      const { snapshots, ...running } = state;
-      const ok = host.writeChatVars(loadedChatId, { ...vars, [Persist.KEY]: {
-        state: { ...clone(running), schema_version: 4 },
-        snapshot_store: snapshotCodec.pack(snapshots || {}), message_index: { ...messageIndex },
-        message_versions: clone(messageVersions), saved_at: Date.now()
-      } });
+      const envelope = saveEnvelope();
+      const fingerprint = JSON.stringify(envelope);
+      if (fingerprint === lastSaveFingerprint) return true;
+      const ok = host.writeChatVars(loadedChatId, { ...vars, [Persist.KEY]: { ...envelope, saved_at: Date.now() } });
       if (!ok) note('warnings', 'chat_save_failed');
+      else lastSaveFingerprint = fingerprint;
       return !!ok;
     } catch (e) { note('warnings', 'chat_save_failed:' + e.message); return false; }
   }
@@ -269,6 +296,12 @@ function createStoryAdapter(opts) {
     projection.worldbook = name;
     projection.chat_id = loadedChatId;
     projection.revision = state.revision;
+    if (PhaseB && state) {
+      try {
+        const filtered = PhaseB.filterOutboundPrompt(lores, state, loadedChatId);
+        writePromptBack(lores, filtered);
+      } catch (e) { note('warnings', 'clone_prompt_filter_failed:' + e.message); }
+    }
     note('applied', 'worldbook_projection_hook:matches=' + projection.last_matches);
   }
   function applyWorldbookView(view) {
@@ -339,6 +372,23 @@ function createStoryAdapter(opts) {
     if (openingGeneration?.materialInUserRequest) {
       prompts[1].content = '本次开场的剧情指导、当前段原文与收尾要求已放在本次用户请求中；请结合真实聊天上下文处理，不重复注入资料。';
     }
+    if (state.reanchor_pending && state.active_route) {
+      const pending = state.reanchor_pending;
+      const title = (inj && inj.current_goal) || pending.scene_id;
+      prompts.push({
+        id: PhaseA.REANCHOR_PROMPT_ID, position: 'in_chat', depth: 0, role: 'system',
+        content: PhaseA.formatReanchorInstruction(pending.route_id || state.active_route.route_id, pending.scene_id || state.active_route.scene_id, title),
+        should_scan: false
+      });
+    }
+    const summaryItems = PhaseA && state.ui_settings && state.ui_settings.act_summary_injection
+      ? buildActSummaryItems(inj) : [];
+    if (summaryItems.length) {
+      prompts.push({
+        id: PhaseA.ACT_SUMMARY_ID, position: 'in_chat', depth: 1, role: 'system',
+        content: PhaseA.formatActSummaryPrompt(summaryItems), should_scan: false
+      });
+    }
     let ok = false;
     try { ok = host.inject(prompts); } catch (e) { note('warnings', 'injection_failed:' + e.message); }
     if (ok) note('applied', 'injectPrompts:revision=' + inj.base_revision + ':segment=' + (b ? b.node_id + '#' + b.segment_index : 'none'));
@@ -347,7 +397,35 @@ function createStoryAdapter(opts) {
     return { injected: !!ok, method: ok ? 'injectPrompts' : null, reason: ok ? null : 'injection_unavailable', injection: inj, prompts };
   }
   function refresh() { const worldbookApplied = applyWorldbookView(); const injected = injectRules(); syncPhysical(); return { worldbookApplied, injected }; }
-  function committed(reason) { save(); const effects = refresh(); notify(reason); return effects; }
+  function committed(reason) {
+    save();
+    const effects = refresh();
+    let autoToggle = null;
+    if (PhaseB && state && state.lore_mode === 'clone' && state.active_route) {
+      try {
+        const corpus = runtime.corpusStatus && runtime.corpusStatus(state);
+        const scene = data.sceneById && state.active_route && data.sceneById[state.active_route.scene_id];
+        const actorForms = {};
+        for (const [id, ast] of Object.entries(state.actor_scene_states || {})) {
+          if (ast && ast.entry_id != null) actorForms[id] = { entry_id: ast.entry_id };
+        }
+        const routeRec = (state.active_route && data.routeById)
+          ? data.routeById[state.active_route.route_id]
+          : null;
+        const spec = {
+          speakers: (corpus && corpus.speakers) || [],
+          focus_actor_ids: (scene && scene.focus_actor_ids) || [],
+          desired_entry_ids: computeWorldbookView().enable,
+          actor_forms: actorForms
+        };
+        if (routeRec && routeRec.story_id) spec.story_id = routeRec.story_id;
+        if (routeRec && routeRec.chapter) spec.chapter = routeRec.chapter;
+        autoToggle = PhaseB.autoToggleForSegment(loadedChatId, spec, state);
+      } catch (e) { note('warnings', 'auto_toggle_failed:' + (e && e.message)); }
+    }
+    notify(reason);
+    return autoToggle ? { ...effects, autoToggle } : effects;
+  }
   function buildOpening(plan, st) {
     const s = st || state, seed = plan && plan.opening_seed || {};
     const injection = buildInjection(s);
@@ -437,9 +515,21 @@ function createStoryAdapter(opts) {
     busy = true;
     const t = token();
     try {
+      if (globalThis.__ARK_STORY_CONFIG__?.sparse_clone_only) {
+        const copyPlugin=PhaseB?.getPlugin?.();
+        if(!copyPlugin?.host?.prepare) return fail('clone_plugin_unavailable');
+        await copyPlugin.host.prepare(loadedChatId);
+        if(!tokenValid(t)) return fail('chat_changed_before_entry');
+        copyPlugin.manager?.setData(data);
+        let ptr=copyPlugin.host.readStoryMeta(loadedChatId);
+        if(ptr.lore_mode!=='clone') ptr=copyPlugin.enableCloneMode(loadedChatId).pointer;
+        state.lore_mode=ptr.lore_mode; state.clone_book=ptr.book;
+        await copyPlugin.host.flush();
+      }
       const result = action();
       if (!result.ok) return fail(result.error);
       state = result.state;
+      captureEntryWatermark();
       const routeId = state.active_route && state.active_route.route_id;
       const entry = routeId && state.entered_routes[routeId];
       if (entry && !result.already_entered) entry.opening_pending = true;
@@ -473,7 +563,113 @@ function createStoryAdapter(opts) {
     notify('waiting_released');
     return { ok: true };
   }
-  function jumpToScene(routeId, sceneId, segmentIndex = 0) {
+
+  function lastChatMessage() { return readMessage(-1); }
+  function listChatMessages() {
+    if (!host.g || !host.g.getChatMessages) return [];
+    try { return host.g.getChatMessages('0-{{lastMessageId}}', { include_swipes: true }) || []; }
+    catch (_) { return []; }
+  }
+  function lastMessageIdValue() {
+    const m = lastChatMessage();
+    return m && m.message_id != null ? m.message_id : null;
+  }
+  function captureEntryWatermark() {
+    if (PhaseA && state && state.active_route) PhaseA.recordEntrySnapshot(state, lastMessageIdValue());
+  }
+  function autoHiddenIds(routeId, sceneId, segmentIndex) {
+    const route = data.routeById[routeId];
+    const watermark = PhaseA.canonWatermark(state, routeId, sceneId, segmentIndex, route);
+    const ids = [];
+    for (const message of listChatMessages()) {
+      const id = PhaseA.messageIdOf(message);
+      if (id == null) continue;
+      if (watermark < 0 || Number(id) > Number(watermark)) ids.push(id);
+    }
+    return ids;
+  }
+  function buildActSummaryItems(inj) {
+    if (!PhaseA || !state.active_route) return [];
+    const routeId = state.active_route.route_id;
+    const route = data.routeById[routeId];
+    if (PhaseA.isSuspectRoute(routeId, route)) return [];
+    const acts = (runtime.guideForRoute && runtime.guideForRoute(routeId) && runtime.guideForRoute(routeId).act_briefs) || [];
+    const authored = [];
+    if (route) {
+      for (const sid of route.ordered_scene_ids || []) {
+        const node = runtime.corpusNodeForScene && runtime.corpusNodeForScene(sid);
+        const entry = data.playerSummaryByScene && data.playerSummaryByScene.get(JSON.stringify([routeId, sid, node ? node.node_id : null]));
+        authored.push({ scene_id: sid, node_id: node ? node.node_id : null, title: entry && entry.title, summary: entry && entry.summary });
+      }
+    }
+    const present = [];
+    const hidden = new Set((state.hidden_message_ids || []).map(String));
+    for (const exp of Object.values(state.scene_experience || {})) {
+      if (exp && exp.kind === 'read' && exp.message_id != null && !hidden.has(String(exp.message_id))) {
+        const stillThere = listChatMessages().some(m => String(PhaseA.messageIdOf(m)) === String(exp.message_id));
+        if (stillThere) present.push(exp.scene_id);
+      }
+    }
+    return PhaseA.selectActSummaries(state, routeId, route, authored.concat(acts), { presentNarratorSceneIds: present });
+  }
+  function canContinue() {
+    if (!PhaseA || !state) return { ok: true };
+    const message = lastChatMessage();
+    if (message && PhaseA.isHiddenMessage(state, message.message_id)) {
+      return { ok: false, error: 'continue_on_hidden_floor', message_id: message.message_id };
+    }
+    return { ok: true };
+  }
+  function writePromptBack(source, filtered) {
+    if (!source || !filtered || source === filtered || typeof source !== 'object') return;
+    if (Array.isArray(source) && Array.isArray(filtered)) {
+      source.splice(0, source.length, ...filtered);
+      return;
+    }
+    if (typeof filtered !== 'object') return;
+    const keys = ['chat', 'messages', 'prompt', 'chatLore', 'characterLore', 'globalLore', 'personaLore', 'worldInfo', 'entries', 'world_info', 'lores'];
+    for (const key of keys) {
+      if (Object.prototype.hasOwnProperty.call(filtered, key)) source[key] = filtered[key];
+    }
+  }
+  function applyPromptFilter(payload) {
+    if (!PhaseA || !state) return payload;
+    let live = null;
+    try {
+      const st = host.g && (globalThis.SillyTavern || (typeof window !== 'undefined' && window.SillyTavern));
+      live = st && st.getContext && st.getContext().chat || null;
+    } catch (_) {}
+    const filtered = PhaseA.filterOutboundPrompt(payload, state, live);
+    return PhaseB ? PhaseB.filterOutboundPrompt(filtered, state, loadedChatId) : filtered;
+  }
+  function worldbookContext() {
+    const chat = loadedChatId, book = detectWorldbookName();
+    return { book, chat, active: !!state.active_route, valid: () => !destroyed && chat === host.chatId() && book === detectWorldbookName() };
+  }
+  async function commitWorldbookPatch(view) {
+    return physical.commitWorldbookPatch(view || computeWorldbookView(), worldbookContext());
+  }
+  function setUiSettings(patch) {
+    if (PhaseA) PhaseA.ensurePhaseA(state);
+    const next = { ...state.ui_settings, ...patch };
+    const unchanged = JSON.stringify(next) === JSON.stringify(state.ui_settings);
+    state.ui_settings = next;
+    if (unchanged) return { ok: true, settings: { ...state.ui_settings }, skipped: true };
+    if (Object.prototype.hasOwnProperty.call(patch, 'act_summary_injection') && !patch.act_summary_injection && host.uninject) {
+      try { host.uninject([PhaseA.ACT_SUMMARY_ID]); } catch (_) {}
+    }
+    const effects = committed('ui_settings');
+    return { ok: true, settings: { ...state.ui_settings }, ...effects };
+  }
+  function inspectHiddenFloors(on) {
+    return setUiSettings({ inspect_hidden_floors: !!on });
+  }
+  function unhideFloors(ids) {
+    if (PhaseA) PhaseA.unhideMessageIds(state, ids);
+    const effects = committed('unhide');
+    return { ok: true, hidden_message_ids: (state.hidden_message_ids || []).slice(), ...effects };
+  }
+  function reanchorToScene(routeId, sceneId, segmentIndex = 0, options = {}) {
     if (destroyed || !syncChat()) return fail('no_current_chat');
     const route = data.routeById[routeId];
     if (!route || !route.ordered_scene_ids.includes(sceneId)) return fail('scene_not_in_route');
@@ -481,19 +677,174 @@ function createStoryAdapter(opts) {
     if (!Number.isInteger(segmentIndex) || segmentIndex < 0 ||
         (node ? segmentIndex >= node.segment_count : segmentIndex !== 0)) return fail('invalid_segment');
     cancelPending();
-    const entry = Core.navigation.entryForStory(data, route.story_id);
-    const result = entry ? runtime.enterExperience(state, entry.entry_id, { route_id: routeId, scene_id: sceneId })
-      : runtime.enterRoute(state, routeId, { scene_id: sceneId });
-    if (!result.ok) return fail(result.error);
-    state = result.state;
-    delete state.last_ending;
-    if (node) {
-      Core.corpus.resetProgress(state, routeId, node);
-      state.corpus_progress[routeId].segment_index = segmentIndex;
+    if (PhaseA) PhaseA.ensurePhaseA(state);
+    const hide = options.hideMessageIds || autoHiddenIds(routeId, sceneId, segmentIndex);
+    const factsBefore = Plot ? Plot.factIds(state) : [];
+    const restored = PhaseA.restoreEntrySnapshot(state, routeId, sceneId, segmentIndex);
+    if (restored) {
+      state = restored;
+      if (!state.active_route) state.active_route = { route_id: routeId, scene_id: sceneId, scene_time: null, context_mode: 'live', entry_snapshot_id: PhaseA.segmentKey(state, routeId, sceneId, segmentIndex), unknown_date_elapsed_minutes: 0 };
+      else {
+        state.active_route.route_id = routeId;
+        state.active_route.scene_id = sceneId;
+        state.active_route.entry_snapshot_id = PhaseA.segmentKey(state, routeId, sceneId, segmentIndex);
+      }
+      if (state.corpus_progress && state.corpus_progress[routeId]) {
+        state.corpus_progress[routeId].segment_index = segmentIndex;
+        if (node) state.corpus_progress[routeId].node_id = node.node_id;
+      } else if (node && Core.corpus) {
+        Core.corpus.resetProgress(state, routeId, node);
+        state.corpus_progress[routeId].segment_index = segmentIndex;
+      }
+    } else {
+      const entry = Core.navigation.entryForStory(data, route.story_id);
+      const result = entry ? runtime.enterExperience(state, entry.entry_id, { route_id: routeId, scene_id: sceneId })
+        : runtime.enterRoute(state, routeId, { scene_id: sceneId });
+      if (!result.ok) return fail(result.error);
+      state = result.state;
+      if (node && Core.corpus) {
+        Core.corpus.resetProgress(state, routeId, node);
+        state.corpus_progress[routeId].segment_index = segmentIndex;
+      }
     }
+    delete state.last_ending;
     if (state.entered_routes[routeId]) state.entered_routes[routeId].opening_pending = false;
-    const effects = committed('manual_jump');
-    return { ok: true, state, ...effects };
+    if (!restored && Plot && Plot.dropFactsAfter) Plot.dropFactsAfter(state, route, sceneId, segmentIndex);
+    const factsAfter = new Set(Plot ? Plot.factIds(state) : []);
+    const droppedFacts = factsBefore.filter(id => !factsAfter.has(id));
+    if (droppedFacts.length && PhaseB && PhaseB.rollbackPlotRevisions) {
+      try { PhaseB.rollbackPlotRevisions(loadedChatId, { fact_ids: droppedFacts }); }
+      catch (e) { note('warnings', 'plot_rollback_failed:' + (e && e.message)); }
+    }
+    PhaseA.addHiddenMessageIds(state, hide);
+    state.reanchor_pending = { route_id: routeId, scene_id: sceneId, segment_index: segmentIndex, at: Date.now() };
+    PhaseA.recordEntrySnapshot(state, lastMessageIdValue());
+    const effects = committed('reanchor');
+    return { ok: true, state, hidden_message_ids: (state.hidden_message_ids || []).slice(), restored_entry_snapshot: !!restored, dropped_fact_ids: droppedFacts, ...effects };
+  }
+  async function flushPendingPlotDirection() {
+    if (!Plot || !state || !state.plot_direction || !state.plot_direction.pending) return null;
+    const pending = state.plot_direction.pending;
+    if (pending.inflight) return null;
+    if (pending.at_revision != null && pending.at_revision !== state.revision) {
+      return Plot.adopt(state, { request: pending.request, call_design: false }, { ok: false, reason: 'stale_progress', cursor_advanced: false, floors_created: 0 });
+    }
+    pending.inflight = true;
+    let request = pending.request || {};
+    try {
+      const guide = runtime.guideForRoute && runtime.guideForRoute(request.route_id);
+      request = Plot.enrichRequest(state, request, guide);
+      pending.request = request;
+    } catch (e) { note('warnings', 'plot_enrich_failed:' + (e && e.message)); }
+    let design = { ok: false, reason: 'plugin_unavailable', llm_calls: 0, cursor_advanced: false, floors_created: 0, scene_continues: true };
+    if (PhaseB && PhaseB.revisePlotDirection) {
+      try { design = await PhaseB.revisePlotDirection(loadedChatId, request); }
+      catch (e) { design = { ok: false, reason: 'design_api_unavailable', llm_calls: 0, cursor_advanced: false, floors_created: 0, scene_continues: true }; }
+    }
+    const adopted = Plot.adopt(state, { request, call_design: true }, design || { ok: false, reason: 'design_unavailable' });
+    if (!design || design.ok === false) note('warnings', 'plot_direction_continued:' + (adopted.reason || 'design_unavailable'));
+    save();
+    return adopted;
+  }
+  async function revisePlotDirection(signal, api) {
+    if (destroyed || !syncChat()) return fail('no_current_chat');
+    if (!state.active_route) return fail('no_active_route');
+    if (!Plot) return fail('plot_direction_unavailable');
+    const considered = Plot.consider(state, signal || {});
+    if (!considered.call_design && state.plot_direction && state.plot_direction.pending && state.plot_direction.pending.request) {
+      considered.call_design = true;
+      considered.request = state.plot_direction.pending.request;
+      considered.reasons = (considered.reasons || []).concat(['pending_design']);
+    }
+    let design = { ok: false, reason: considered.call_design ? 'plugin_unavailable' : 'not_requested', llm_calls: 0, cursor_advanced: false, floors_created: 0, scene_continues: true, accepted: null };
+    if (considered.call_design) {
+      let request = considered.request;
+      try {
+        const guide = runtime.guideForRoute && runtime.guideForRoute(request.route_id);
+        request = Plot.enrichRequest(state, request, guide);
+      } catch (e) { note('warnings', 'plot_enrich_failed:' + (e && e.message)); }
+      if (PhaseB && PhaseB.revisePlotDirection) {
+        try { design = await PhaseB.revisePlotDirection(loadedChatId, request, api); }
+        catch (e) { design = { ok: false, reason: 'design_api_unavailable', llm_calls: 0, cursor_advanced: false, floors_created: 0, scene_continues: true }; }
+      }
+      considered.request = request;
+    }
+    const adopted = Plot.adopt(state, considered, design);
+    const effects = committed('plot_direction');
+    return {
+      ...adopted,
+      called: !!considered.call_design,
+      reasons: considered.reasons,
+      llm_calls: design.llm_calls || 0,
+      cursor_advanced: false,
+      floors_created: 0,
+      entry_writes: design.entry_writes || 0,
+      warnings: [].concat(adopted.warnings || [], design.warnings || []),
+      ...effects
+    };
+  }
+  async function finalizeSegmentWithoutModel(kind) {
+    if (destroyed || !syncChat()) return fail('no_current_chat');
+    if (!state.active_route) return fail('no_active_route');
+    if (state.corpus_restore && state.corpus_restore.needs_manual_choice) return fail('corpus_restore_requires_choice');
+    if (flowStatus().stage !== 'playing') return fail('line_already_completed');
+    cancelPending();
+    const sceneId = state.active_route.scene_id;
+    const seg = runtime.corpusStatus(state);
+    const tr = { v: 2, base_revision: state.revision, route_id: state.active_route.route_id,
+      scene_id: sceneId, elapsed_minutes: 0, event_results: [],
+      completed_scene_ids: [], sync_status: kind };
+    if (seg) { tr.segment_ack = seg.segment_index; tr.segment_node_id = seg.node_id; }
+    else tr.completed_scene_ids = [sceneId];
+    const markedScene = sceneId;
+    const markedRoute = state.active_route.route_id;
+    const markedSegment = PhaseA.currentSegmentIndex(state);
+    const r = runtime.reduceTurn(state, tr, { storeHistory: true });
+    if (!r.ok) return fail('invalid_turn', { errors: r.errors });
+    state = r.state;
+    if (kind !== 'direct_read') {
+      PhaseA.markSceneExperience(state, 'skipped', null, {
+        route_id: markedRoute, scene_id: markedScene, segment_index: markedSegment
+      });
+    }
+    let messageId = null, narrator = null;
+    if (kind === 'direct_read') {
+      const inj = buildInjection({ ...state, active_route: { ...state.active_route, scene_id: sceneId } }) || buildInjection();
+      // Material of the segment just confirmed: prefer the snapshot's performed scene text.
+      const previous = runtime.buildPromptInjection({ ...r.turnSnapshot.state_before, snapshots: state.snapshots, snapshot_order: state.snapshot_order });
+      const material = (previous && previous.scene_material) || '';
+      const title = (previous && previous.progress && previous.progress.display) || sceneId;
+      narrator = '【旁白·自由阅读】' + title + '\n\n' + (material || '（本幕暂无内嵌原文）');
+      if (host.g && host.g.createChatMessages) {
+        const last = lastChatMessage();
+        const newId = last && Number.isFinite(Number(last.message_id)) ? Number(last.message_id) + 1 : 0;
+        pendingNarrator = { text: narrator, snapshot: r.turnSnapshot, kind: 'direct_read' };
+        await host.g.createChatMessages([{ role: 'assistant', message: narrator }]);
+        const message = readMessage(newId) || lastChatMessage();
+        messageId = message && message.message_id != null ? message.message_id : newId;
+        if (pendingNarrator) {
+          r.turnSnapshot.message_id = messageId;
+          messageIndex[String(messageId)] = r.turnSnapshot.snapshot_id;
+          messageVersions[String(messageId)] = { text: narrator, swipe_id: null, snapshot_id: r.turnSnapshot.snapshot_id, original_snapshot_id: r.turnSnapshot.snapshot_id, history: [r.turnSnapshot.snapshot_id], pending: false, kind: 'direct_read' };
+          pendingNarrator = null;
+        }
+        PhaseA.markSceneExperience(state, 'read', messageId, {
+          route_id: markedRoute, scene_id: markedScene, segment_index: markedSegment
+        });
+      }
+    }
+    captureEntryWatermark();
+    const effects = committed(kind);
+    await flushWorldbook();
+    return { ok: true, state, message_id: messageId, narrator, completion_calls: 0, kind, worldbookView: computeWorldbookView(), ...effects };
+  }
+  async function directReadCurrentSegment() { return finalizeSegmentWithoutModel('direct_read'); }
+  async function skipCurrentSegment() { return finalizeSegmentWithoutModel('skipped'); }
+
+  function jumpToScene(routeId, sceneId, segmentIndex = 0, options) {
+    const result = reanchorToScene(routeId, sceneId, segmentIndex, options || {});
+    if (result.ok) note('applied', 'hard_reanchor:' + routeId + ':' + sceneId);
+    return result;
   }
   // 玩家明确确认当前段已体验；只确认当前段，不补写跳过的幕，也不伪造关键事件。
   function advanceCurrentSegment(expectedRevision) {
@@ -591,7 +942,20 @@ function createStoryAdapter(opts) {
   }
   function processMessage(text, messageId, options = {}) {
     if (destroyed || !syncChat()) return fail('no_current_chat');
-    const key = String(messageId), version = messageId != null ? messageVersions[key] : null;
+    const key = String(messageId);
+    if (pendingNarrator && text === pendingNarrator.text) {
+      const snap = pendingNarrator.snapshot;
+      if (messageId != null) {
+        snap.message_id = messageId;
+        messageIndex[key] = snap.snapshot_id;
+        messageVersions[key] = { text, swipe_id: options.swipe_id == null ? null : options.swipe_id,
+          snapshot_id: snap.snapshot_id, original_snapshot_id: snap.snapshot_id,
+          history: [snap.snapshot_id], pending: false, kind: pendingNarrator.kind };
+      }
+      pendingNarrator = null;
+      return { ok: true, direct_read: true, turnSnapshot: snap, cleanText: text };
+    }
+    const version = messageId != null ? messageVersions[key] : null;
     const ex = Protocol.extractTurnBlock(text);
     const snapshot = messageId != null ? originalSnapshot(messageId) : null;
     if (version && !version.pending && version.text === text && (options.swipe_id == null || version.swipe_id === options.swipe_id)) {
@@ -641,6 +1005,15 @@ function createStoryAdapter(opts) {
         snapshot_id: r.turnSnapshot.snapshot_id, original_snapshot_id: snapshot ? snapshot.snapshot_id : r.turnSnapshot.snapshot_id,
         history: [...(version && version.history || []), r.turnSnapshot.snapshot_id], pending: false };
     }
+    if (r.turnSnapshot && r.turnSnapshot.sync_status !== 'direct_read' && r.turnSnapshot.sync_status !== 'skipped') {
+      const performed = r.turnSnapshot.route && (r.turnSnapshot.route.performed_scene_id || r.turnSnapshot.route.scene_id);
+      PhaseA.markSceneExperience(state, 'played', messageId, {
+        route_id: r.turnSnapshot.route && r.turnSnapshot.route.route_id,
+        scene_id: performed,
+        segment_index: tr.segment_ack != null ? tr.segment_ack : 0
+      });
+    }
+    if (state.reanchor_pending) state.reanchor_pending = null;
     const effects = committed('commit');
     if (degraded) note('warnings', 'turn_block_missing:fallback_zero_delta');
     return { ok: true, degraded, reason: degraded ? 'fallback_zero_delta' : null, turnSnapshot: r.turnSnapshot, statusView: runtime.renderTurnStatus(r.turnSnapshot), cleanText: ex.cleanText, worldbookView: computeWorldbookView(), ...effects };
@@ -691,11 +1064,16 @@ function createStoryAdapter(opts) {
   }
   function reload() { stopOpeningGeneration(); epoch++; busy = false; regeneration = null; generationForFormatting = null; loadedChatId = host.chatId(); load(); refresh(); notify('reload'); return state; }
   function onHostEvent(name, args) {
+    const plugin = PhaseB && PhaseB.getPlugin ? PhaseB.getPlugin() : null;
     if (name === 'STREAM_TOKEN_RECEIVED') {
       if (replyTiming && replyTiming.first == null) replyTiming.first = Date.now();
       return;
     }
-    if (name === 'CHAT_CHANGED') { replyTiming = null; generationForFormatting = null; reload(); return; }
+    if (name === 'CHAT_CHANGED') {
+      replyTiming = null; generationForFormatting = null; reload();
+      try { if (PhaseB) PhaseB.onChatChanged(loadedChatId); } catch (e) { note('warnings', 'clone_bind_failed:' + e.message); }
+      return;
+    }
     if (!syncChat()) return;
     if (name === 'GENERATION_ENDED' || name === 'GENERATION_STOPPED') {
       if (replyTiming) {
@@ -719,36 +1097,125 @@ function createStoryAdapter(opts) {
         restored = true;
         committed('regenerate_uncommitted_restored');
       }
+      // ASTER 切片 2 / 任务 3：可见生成完成后的摘要录入。
+      // 接线风险：GENERATION_ENDED 是否严格晚于最终消息与采用分支确定，尚未实玩核对；
+      // 因此同时提供 plugin.onVisibleGenerationComplete 供测试与更精确事件调用。
+      if (name === 'GENERATION_ENDED' && !restored && formatToken) {
+        try {
+          if (plugin && typeof plugin.onVisibleGenerationComplete === 'function' && loadedChatId != null) {
+            const lastId = host.g && host.g.getLastMessageId ? host.g.getLastMessageId() : null;
+            const msg = lastId != null ? readMessage(lastId) : null;
+            const rawText = msg ? messageText(msg) : '';
+            const branchId = msg && msg.swipe_id != null ? msg.swipe_id : null;
+            const ingestion = plugin.onVisibleGenerationComplete(loadedChatId, {
+              rawText,
+              messageId: lastId,
+              swipeId: branchId,
+              branchId,
+              source: 'visible'
+            });
+            if (ingestion && plugin.host?.flush) plugin.host.flush().catch(e=>note('warnings','archive_flush_failed:'+e.message));
+          }
+        } catch (e) {
+          note('warnings', 'visible_generation_complete_failed:' + e.message);
+        }
+      }
       return name === 'GENERATION_ENDED' && !restored && formatToken ? repairLastDialogue(formatToken) : undefined;
+    }
+    if (name === 'CHAT_COMPLETION_PROMPT_READY' || name === 'GENERATE_BEFORE') {
+      const source = args[0];
+      const filtered = applyPromptFilter(source);
+      writePromptBack(source, filtered);
+      // ASTER 切片 2 / 任务 3：正式生成输入附加当前摘要与更新要求。
+      // 内部 generateRaw / design / summarize / merge 不附加。
+      try {
+        const src = source && typeof source === 'object' ? source : {};
+        const srcTag = src.source != null ? String(src.source) : (src.internal ? 'internal' : '');
+        let internalCalls=0;
+        try { internalCalls=globalThis.__ARK_CWB_INTERNAL_CALLS__ || globalThis.parent?.__ARK_CWB_INTERNAL_CALLS__ || 0; } catch (_) {}
+        const internal = internalCalls > 0 || /^(internal|generateraw|design|summarize|summary|merge|timeline_merge)$/i.test(srcTag) || src.internal === true;
+        if (!internal && plugin && typeof plugin.attachArchiveSummaryPrompt === 'function' && loadedChatId != null) {
+          plugin.attachArchiveSummaryPrompt(loadedChatId, source);
+        }
+      } catch (e) {
+        note('warnings', 'attach_archive_summary_failed:' + e.message);
+      }
+      return;
     }
     if (name === 'GENERATION_AFTER_COMMANDS') {
       const [type, , dryRun] = args;
+      // ASTER 切片 2 / 任务 3：此处仅作为下一次正式续写前的补充核对点，
+      // 不作为逐轮录入主路径（主路径在 GENERATION_ENDED / onVisibleGenerationComplete）。
+      if (!dryRun && type !== 'regenerate' && type !== 'swipe') {
+        const allow = canContinue();
+        if (!allow.ok) {
+          note('warnings', allow.error);
+          notify('continue_rejected');
+          try { if (host.g && host.g.stopGenerationById) host.g.stopGenerationById('current'); } catch (_) {}
+          return allow;
+        }
+      }
       if (dryRun) {
         applyWorldbookView();
         injectRules();
-        return flushWorldbook();
+        return physical.flush();
       }
       generationForFormatting = !dryRun ? { ...token(), generationType: type, lastMessageId: readMessage(-1)?.message_id } : null;
       if (!dryRun && (type === 'regenerate' || type === 'swipe')) {
         const message = readMessage(-1);
         const snap = message && message.role === 'assistant' && originalSnapshot(message.message_id);
-        if (snap && snap.state_before && state.active_route && snap.state_before.active_route && snap.state_before.active_route.route_id === state.active_route.route_id) {
+        const beforeRoute = snap && snap.state_before && snap.state_before.active_route;
+        const keepCursor = !!(state.reanchor_pending || (state.active_route && beforeRoute && (
+          beforeRoute.scene_id !== state.active_route.scene_id || beforeRoute.route_id !== state.active_route.route_id
+        )));
+        if (!keepCursor && snap && snap.state_before && state.active_route && beforeRoute && beforeRoute.route_id === state.active_route.route_id) {
           const r = runtime.revertToSnapshot(state, snap.snapshot_id);
           if (r.ok) {
             regeneration = { state: clone(state), messageIndex: clone(messageIndex), messageVersions: clone(messageVersions), chatId: loadedChatId, epoch, routeId: state.active_route.route_id, messageId: String(message.message_id) };
             state = r.state; const v = messageVersions[String(message.message_id)]; if (v) v.pending = true; save(); notify('regenerate');
           }
+        } else if (keepCursor) {
+          note('applied', 'regenerate_keeps_reanchor_cursor');
         }
       }
       const timing = { start: Date.now(), first: null, ready: null };
       replyTiming = timing;
-      refresh(); return flushWorldbook().then(result => { timing.ready = Date.now(); return result; });
+      return Promise.resolve()
+        .then(async () => {
+          if(!globalThis.__ARK_STORY_CONFIG__?.sparse_clone_only)return;
+          if(!plugin?.host?.prepare)throw Error('clone_plugin_unavailable');
+          const chat=loadedChatId;await plugin.host.prepare(chat);
+          if(chat!==host.chatId())throw Error('chat_changed_before_generation');
+          plugin.manager?.setData(data);
+          let ptr=plugin.host.readStoryMeta(chat);
+          if(ptr.lore_mode!=='clone')ptr=plugin.enableCloneMode(chat).pointer;
+          state.lore_mode=ptr.lore_mode;state.clone_book=ptr.book;
+          await plugin.host.flush();
+        })
+        .then(() => flushPendingPlotDirection().catch(e => { note('warnings', 'plot_direction_failed:' + (e && e.message)); return null; }))
+        .then(() => {
+          applyWorldbookView();
+          injectRules();
+          return flushWorldbook();
+        })
+        .then(result => { timing.ready = Date.now(); return result; });
     }
     if (name === 'CHARACTER_MESSAGE_RENDERED' && host.g.getLastMessageId) {
       // Scrolling or reopening the chat may render old replies. Only a real
       // edit/swipe event should change the state associated with those rows.
       const last = host.g.getLastMessageId();
       if (last != null && String(args[0]) !== String(last)) return;
+    }
+    // ASTER 切片 2 / 任务 5：消息更正 / 滑动时作废对应贡献。
+    if ((name === 'MESSAGE_UPDATED' || name === 'MESSAGE_SWIPED') && plugin && typeof plugin.invalidateArchiveContributions === 'function' && loadedChatId != null) {
+      try {
+        const mid = args[0];
+        const msg = readMessage(mid);
+        const branchId = msg && msg.swipe_id != null ? msg.swipe_id : null;
+        plugin.invalidateArchiveContributions(loadedChatId, { messageId: mid, branchId, reason: name === 'MESSAGE_SWIPED' ? 'swipe' : 'edit' });
+      } catch (e) {
+        note('warnings', 'invalidate_archive_contributions_failed:' + e.message);
+      }
     }
     const message = readMessage(args[0]);
     if (!message || message.role !== 'assistant') return;
@@ -758,7 +1225,8 @@ function createStoryAdapter(opts) {
   function init() {
     if (initialized || destroyed) return diagnostics();
     initialized = true;
-    for (const name of ['CHAT_CHANGED', 'GENERATION_AFTER_COMMANDS', 'GENERATION_ENDED', 'GENERATION_STOPPED', 'STREAM_TOKEN_RECEIVED', 'MESSAGE_RECEIVED', 'MESSAGE_UPDATED', 'MESSAGE_SWIPED', 'CHARACTER_MESSAGE_RENDERED']) {
+    try { if (WorldSync && WorldSync.installCommitGate) WorldSync.installCommitGate(globalThis); } catch (_) {}
+    for (const name of ['CHAT_CHANGED', 'GENERATION_AFTER_COMMANDS', 'GENERATION_ENDED', 'GENERATION_STOPPED', 'STREAM_TOKEN_RECEIVED', 'MESSAGE_RECEIVED', 'MESSAGE_UPDATED', 'MESSAGE_SWIPED', 'CHARACTER_MESSAGE_RENDERED', 'CHAT_COMPLETION_PROMPT_READY', 'GENERATE_BEFORE']) {
       try {
         const off = host.on(name, (...args) => { try {
           const result = onHostEvent(name, args);
@@ -769,6 +1237,7 @@ function createStoryAdapter(opts) {
       } catch (e) { note('warnings', 'listener_registration_failed:' + name); }
     }
     refresh();
+    try { if (PhaseB) PhaseB.onChatChanged(loadedChatId); } catch (e) { note('warnings', 'clone_bind_failed:' + e.message); }
     return diagnostics();
   }
   function stop(off) { try { if (off && typeof off.stop === 'function') off.stop(); else if (typeof off === 'function') off(); } catch (e) {} }
@@ -800,7 +1269,20 @@ function createStoryAdapter(opts) {
     return fail('unknown_restore_choice');
   }
   return { runtime, host, data, getState: () => state, isBusy: () => busy,
-    cancelPending, jumpToScene, advanceCurrentSegment, flushWorldbook, resetWorldbook,
+    cancelPending, jumpToScene, reanchorToScene, advanceCurrentSegment, directReadCurrentSegment, skipCurrentSegment,
+    revisePlotDirection, flushPendingPlotDirection,
+    flushWorldbook, resetWorldbook, commitWorldbookPatch, setUiSettings, inspectHiddenFloors, unhideFloors, canContinue,
+    applyPromptFilter, filterOutboundMessages: messages => PhaseA.filterOutboundMessages(messages, state),
+    getLoreMode: () => state.lore_mode || 'baseline',
+    setLorePointer(ptr) {
+      if (PhaseB) PhaseB.ensureLoreDefaults(state);
+      if (ptr && ptr.lore_mode) state.lore_mode = ptr.lore_mode;
+      if (ptr && Object.prototype.hasOwnProperty.call(ptr, 'book')) state.clone_book = ptr.book;
+      if (ptr && ptr.sidecar_rev != null) state.sidecar_rev = ptr.sidecar_rev;
+      if (ptr && Object.prototype.hasOwnProperty.call(ptr, 'clone_warning')) state.clone_warning = ptr.clone_warning;
+      return { ok: true, lore_mode: state.lore_mode, clone_book: state.clone_book, sidecar_rev: state.sidecar_rev };
+    },
+    getWorldbookMetrics: () => physical.metrics(),
     setState: s => { if (busy || s.chat_id !== loadedChatId) return false; state = clone(s); committed('set_state'); return true; },
     subscribe: listener => { listeners.add(listener); return () => listeners.delete(listener); },
     enterRoute, exitRoute, enterExperience, finishExperience, buildNavigation, processMessage, computeWorldbookView, applyWorldbookView, buildOpening, buildInjection, injectRules, generateOpeningOnce, resolveCorpusRestore,
